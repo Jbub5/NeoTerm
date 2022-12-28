@@ -1,5 +1,7 @@
 package io.neoterm.backend;
 
+import java.util.Arrays;
+
 /**
  * A circular buffer of {@link TerminalRow}:s which keeps notes about what is visible on a logical screen and the scroll
  * history.
@@ -432,4 +434,13 @@ public final class TerminalBuffer {
     }
   }
 
+  public void clearTranscript() {
+    if (mScreenFirstRow < mActiveTranscriptRows) {
+      Arrays.fill(mLines, mTotalRows + mScreenFirstRow - mActiveTranscriptRows, mTotalRows, null);
+      Arrays.fill(mLines, 0, mScreenFirstRow, null);
+    } else {
+      Arrays.fill(mLines, mScreenFirstRow - mActiveTranscriptRows, mScreenFirstRow, null);
+    }
+    mActiveTranscriptRows = 0;
+  }
 }

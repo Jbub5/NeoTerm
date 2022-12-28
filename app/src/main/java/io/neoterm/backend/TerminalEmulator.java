@@ -1372,6 +1372,7 @@ public final class TerminalEmulator {
         break;
       case 'c': // RIS - Reset to Initial State (http://vt100.net/docs/vt510-rm/RIS).
         reset();
+        mMainBuffer.clearTranscript();
         blockClear(0, 0, mColumns, mRows);
         setCursorPosition(0, 0);
         break;
@@ -1529,6 +1530,9 @@ public final class TerminalEmulator {
           case 2: // Erase all of the display - all lines are erased, changed to single-width, and the cursorColor does not
             // move..
             blockClear(0, 0, mColumns, mRows);
+            break;
+          case 3: // Delete all lines saved in the scrollback buffer (xterm etc)
+            mMainBuffer.clearTranscript();
             break;
           default:
             unknownSequence(b);
