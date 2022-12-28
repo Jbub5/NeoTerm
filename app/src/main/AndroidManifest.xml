@@ -38,7 +38,8 @@
     android:roundIcon="@mipmap/ic_launcher_neoterm_round"
     android:hardwareAccelerated="true"
     android:largeHeap="true"
-    android:supportsRtl="true"
+    android:supportsRtl="false"
+    tools:replace="android:supportsRtl"
     android:theme="@style/AppTheme">
     <activity
       android:name=".ui.term.NeoTermActivity"
