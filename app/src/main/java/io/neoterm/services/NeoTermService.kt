@@ -139,7 +139,7 @@ class NeoTermService : Service() {
 
     val sessionCount = mTerminalSessions.size
     val xSessionCount = mXSessions.size
-    var contentText = getString(R.string.service_status_text, sessionCount, xSessionCount)
+    var contentText = getString(R.string.service_status_text, sessionCount)
 
     val lockAcquired = mWakeLock != null
     if (lockAcquired) contentText += getString(R.string.service_lock_acquired)
