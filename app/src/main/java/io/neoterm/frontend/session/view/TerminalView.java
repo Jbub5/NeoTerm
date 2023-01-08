@@ -522,6 +522,12 @@ public final class TerminalView extends View {
     this.mTextSize = textSize;
     mRenderer = new TerminalRenderer(textSize, mRenderer == null ? Typeface.MONOSPACE : mRenderer.mTypeface);
     updateSize();
+
+    if (toast != null)
+      toast.cancel();
+    toast = Toast.makeText(getContext(), "" + getTextSize() + "", Toast.LENGTH_SHORT);
+    toast.setDuration(Toast.LENGTH_SHORT);
+    toast.show();
   }
 
   public void setTypeface(Typeface newTypeface) {
@@ -927,11 +933,6 @@ public final class TerminalView extends View {
       scrollTo(0, 0);
       invalidate();
     }
-    if (toast != null)
-      toast.cancel();
-    toast = Toast.makeText(getContext(), "" + getTextSize() + "", Toast.LENGTH_SHORT);
-    toast.setDuration(Toast.LENGTH_SHORT);
-    toast.show();
 
   }
 
