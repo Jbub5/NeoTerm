@@ -1528,7 +1528,7 @@ public final class TerminalEmulator {
       case 'I': // Cursor Horizontal Forward Tabulation (CHT). Move the active position n tabs forward.
         setCursorCol(nextTabStop(getArg0(1)));
         break;
-      case 'J': // "${CSI}${0,1,2}J" - Erase in Display (ED)
+      case 'J': // "${CSI}${0,1,2,3}J" - Erase in Display (ED)
         // ED ignores the scrolling margins.
         switch (getArg0(0)) {
           case 0: // Erase from the active position to the end of the screen, inclusive (default).
