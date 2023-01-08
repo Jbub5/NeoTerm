@@ -21,6 +21,8 @@ import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Scroller;
+import android.widget.Toast;
+
 import io.neoterm.R;
 import io.neoterm.backend.*;
 import io.neoterm.component.completion.OnAutoCompleteListener;
@@ -59,6 +61,7 @@ public final class TerminalView extends View {
   float mSelectionDownX, mSelectionDownY;
   private ActionMode mActionMode;
   private BitmapDrawable mLeftSelectionHandle, mRightSelectionHandle;
+  private static Toast toast;
 
   float mScaleFactor = 1.f;
   /* final */ GestureAndScaleRecognizer mGestureRecognizer;
@@ -911,6 +914,7 @@ public final class TerminalView extends View {
     int viewHeight = getHeight();
     if (viewWidth == 0 || viewHeight == 0 || mTermSession == null) return;
 
+
     // Set to 80 and 24 if you want to enable vttest.
     int newColumns = Math.max(4, (int) (viewWidth / mRenderer.mFontWidth));
     int newRows = Math.max(4, (viewHeight - mRenderer.mFontLineSpacingAndAscent) / mRenderer.mFontLineSpacing);
@@ -923,6 +927,12 @@ public final class TerminalView extends View {
       scrollTo(0, 0);
       invalidate();
     }
+    if (toast != null)
+      toast.cancel();
+    toast = Toast.makeText(getContext(), "" + getTextSize() + "", Toast.LENGTH_SHORT);
+    toast.setDuration(Toast.LENGTH_SHORT);
+    toast.show();
+
   }
 
   @Override
