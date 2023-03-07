@@ -6,8 +6,6 @@ android {
   defaultConfig {
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
-    versionCode 1
-    versionName "1.0"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   }
 
@@ -22,6 +20,7 @@ android {
       jniLibs.srcDirs = ['src/main/jniLibs']
     }
   }
+    namespace 'io.neoterm.xorg'
 }
 
 dependencies {
@@ -33,4 +32,9 @@ dependencies {
   androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
 }

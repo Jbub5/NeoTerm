@@ -3,7 +3,7 @@ apply plugin: 'kotlin'
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  compile rootProject.ext.deps["kotlin-stdlib"]
+  api rootProject.ext.deps["kotlin-stdlib"]
 }
 
 buildscript {
@@ -29,4 +29,9 @@ compileTestKotlin {
 }
 dependencies {
   testImplementation rootProject.ext.deps["junit"]
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }

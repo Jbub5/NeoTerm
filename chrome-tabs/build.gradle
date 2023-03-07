@@ -6,14 +6,13 @@ android {
   defaultConfig {
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
-    versionCode 1
-    versionName "1.0"
   }
   buildTypes {
     release {
       minifyEnabled true
     }
   }
+  namespace 'de.mrapp.android.tabswitcher'
 }
 
 dependencies {
@@ -23,4 +22,9 @@ dependencies {
 
   implementation 'androidx.appcompat:appcompat:1.2.0'
   implementation 'androidx.appcompat:appcompat-resources:1.2.0'
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
 }

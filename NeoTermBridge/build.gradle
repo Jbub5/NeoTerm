@@ -9,8 +9,6 @@ android {
   defaultConfig {
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
-    versionCode libraryVersionCode
-    versionName libraryVersionName
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   }
 
@@ -19,6 +17,7 @@ android {
       minifyEnabled false
     }
   }
+  namespace 'io.neoterm.bridge'
 }
 
 dependencies {
@@ -28,4 +27,9 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
   testImplementation rootProject.ext.deps["junit"]
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
 }
