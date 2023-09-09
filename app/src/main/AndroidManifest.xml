@@ -29,6 +29,8 @@
     android:usesCleartextTraffic="true"
     android:resizeableActivity="true"
     android:roundIcon="@mipmap/ic_launcher_neoterm_round"
+    android:hardwareAccelerated="true"
+    android:largeHeap="true"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
