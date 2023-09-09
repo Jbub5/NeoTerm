@@ -18,6 +18,9 @@ android {
     }
   }
   namespace 'io.neoterm.bridge'
+    buildFeatures {
+        aidl true
+    }
 }
 
 dependencies {
