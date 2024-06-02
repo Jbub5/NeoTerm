@@ -186,7 +186,18 @@ class NeoTermService : Service() {
   }
 
   @SuppressLint("WakelockTimeout")
+  private fun requestIgnoreBatteryOptimizations() {
+    val packageName = getPackageName()
+    val intent = Intent()
+    val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+    if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+      intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+      intent.data = Uri.parse("package:$packageName")
+      startActivity(intent)
+    }
+  }
   private fun acquireLock() {
+    requestIgnoreBatteryOptimizations()
     if (mWakeLock == null) {
       val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
       mWakeLock = pm.newWakeLock(
