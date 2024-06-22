@@ -33,7 +33,7 @@ object NeoTermPath {
   val APT_BIN_PATH = "$USR_PATH/bin/apt"
   val LIB_PATH = "$USR_PATH/lib"
 
-  val CUSTOM_PATH = "$HOME_PATH/.neoterm"
+  val CUSTOM_PATH = "$HOME_PATH/.termux"
   val NEOTERM_LOGIN_SHELL_PATH = "$CUSTOM_PATH/shell"
   val EKS_PATH = "$CUSTOM_PATH/eks"
   val EKS_DEFAULT_FILE = "$EKS_PATH/default.nl"
