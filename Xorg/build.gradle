@@ -26,7 +26,7 @@ android {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-  implementation rootProject.ext.deps["appcompat-v7"]
+  implementation 'androidx.appcompat:appcompat:1.0.2'
   testImplementation rootProject.ext.deps["junit"]
 
   androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {

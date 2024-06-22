@@ -16,8 +16,8 @@ android {
 }
 
 dependencies {
-  api 'com.github.michael-rapp:android-util:1.15.0'
-  implementation rootProject.ext.deps["annotations"]
+  api 'com.github.michael-rapp:android-util:1.15.4'
+  implementation 'androidx.annotation:annotation:1.0.2'
   testImplementation rootProject.ext.deps["junit"]
 
   implementation 'androidx.appcompat:appcompat:1.2.0'
