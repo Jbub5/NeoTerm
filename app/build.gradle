@@ -11,8 +11,8 @@ android {
     versionCode 38
     versionName "2.0.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    resConfigs 'zh-rCN', 'zh-rTW'
-    externalNativeBuild {
+      resourceConfigurations += ['zh-rCN', 'zh-rTW']
+      externalNativeBuild {
       cmake {
         cppFlags "-std=c++11"
         abiFilters 'arm64-v8a', 'armeabi-v7a'
@@ -46,6 +46,11 @@ android {
     checkReleaseBuilds false
   }
   namespace 'io.neoterm'
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
 }
 
 dependencies {
