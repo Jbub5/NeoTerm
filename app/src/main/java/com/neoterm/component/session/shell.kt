@@ -1,6 +1,5 @@
 package com.neoterm.component.session
 
-import android.content.Context
 import io.neolang.frontend.ConfigVisitor
 import com.neoterm.App
 import com.neoterm.R
@@ -47,11 +46,6 @@ class ShellParameter {
 
   fun initialCommand(initialCommand: String?): ShellParameter {
     this.initialCommand = initialCommand
-    return this
-  }
-
-  fun environment(env: Array<Pair<String, String>>?): ShellParameter {
-    this.env = env
     return this
   }
 
@@ -296,7 +290,7 @@ open class ShellTermSession private constructor(
       return this
     }
 
-    fun create(context: Context): ShellTermSession {
+    fun create(): ShellTermSession {
       val cwd = this.cwd ?: NeoTermPath.HOME_PATH
 
       val shell = this.executablePath ?: "${App.get().applicationInfo.nativeLibraryDir}/libstartup.so"
