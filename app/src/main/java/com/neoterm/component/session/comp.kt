@@ -99,6 +99,6 @@ class SessionComponent : NeoComponent {
       .argArray(parameter.arguments)
       .initialCommand(parameter.initialCommand)
       .profile(parameter.shellProfile)
-      .create(context)
+      .create()
   }
 }
