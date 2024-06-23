@@ -15,7 +15,7 @@ android {
       externalNativeBuild {
       cmake {
         cppFlags "-std=c++11 -flto"
-        abiFilters 'arm64-v8a', 'armeabi-v7a'
+        abiFilters 'arm64-v8a'
       }
     }
     sourceSets {
@@ -27,6 +27,7 @@ android {
   buildTypes {
     release {
       zipAlignEnabled true
+      signingConfig signingConfigs.debug
     }
   }
   externalNativeBuild {
