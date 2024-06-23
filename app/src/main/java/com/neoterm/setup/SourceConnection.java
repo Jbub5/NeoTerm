@@ -1,4 +1,4 @@
-package io.neoterm.setup;
+package com.neoterm.setup;
 
 import java.io.IOException;
 import java.io.InputStream;

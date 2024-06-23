@@ -9,7 +9,7 @@
 static const char *rewrite_executable(const char *filename, char *buffer, int buffer_len) {
     uid_t uid = getuid();
     int user = uid / 100000;
-    sprintf(buffer, "/data/user/%d/io.neoterm/files/usr/bin/", user);
+    sprintf(buffer, "/data/user/%d/com.neoterm/files/usr/bin/", user);
     char *bin_match = strstr(filename, "/bin/");
     if (bin_match == filename || bin_match == (filename + 4)) {
         // We have either found "/bin/" at the start of the string or at

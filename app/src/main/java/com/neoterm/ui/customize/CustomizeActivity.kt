@@ -1,4 +1,4 @@
-package io.neoterm.ui.customize
+package com.neoterm.ui.customize
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +8,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.component.font.FontComponent
-import io.neoterm.utils.getPathOfMediaUri
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.component.font.FontComponent
+import com.neoterm.utils.getPathOfMediaUri
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths

@@ -1,7 +1,7 @@
-package io.neoterm.framework.database;
+package com.neoterm.framework.database;
 
-import io.neoterm.framework.database.annotation.Ignore;
-import io.neoterm.framework.database.annotation.NotNull;
+import com.neoterm.framework.database.annotation.Ignore;
+import com.neoterm.framework.database.annotation.NotNull;
 
 import java.lang.reflect.Field;
 

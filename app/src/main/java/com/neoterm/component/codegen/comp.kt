@@ -1,6 +1,6 @@
-package io.neoterm.component.codegen
+package com.neoterm.component.codegen
 
-import io.neoterm.component.NeoComponent
+import com.neoterm.component.NeoComponent
 
 
 class CodeGenComponent : NeoComponent {

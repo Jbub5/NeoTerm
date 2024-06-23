@@ -1,6 +1,6 @@
-package io.neoterm;
+package com.neoterm;
 
-import io.neoterm.xorg.NeoXorgViewClient;
+import com.neoterm.xorg.NeoXorgViewClient;
 
 /**
  * @author kiva

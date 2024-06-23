@@ -1,8 +1,8 @@
-package io.neoterm.component.font
+package com.neoterm.component.font
 
 import android.graphics.Typeface
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
 import java.io.File
 
 class NeoFont {

@@ -1,4 +1,4 @@
-package io.neoterm.frontend.session.view;
+package com.neoterm.frontend.session.view;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -23,9 +23,9 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Scroller;
 import android.widget.Toast;
 
-import io.neoterm.R;
-import io.neoterm.backend.*;
-import io.neoterm.component.completion.OnAutoCompleteListener;
+import com.neoterm.R;
+import com.neoterm.backend.*;
+import com.neoterm.component.completion.OnAutoCompleteListener;
 
 /**
  * View displaying and interacting with a {@link TerminalSession}.

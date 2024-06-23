@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-package io.neoterm;
+package com.neoterm;
 
 import android.content.Context;
 import android.os.Build;
@@ -28,8 +28,8 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import io.neoterm.xorg.NeoXorgViewClient;
-import io.neoterm.xorg.R;
+import com.neoterm.xorg.NeoXorgViewClient;
+import com.neoterm.xorg.R;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package io.neoterm.framework.database.annotation;
+package com.neoterm.framework.database.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

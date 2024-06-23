@@ -1,4 +1,4 @@
-package io.neoterm.frontend.session.view.extrakey
+package com.neoterm.frontend.session.view.extrakey
 
 /**
  * <Ctrl> <Alt> <Delete>

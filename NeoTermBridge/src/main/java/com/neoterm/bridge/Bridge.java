@@ -1,4 +1,4 @@
-package io.neoterm.bridge;
+package com.neoterm.bridge;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -14,8 +14,8 @@ public class Bridge {
   public static final String EXTRA_COMMAND = "neoterm.extra.remote.execute.command";
   public static final String EXTRA_SESSION_ID = "neoterm.extra.remote.execute.session";
   public static final String EXTRA_FOREGROUND = "neoterm.extra.remote.execute.foreground";
-  private static final String NEOTERM_PACKAGE = "io.neoterm";
-  private static final String NEOTERM_REMOTE_INTERFACE = "io.neoterm.ui.term.NeoTermRemoteInterface";
+  private static final String NEOTERM_PACKAGE = "com.neoterm";
+  private static final String NEOTERM_REMOTE_INTERFACE = "com.neoterm.ui.term.NeoTermRemoteInterface";
   private static final ComponentName NEOTERM_COMPONENT = new ComponentName(NEOTERM_PACKAGE, NEOTERM_REMOTE_INTERFACE);
 
   private Bridge() throws IllegalAccessException {

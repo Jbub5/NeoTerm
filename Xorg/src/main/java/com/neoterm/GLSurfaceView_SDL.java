@@ -18,7 +18,7 @@
 /* This is GLSurfaceView class ripped out of Android 2.1 sources,
    fixed with a hammer to work with libSDL port */
 
-package io.neoterm;
+package com.neoterm;
 
 import android.app.KeyguardManager;
 import android.content.Context;

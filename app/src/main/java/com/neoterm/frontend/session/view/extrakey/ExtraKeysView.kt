@@ -1,4 +1,4 @@
-package io.neoterm.frontend.session.view.extrakey
+package com.neoterm.frontend.session.view.extrakey
 
 import android.content.Context
 import android.graphics.Typeface
@@ -6,12 +6,12 @@ import android.util.AttributeSet
 import android.view.*
 import android.widget.GridLayout
 import android.widget.LinearLayout
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.component.extrakey.ExtraKeyComponent
-import io.neoterm.frontend.session.terminal.ToggleImeEvent
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.component.extrakey.ExtraKeyComponent
+import com.neoterm.frontend.session.terminal.ToggleImeEvent
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 

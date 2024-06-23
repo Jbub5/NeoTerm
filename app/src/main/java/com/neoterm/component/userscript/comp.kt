@@ -1,12 +1,12 @@
-package io.neoterm.component.userscript
+package com.neoterm.component.userscript
 
 import android.content.Context
 import android.system.Os
-import io.neoterm.App
-import io.neoterm.component.NeoComponent
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.utils.NLog
-import io.neoterm.utils.extractAssetsDir
+import com.neoterm.App
+import com.neoterm.component.NeoComponent
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.utils.NLog
+import com.neoterm.utils.extractAssetsDir
 import java.io.File
 
 class UserScript(val scriptFile: File)

@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-package io.neoterm;
+package com.neoterm;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -35,7 +35,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.appcompat.app.AlertDialog;
-import io.neoterm.xorg.R;
+import com.neoterm.xorg.R;
 
 import java.util.Arrays;
 

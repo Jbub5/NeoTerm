@@ -1,4 +1,4 @@
-package io.neoterm
+package com.neoterm
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -8,10 +8,10 @@ import android.net.Uri
 import android.view.Gravity
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import io.neoterm.component.NeoInitializer
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.ui.other.BonusActivity
-import io.neoterm.utils.CrashHandler
+import com.neoterm.component.NeoInitializer
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.ui.other.BonusActivity
+import com.neoterm.utils.CrashHandler
 
 /**
  * @author kiva

@@ -1,4 +1,4 @@
-package io.neoterm.component.pm;
+package com.neoterm.component.pm;
 
 import java.io.BufferedReader;
 import java.io.IOException;

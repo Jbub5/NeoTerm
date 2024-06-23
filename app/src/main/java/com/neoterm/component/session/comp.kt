@@ -1,12 +1,12 @@
-package io.neoterm.component.session
+package com.neoterm.component.session
 
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.Globals
-import io.neoterm.component.NeoComponent
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.utils.NLog
+import com.neoterm.Globals
+import com.neoterm.component.NeoComponent
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.utils.NLog
 
 class SessionComponent : NeoComponent {
   companion object {

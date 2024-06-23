@@ -20,7 +20,7 @@
       android:theme="@style/ThemeOverlay.AppCompat.Dark"
       app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-    <io.neoterm.ui.pm.view.RecyclerTabLayout
+    <com.neoterm.ui.pm.view.RecyclerTabLayout
       android:id="@+id/pm_tab_layout"
       android:layout_width="match_parent"
       android:layout_height="@dimen/recycler_tab_height"

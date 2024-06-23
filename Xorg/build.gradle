@@ -20,7 +20,7 @@ android {
       jniLibs.srcDirs = ['src/main/jniLibs']
     }
   }
-    namespace 'io.neoterm.xorg'
+    namespace 'com.neoterm.xorg'
 }
 
 dependencies {

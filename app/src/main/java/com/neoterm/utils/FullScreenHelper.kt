@@ -1,4 +1,4 @@
-package io.neoterm.utils
+package com.neoterm.utils
 
 import android.graphics.Rect
 import android.view.View

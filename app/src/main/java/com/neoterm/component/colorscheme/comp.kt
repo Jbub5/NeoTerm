@@ -1,17 +1,17 @@
-package io.neoterm.component.colorscheme
+package com.neoterm.component.colorscheme
 
 import android.content.Context
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.ConfigFileBasedComponent
-import io.neoterm.component.codegen.CodeGenComponent
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.utils.extractAssetsDir
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.ConfigFileBasedComponent
+import com.neoterm.component.codegen.CodeGenComponent
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.utils.extractAssetsDir
 import java.io.File
 import java.nio.file.Files
 

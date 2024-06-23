@@ -1,9 +1,9 @@
-package io.neoterm.component.profile
+package com.neoterm.component.profile
 
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.component.ConfigFileBasedComponent
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.utils.NLog
+import com.neoterm.component.ConfigFileBasedComponent
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.utils.NLog
 import java.io.File
 
 class ProfileComponent : ConfigFileBasedComponent<NeoProfile>(NeoTermPath.PROFILE_PATH) {

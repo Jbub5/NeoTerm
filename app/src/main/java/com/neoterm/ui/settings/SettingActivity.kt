@@ -1,8 +1,8 @@
-package io.neoterm.ui.settings
+package com.neoterm.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
-import io.neoterm.R
+import com.neoterm.R
 
 /**
  * @author Lody

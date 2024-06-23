@@ -1,4 +1,4 @@
-package io.neoterm.ui.term
+package com.neoterm.ui.term
 
 import android.content.ComponentName
 import android.content.Intent
@@ -10,19 +10,19 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.bridge.Bridge.*
-import io.neoterm.bridge.SessionId
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.session.ShellParameter
-import io.neoterm.component.userscript.UserScript
-import io.neoterm.component.userscript.UserScriptComponent
-import io.neoterm.frontend.session.terminal.TermSessionCallback
-import io.neoterm.services.NeoTermService
-import io.neoterm.utils.Terminals
-import io.neoterm.utils.getPathOfMediaUri
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.bridge.Bridge.*
+import com.neoterm.bridge.SessionId
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.session.ShellParameter
+import com.neoterm.component.userscript.UserScript
+import com.neoterm.component.userscript.UserScriptComponent
+import com.neoterm.frontend.session.terminal.TermSessionCallback
+import com.neoterm.services.NeoTermService
+import com.neoterm.utils.Terminals
+import com.neoterm.utils.getPathOfMediaUri
 import java.io.File
 
 /**
