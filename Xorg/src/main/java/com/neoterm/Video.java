@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-package io.neoterm;
+package com.neoterm;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.*;
 import android.widget.Toast;
-import io.neoterm.xorg.NeoXorgViewClient;
+import com.neoterm.xorg.NeoXorgViewClient;
 
 import javax.microedition.khronos.egl.*;
 import javax.microedition.khronos.opengles.GL10;

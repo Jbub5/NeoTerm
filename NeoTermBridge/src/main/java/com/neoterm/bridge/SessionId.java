@@ -1,4 +1,4 @@
-package io.neoterm.bridge;
+package com.neoterm.bridge;
 
 import java.util.Objects;
 

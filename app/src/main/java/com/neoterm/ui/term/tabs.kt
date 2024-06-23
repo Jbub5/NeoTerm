@@ -1,4 +1,4 @@
-package io.neoterm.ui.term
+package com.neoterm.ui.term
 
 import android.content.Context
 import android.content.res.Configuration
@@ -14,18 +14,18 @@ import androidx.appcompat.widget.Toolbar
 import de.mrapp.android.tabswitcher.Tab
 import de.mrapp.android.tabswitcher.TabSwitcher
 import de.mrapp.android.tabswitcher.TabSwitcherDecorator
-import io.neoterm.NeoGLView
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.completion.OnAutoCompleteListener
-import io.neoterm.component.config.DefaultValues
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.session.XSession
-import io.neoterm.frontend.session.terminal.*
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.utils.Terminals
+import com.neoterm.NeoGLView
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.completion.OnAutoCompleteListener
+import com.neoterm.component.config.DefaultValues
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.session.XSession
+import com.neoterm.frontend.session.terminal.*
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.utils.Terminals
 import org.greenrobot.eventbus.EventBus
 
 /**

@@ -1,4 +1,4 @@
-package io.neoterm.component.completion
+package com.neoterm.component.completion
 
 class CompletionCandidate(val completeString: String) {
   var displayName: String = completeString

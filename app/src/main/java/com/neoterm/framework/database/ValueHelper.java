@@ -1,4 +1,4 @@
-package io.neoterm.framework.database;
+package com.neoterm.framework.database;
 
 import android.database.Cursor;
 

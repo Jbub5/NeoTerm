@@ -1,15 +1,15 @@
-package io.neoterm.framework;
+package com.neoterm.framework;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import io.neoterm.App;
-import io.neoterm.framework.database.*;
-import io.neoterm.framework.database.bean.TableInfo;
-import io.neoterm.framework.reflection.Reflect;
-import io.neoterm.utils.NLog;
+import com.neoterm.App;
+import com.neoterm.framework.database.*;
+import com.neoterm.framework.database.bean.TableInfo;
+import com.neoterm.framework.reflection.Reflect;
+import com.neoterm.utils.NLog;
 
 import java.io.File;
 import java.io.IOException;

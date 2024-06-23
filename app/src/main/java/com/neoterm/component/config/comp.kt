@@ -1,4 +1,4 @@
-package io.neoterm.component.config
+package com.neoterm.component.config
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,12 +8,12 @@ import android.system.Os
 import android.util.TypedValue
 import io.neolang.frontend.ConfigVisitor
 import io.neolang.frontend.NeoLangParser
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.NeoComponent
-import io.neoterm.services.NeoTermService
-import io.neoterm.utils.NLog
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.NeoComponent
+import com.neoterm.services.NeoTermService
+import com.neoterm.utils.NLog
 import java.io.File
 import java.nio.file.Files
 

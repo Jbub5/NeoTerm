@@ -1,6 +1,6 @@
-package io.neoterm.component.completion
+package com.neoterm.component.completion
 
-import io.neoterm.component.NeoComponent
+import com.neoterm.component.NeoComponent
 
 class CompletionComponent : NeoComponent {
   override fun onServiceInit() {

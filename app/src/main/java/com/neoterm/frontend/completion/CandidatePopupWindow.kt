@@ -1,4 +1,4 @@
-package io.neoterm.frontend.completion
+package com.neoterm.frontend.completion
 
 import android.content.Context
 import android.view.Gravity
@@ -9,13 +9,13 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.TextView
-import io.neoterm.R
-import io.neoterm.backend.TerminalColors
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.completion.CompletionCandidate
-import io.neoterm.component.completion.OnCandidateSelectedListener
-import io.neoterm.frontend.session.view.TerminalView
+import com.neoterm.R
+import com.neoterm.backend.TerminalColors
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.completion.CompletionCandidate
+import com.neoterm.component.completion.OnCandidateSelectedListener
+import com.neoterm.frontend.session.view.TerminalView
 
 /**
  * @author kiva

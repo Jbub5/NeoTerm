@@ -1,16 +1,16 @@
-package io.neoterm.component.font
+package com.neoterm.component.font
 
 import android.content.Context
 import android.graphics.Typeface
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.component.NeoComponent
-import io.neoterm.component.config.DefaultValues
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.utils.extractAssetsDir
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.component.NeoComponent
+import com.neoterm.component.config.DefaultValues
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.utils.extractAssetsDir
 import java.io.File
 
 class FontComponent : NeoComponent {

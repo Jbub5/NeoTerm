@@ -1,13 +1,13 @@
-package io.neoterm.component.extrakey
+package com.neoterm.component.extrakey
 
 import android.content.Context
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.App
-import io.neoterm.component.ConfigFileBasedComponent
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.utils.NLog
-import io.neoterm.utils.extractAssetsDir
+import com.neoterm.App
+import com.neoterm.component.ConfigFileBasedComponent
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.utils.NLog
+import com.neoterm.utils.extractAssetsDir
 import java.io.File
 
 class ExtraKeyComponent : ConfigFileBasedComponent<NeoExtraKey>(NeoTermPath.EKS_PATH) {

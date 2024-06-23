@@ -1,4 +1,4 @@
-package io.neoterm.component.session
+package com.neoterm.component.session
 
 import android.app.UiModeManager
 import android.content.Context
@@ -15,9 +15,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.*
-import io.neoterm.xorg.NeoXorgViewClient
-import io.neoterm.xorg.R
+import com.neoterm.*
+import com.neoterm.xorg.NeoXorgViewClient
+import com.neoterm.xorg.R
 import java.util.*
 
 class XParameter

@@ -1,7 +1,7 @@
-package io.neoterm.framework.database.bean;
+package com.neoterm.framework.database.bean;
 
 
-import io.neoterm.framework.database.DatabaseDataType;
+import com.neoterm.framework.database.DatabaseDataType;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

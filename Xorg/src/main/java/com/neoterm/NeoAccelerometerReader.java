@@ -1,4 +1,4 @@
-package io.neoterm;
+package com.neoterm;
 
 import android.content.Context;
 

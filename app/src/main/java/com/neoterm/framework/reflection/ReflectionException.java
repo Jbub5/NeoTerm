@@ -1,4 +1,4 @@
-package io.neoterm.framework.reflection;
+package com.neoterm.framework.reflection;
 
 /**
  * @author kiva

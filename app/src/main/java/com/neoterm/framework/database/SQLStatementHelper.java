@@ -1,7 +1,7 @@
-package io.neoterm.framework.database;
+package com.neoterm.framework.database;
 
-import io.neoterm.framework.database.annotation.ID;
-import io.neoterm.framework.database.bean.TableInfo;
+import com.neoterm.framework.database.annotation.ID;
+import com.neoterm.framework.database.bean.TableInfo;
 
 import java.lang.reflect.Field;
 

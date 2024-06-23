@@ -1,11 +1,11 @@
-package io.neoterm.ui.settings
+package com.neoterm.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import io.neoterm.R
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.utils.runApt
+import com.neoterm.R
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.utils.runApt
 
 /**
  * @author kiva

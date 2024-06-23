@@ -1,4 +1,4 @@
-package io.neoterm.frontend.session.view.extrakey
+package com.neoterm.frontend.session.view.extrakey
 
 import android.content.Context
 import android.os.Handler
@@ -10,8 +10,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ToggleButton
 import androidx.appcompat.widget.AppCompatButton
-import io.neoterm.R
-import io.neoterm.frontend.session.view.TerminalView
+import com.neoterm.R
+import com.neoterm.frontend.session.view.TerminalView
 
 /**
  * @author kiva

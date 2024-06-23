@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.neoterm.ui.settings
+package com.neoterm.ui.settings
 
 import android.content.res.Configuration
 import android.os.Bundle

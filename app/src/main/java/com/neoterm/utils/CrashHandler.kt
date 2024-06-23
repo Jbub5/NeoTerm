@@ -1,8 +1,8 @@
-package io.neoterm.utils
+package com.neoterm.utils
 
 import android.content.Intent
-import io.neoterm.App
-import io.neoterm.ui.other.CrashActivity
+import com.neoterm.App
+import com.neoterm.ui.other.CrashActivity
 
 /**
  * @author kiva

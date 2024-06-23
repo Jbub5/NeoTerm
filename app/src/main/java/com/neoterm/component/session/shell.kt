@@ -1,19 +1,19 @@
-package io.neoterm.component.session
+package com.neoterm.component.session
 
 import android.content.Context
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.backend.TerminalSession
-import io.neoterm.bridge.SessionId
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.config.DefaultValues
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.component.font.FontComponent
-import io.neoterm.component.profile.NeoProfile
-import io.neoterm.frontend.session.terminal.TermSessionCallback
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.backend.TerminalSession
+import com.neoterm.bridge.SessionId
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.config.DefaultValues
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.component.font.FontComponent
+import com.neoterm.component.profile.NeoProfile
+import com.neoterm.frontend.session.terminal.TermSessionCallback
 import java.io.File
 
 /**

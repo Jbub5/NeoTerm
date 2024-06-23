@@ -1,8 +1,8 @@
-package io.neoterm.component
+package com.neoterm.component
 
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.component.config.ConfigureComponent
-import io.neoterm.utils.NLog
+import com.neoterm.component.config.ConfigureComponent
+import com.neoterm.utils.NLog
 import java.io.File
 import java.io.FileFilter
 

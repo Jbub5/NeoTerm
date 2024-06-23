@@ -1,4 +1,4 @@
-package io.neoterm.component.config
+package com.neoterm.component.config
 
 import android.annotation.SuppressLint
 import android.os.Process
@@ -27,7 +27,7 @@ object DefaultValues {
 object NeoTermPath {
   @SuppressLint("SdCardPath")
   val USER_DATA_PATH = "/data/user/${Process.myUid() / 100000}"
-  @JvmField val ROOT_PATH = "${USER_DATA_PATH}/io.neoterm/files"
+  @JvmField val ROOT_PATH = "${USER_DATA_PATH}/com.neoterm/files"
   val USR_PATH = "$ROOT_PATH/usr"
   val HOME_PATH = "$ROOT_PATH/home"
   val APT_BIN_PATH = "$USR_PATH/bin/apt"

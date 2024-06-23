@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.neoterm.ui.pm.view;
+package com.neoterm.ui.pm.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -34,7 +34,7 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import io.neoterm.R;
+import com.neoterm.R;
 
 public class RecyclerTabLayout extends RecyclerView {
 

@@ -1,4 +1,4 @@
-package io.neoterm.services
+package com.neoterm.services
 
 import android.annotation.SuppressLint
 import android.app.*
@@ -11,15 +11,15 @@ import android.os.IBinder
 import android.os.PowerManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
-import io.neoterm.R
-import io.neoterm.backend.EmulatorDebug
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.session.ShellParameter
-import io.neoterm.component.session.XParameter
-import io.neoterm.component.session.XSession
-import io.neoterm.ui.term.NeoTermActivity
-import io.neoterm.utils.NLog
-import io.neoterm.utils.Terminals
+import com.neoterm.R
+import com.neoterm.backend.EmulatorDebug
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.session.ShellParameter
+import com.neoterm.component.session.XParameter
+import com.neoterm.component.session.XSession
+import com.neoterm.ui.term.NeoTermActivity
+import com.neoterm.utils.NLog
+import com.neoterm.utils.Terminals
 
 
 /**

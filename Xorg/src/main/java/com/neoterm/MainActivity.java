@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-package io.neoterm;
+package com.neoterm;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -48,8 +48,8 @@ import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import io.neoterm.xorg.NeoXorgViewClient;
-import io.neoterm.xorg.R;
+import com.neoterm.xorg.NeoXorgViewClient;
+import com.neoterm.xorg.R;
 
 import java.util.LinkedList;
 import java.util.TreeSet;

@@ -1,4 +1,4 @@
-package io.neoterm.frontend.completion
+package com.neoterm.frontend.completion
 
 import android.content.Context
 import android.util.AttributeSet

@@ -1,15 +1,15 @@
-package io.neoterm.component.profile
+package com.neoterm.component.profile
 
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.ConfigFileBasedObject
-import io.neoterm.component.codegen.CodeGenObject
-import io.neoterm.component.codegen.CodeGenParameter
-import io.neoterm.component.codegen.CodeGenerator
-import io.neoterm.component.codegen.NeoProfileGenerator
-import io.neoterm.component.config.ConfigureComponent
-import io.neoterm.component.config.NeoConfigureFile
-import io.neoterm.utils.NLog
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.ConfigFileBasedObject
+import com.neoterm.component.codegen.CodeGenObject
+import com.neoterm.component.codegen.CodeGenParameter
+import com.neoterm.component.codegen.CodeGenerator
+import com.neoterm.component.codegen.NeoProfileGenerator
+import com.neoterm.component.config.ConfigureComponent
+import com.neoterm.component.config.NeoConfigureFile
+import com.neoterm.utils.NLog
 import org.jetbrains.annotations.TestOnly
 import java.io.File
 

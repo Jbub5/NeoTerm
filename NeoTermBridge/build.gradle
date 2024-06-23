@@ -17,7 +17,7 @@ android {
       minifyEnabled false
     }
   }
-  namespace 'io.neoterm.bridge'
+  namespace 'com.neoterm.bridge'
     buildFeatures {
         aidl true
     }

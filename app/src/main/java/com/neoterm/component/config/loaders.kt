@@ -1,11 +1,11 @@
-package io.neoterm.component.config
+package com.neoterm.component.config
 
 import io.neolang.frontend.ConfigVisitor
 import io.neolang.runtime.NeoLangValue
-import io.neoterm.component.colorscheme.NeoColorScheme
-import io.neoterm.component.extrakey.NeoExtraKey
-import io.neoterm.frontend.session.view.extrakey.TextButton
-import io.neoterm.utils.NLog
+import com.neoterm.component.colorscheme.NeoColorScheme
+import com.neoterm.component.extrakey.NeoExtraKey
+import com.neoterm.frontend.session.view.extrakey.TextButton
+import com.neoterm.utils.NLog
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream

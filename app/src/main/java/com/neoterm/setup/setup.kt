@@ -1,13 +1,13 @@
-package io.neoterm.setup
+package com.neoterm.setup
 
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.component.config.NeoTermPath
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.component.config.NeoTermPath
 import java.io.File
 import java.util.*
 

@@ -1,7 +1,7 @@
-package io.neoterm.component.pm;
+package com.neoterm.component.pm;
 
-import io.neoterm.framework.database.annotation.ID;
-import io.neoterm.framework.database.annotation.Table;
+import com.neoterm.framework.database.annotation.ID;
+import com.neoterm.framework.database.annotation.Table;
 
 /**
  * @author kiva

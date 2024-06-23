@@ -1,13 +1,13 @@
-package io.neoterm.frontend.session.terminal
+package com.neoterm.frontend.session.terminal
 
 import android.content.Context
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.TerminalViewClient
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.TerminalViewClient
 
 open class BasicSessionCallback(var terminalView: TerminalView) : TerminalSession.SessionChangedCallback {
   override fun onTextChanged(changedSession: TerminalSession?) {

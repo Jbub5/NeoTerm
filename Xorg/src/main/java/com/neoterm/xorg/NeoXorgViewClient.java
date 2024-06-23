@@ -1,9 +1,9 @@
-package io.neoterm.xorg;
+package com.neoterm.xorg;
 
 import android.content.Context;
 import android.view.Window;
 import android.view.WindowManager;
-import io.neoterm.NeoGLView;
+import com.neoterm.NeoGLView;
 
 /**
  * @author kiva

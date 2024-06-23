@@ -1,8 +1,8 @@
-package io.neoterm.component.codegen
+package com.neoterm.component.codegen
 
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.NeoColorScheme
-import io.neoterm.component.config.ConfigureComponent
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.NeoColorScheme
+import com.neoterm.component.config.ConfigureComponent
 
 class NeoColorGenerator(parameter: CodeGenParameter) : CodeGenerator(parameter) {
   override fun getGeneratorName(): String {

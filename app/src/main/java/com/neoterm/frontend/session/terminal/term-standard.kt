@@ -1,4 +1,4 @@
-package io.neoterm.frontend.session.terminal
+package com.neoterm.frontend.session.terminal
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -12,18 +12,18 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import io.neoterm.BuildConfig
-import io.neoterm.R
-import io.neoterm.backend.KeyHandler
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.completion.*
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.extrakey.ExtraKeyComponent
-import io.neoterm.component.session.ShellTermSession
-import io.neoterm.frontend.completion.CandidatePopupWindow
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.TerminalViewClient
+import com.neoterm.BuildConfig
+import com.neoterm.R
+import com.neoterm.backend.KeyHandler
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.completion.*
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.extrakey.ExtraKeyComponent
+import com.neoterm.component.session.ShellTermSession
+import com.neoterm.frontend.completion.CandidatePopupWindow
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.TerminalViewClient
 import java.util.*
 
 /**

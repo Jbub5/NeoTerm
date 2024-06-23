@@ -1,9 +1,9 @@
-package io.neoterm.frontend.session.view;
+package com.neoterm.frontend.session.view;
 
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import io.neoterm.backend.TerminalSession;
+import com.neoterm.backend.TerminalSession;
 
 /**
  * Input and scale listener which may be set on a {@link TerminalView} through

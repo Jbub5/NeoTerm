@@ -1,4 +1,4 @@
-package io.neoterm.setup
+package com.neoterm.setup
 
 import android.content.Context
 import android.net.Uri
