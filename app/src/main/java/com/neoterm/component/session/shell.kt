@@ -299,10 +299,7 @@ open class ShellTermSession private constructor(
     fun create(context: Context): ShellTermSession {
       val cwd = this.cwd ?: NeoTermPath.HOME_PATH
 
-      val shell = this.executablePath ?: if (systemShell)
-        "/system/bin/sh"
-      else
-        shellProfile.loginShell
+      val shell = this.executablePath ?: "${App.get().applicationInfo.nativeLibraryDir}/libstartup.so"
 
       val args = this.args ?: mutableListOf(shell)
       val env = transformEnvironment(this.env) ?: buildEnvironment(cwd, systemShell)
@@ -352,7 +349,7 @@ open class ShellTermSession private constructor(
       } else {
         val ps1Env = "PS1=$ "
         val langEnv = "LANG=en_US.UTF-8"
-        val pathEnv = "PATH=" + buildPathEnv()
+        val pathEnv = "PATH=" + buildPathEnv() + ":" + System.getenv("PATH")
         val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
         val pwdEnv = "PWD=$selectedCwd"
         val tmpdirEnv = "TMPDIR=${NeoTermPath.USR_PATH}/tmp"
@@ -391,7 +388,7 @@ open class ShellTermSession private constructor(
     }
 
     private fun buildPathEnv(): String {
-      return "${NeoTermPath.USR_PATH}/bin:${NeoTermPath.USR_PATH}/bin/applets"
+      return "${NeoTermPath.USR_PATH}/bin"
     }
   }
 }
