@@ -1,20 +1,18 @@
 #!/system/bin/sh
-if [ -f ./.termux/enable ]; then
-# /data/data/com.termux/files/home/.termux/enable
-  export PREFIX=/data/data/com.termux/files/usr
-  export TERMUX_IS_DEBUGGABLE_BUILD=1
-  export TERMUX_VERSION=0.118.0
-  export HOME=/data/data/com.termux/files/home
-  export TERMUX_APK_RELEASE=GITHUB
-  export TMPDIR=/data/data/com.termux/files/usr/tmp
-  export TERMUX_APP_PID="$PPID"
-  # cd /data/data/com.termux/files/home
-  # exec /data/data/com.termux/files/usr/bin/login
-  exec ./.autostart.sh
+if [ -f /data/data/com.termux/files/home/.termux/enable ]; then
+export PREFIX=/data/data/com.termux/files/usr
+export TERMUX_IS_DEBUGGABLE_BUILD=1
+export TERMUX_VERSION=0.118.0
+export HOME=/data/data/com.termux/files/home
+export TERMUX_APK_RELEASE=GITHUB
+export TMPDIR=/data/data/com.termux/files/usr/tmp
+export TERMUX_APP_PID="$PPID"
+cd /data/data/com.termux/files/home
+exec /data/data/com.termux/files/usr/bin/login
 else
-  if [ -x ./.autostart.sh ]; then
-    exec ./.autostart.sh
-  else
-    exec /system/bin/sh
-  fi
+if [ -x ./.autostart.sh ]; then
+exec ./.autostart.sh
+else
+exec /system/bin/sh
+fi
 fi

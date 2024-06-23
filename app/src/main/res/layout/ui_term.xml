@@ -5,11 +5,12 @@
 
   <com.neoterm.frontend.session.view.extrakey.ExtraKeysView
     android:id="@+id/extra_keys"
+    android:theme="@style/Theme.AppCompat"
     style="?android:buttonBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:background="@color/terminal_background"
+    android:backgroundTint="@color/colorPrimary"
     android:orientation="horizontal"/>
 
   <com.neoterm.frontend.session.view.TerminalView
