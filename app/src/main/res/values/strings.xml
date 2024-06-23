@@ -14,7 +14,7 @@
   <string name="service_acquire_lock">Acquire Lock</string>
   <string name="service_release_lock">Release Lock</string>
 
-  <string name="setup_info">Hello, NeoTerm</string>
+  <string name="setup_info">Welcome</string>
   <string name="setup_next">Let\'s Go!</string>
   <string name="setup_setup_method">Select your installation method</string>
   <string name="setup_online">Online Setup</string>
@@ -221,7 +221,7 @@
   </string-array>
 
   <string-array name="custom_preview_script_colors">
-    <item>Hello NeoTerm\\n</item>
+    <item>\\n</item>
     <item>"\\e[30m Dim black \\e[0m\\n"</item>
     <item>"\\e[31m Dim red \\e[0m\\n"</item>
     <item>"\\e[32m Dim green \\e[0m\\n"</item>
