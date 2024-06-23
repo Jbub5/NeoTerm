@@ -328,64 +328,67 @@ open class ShellTermSession private constructor(
       val termEnv = "TERM=xterm-256color"
       val homeEnv = "HOME=" + NeoTermPath.HOME_PATH
       val prefixEnv = "PREFIX=" + NeoTermPath.USR_PATH
+      val colorterm = "COLORTERM=truecolor"
+      val pathEnv = "PATH=" + buildPathEnv() + ":" + System.getenv("PATH")
+      val langEnv = "LANG=en_US.UTF-8"
+      val pwdEnv = "PWD=$selectedCwd"
+      val tmpdirEnv = "TMPDIR=${NeoTermPath.USR_PATH}/tmp"
       val androidRootEnv = "ANDROID_ROOT=" + System.getenv("ANDROID_ROOT")
       val androidDataEnv = "ANDROID_DATA=" + System.getenv("ANDROID_DATA")
       val externalStorageEnv = "EXTERNAL_STORAGE=" + System.getenv("EXTERNAL_STORAGE")
-      val colorterm = "COLORTERM=truecolor"
+
+      val dex2oatbootclasspath = "DEX2OATBOOTCLASSPATH=" + System.getenv("DEX2OATBOOTCLASSPATH")
+      val androidi18nroot = "ANDROID_I18N_ROOT=" + System.getenv("ANDROID_I18N_ROOT")
+      val bootclasspath = "BOOTCLASSPATH=" + System.getenv("BOOTCLASSPATH")
+      val androidtzdatanroot = "ANDROID_TZDATA_ROOT=" + System.getenv("ANDROID_TZDATA_ROOT")
+      val androidartroot = "ANDROID_ART_ROOT=" + System.getenv("ANDROID_ART_ROOT")
 
       // PY Trade: Some programs support NeoTerm in a special way.
-      val neotermIdEnv = "__NEOTERM=1"
-      val originPathEnv = "__NEOTERM_ORIGIN_PATH=" + buildOriginPathEnv()
-      val originLdEnv = "__NEOTERM_ORIGIN_LD_LIBRARY_PATH=" + buildOriginLdLibEnv()
+      //val neotermIdEnv = "__NEOTERM=1"
+      //val originPathEnv = "__NEOTERM_ORIGIN_PATH=" + buildOriginPathEnv()
+      //val originLdEnv = "__NEOTERM_ORIGIN_LD_LIBRARY_PATH=" + buildOriginLdLibEnv()
 
       return if (systemShell) {
-        val pathEnv = "PATH=" + System.getenv("PATH")
+        //val pathEnv = "PATH=" + System.getenv("PATH")
+        //arrayOf(
+          //neotermIdEnv, originPathEnv, originLdEnv,
+          //termEnv, homeEnv, androidRootEnv, androidDataEnv,
+          //externalStorageEnv, pathEnv, prefixEnv, colorterm
+        //)
+        //val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
         arrayOf(
+          //neotermIdEnv, originPathEnv, originLdEnv, ldEnv,
           termEnv, homeEnv, androidRootEnv, androidDataEnv,
-          externalStorageEnv, pathEnv, neotermIdEnv, prefixEnv,
-          originLdEnv, originPathEnv, colorterm
+          externalStorageEnv, pathEnv, prefixEnv, colorterm,
+          langEnv, pwdEnv, tmpdirEnv,
+          dex2oatbootclasspath, androidi18nroot, bootclasspath, androidtzdatanroot, androidartroot
         )
 
       } else {
-        val ps1Env = "PS1=$ "
-        val langEnv = "LANG=en_US.UTF-8"
-        val pathEnv = "PATH=" + buildPathEnv() + ":" + System.getenv("PATH")
-        val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
-        val pwdEnv = "PWD=$selectedCwd"
-        val tmpdirEnv = "TMPDIR=${NeoTermPath.USR_PATH}/tmp"
-
-
-        // execve(2) wrapper to avoid incorrect shebang
-        val ldPreloadEnv = if (shellProfile.enableExecveWrapper) {
-          "LD_PRELOAD=${App.get().applicationInfo.nativeLibraryDir}/libnexec.so"
-        } else {
-          ""
-        }
-
         arrayOf(
-          termEnv, homeEnv, ps1Env, ldEnv, langEnv, pathEnv, pwdEnv,
-          androidRootEnv, androidDataEnv, externalStorageEnv,
-          tmpdirEnv, neotermIdEnv, originPathEnv, originLdEnv,
-          ldPreloadEnv, prefixEnv, colorterm
+          termEnv, homeEnv, androidRootEnv, androidDataEnv,
+          externalStorageEnv, pathEnv, prefixEnv, colorterm,
+          langEnv, pwdEnv, tmpdirEnv,
+          dex2oatbootclasspath, androidi18nroot, bootclasspath, androidtzdatanroot, androidartroot
         )
       }
         .filter { it.isNotEmpty() }
         .toTypedArray()
     }
 
-    private fun buildOriginPathEnv(): String {
-      val path = System.getenv("PATH")
-      return path ?: ""
-    }
+    //private fun buildOriginPathEnv(): String {
+      //val path = System.getenv("PATH")
+      //return path ?: ""
+    //}
 
-    private fun buildOriginLdLibEnv(): String {
-      val path = System.getenv("LD_LIBRARY_PATH")
-      return path ?: ""
-    }
+    //private fun buildOriginLdLibEnv(): String {
+      //val path = System.getenv("LD_LIBRARY_PATH")
+      //return path ?: ""
+    //}
 
-    private fun buildLdLibraryEnv(): String {
-      return "${NeoTermPath.USR_PATH}/lib"
-    }
+    //private fun buildLdLibraryEnv(): String {
+      //return "${NeoTermPath.USR_PATH}/lib"
+    //}
 
     private fun buildPathEnv(): String {
       return "${NeoTermPath.USR_PATH}/bin"

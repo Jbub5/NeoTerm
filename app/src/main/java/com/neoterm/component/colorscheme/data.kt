@@ -170,10 +170,8 @@ open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {
 object DefaultColorScheme : NeoColorScheme() {
   init {
     /* NOTE: Keep in sync with assets/colors/Default.nl */
-    colorName = "Default"
+    colorName = "White on black"
 
-    foregroundColor = "#ffffff"
-    backgroundColor = "#14181c"
-    cursorColor = "#a9aaa9"
+    cursorColor = "#808080"
   }
 }
