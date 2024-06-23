@@ -1,4 +1,4 @@
-package io.neoterm.backend;
+package com.neoterm.backend;
 
 /**
  * Current terminal colors (if different from default).

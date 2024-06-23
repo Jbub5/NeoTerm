@@ -1,4 +1,4 @@
-package io.neoterm.frontend.floating
+package com.neoterm.frontend.floating
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,15 +6,15 @@ import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import io.neoterm.R
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.session.ShellParameter
-import io.neoterm.component.session.ShellTermSession
-import io.neoterm.frontend.session.terminal.BasicSessionCallback
-import io.neoterm.frontend.session.terminal.BasicViewClient
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.TerminalViewClient
-import io.neoterm.utils.Terminals
+import com.neoterm.R
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.session.ShellParameter
+import com.neoterm.component.session.ShellTermSession
+import com.neoterm.frontend.session.terminal.BasicSessionCallback
+import com.neoterm.frontend.session.terminal.BasicViewClient
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.TerminalViewClient
+import com.neoterm.utils.Terminals
 
 typealias DialogSessionFinished = (TerminalDialog, TerminalSession?) -> Unit
 

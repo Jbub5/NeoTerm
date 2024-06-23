@@ -1,6 +1,6 @@
-package io.neoterm.component.pm;
+package com.neoterm.component.pm;
 
-import io.neoterm.component.NeoComponent;
+import com.neoterm.component.NeoComponent;
 
 import java.io.File;
 import java.io.FileInputStream;

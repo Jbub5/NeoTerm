@@ -1,4 +1,4 @@
-package io.neoterm.component.completion
+package com.neoterm.component.completion
 
 interface MarkScoreListener {
   fun onMarkScore(score: Int)

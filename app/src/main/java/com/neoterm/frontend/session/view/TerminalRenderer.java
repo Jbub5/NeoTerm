@@ -1,10 +1,10 @@
-package io.neoterm.frontend.session.view;
+package com.neoterm.frontend.session.view;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import io.neoterm.backend.*;
+import com.neoterm.backend.*;
 
 /**
  * Renderer of a {@link TerminalEmulator} into a {@link Canvas}.

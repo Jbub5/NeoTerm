@@ -1,18 +1,18 @@
-package io.neoterm.component
+package com.neoterm.component
 
 import android.content.Context
-import io.neoterm.component.codegen.CodeGenComponent
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.completion.CompletionComponent
-import io.neoterm.component.config.ConfigureComponent
-import io.neoterm.component.extrakey.ExtraKeyComponent
-import io.neoterm.component.font.FontComponent
-import io.neoterm.component.pm.PackageComponent
-import io.neoterm.component.profile.ProfileComponent
-import io.neoterm.component.session.SessionComponent
-import io.neoterm.component.session.ShellProfile
-import io.neoterm.component.userscript.UserScriptComponent
-import io.neoterm.utils.NLog
+import com.neoterm.component.codegen.CodeGenComponent
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.completion.CompletionComponent
+import com.neoterm.component.config.ConfigureComponent
+import com.neoterm.component.extrakey.ExtraKeyComponent
+import com.neoterm.component.font.FontComponent
+import com.neoterm.component.pm.PackageComponent
+import com.neoterm.component.profile.ProfileComponent
+import com.neoterm.component.session.SessionComponent
+import com.neoterm.component.session.ShellProfile
+import com.neoterm.component.userscript.UserScriptComponent
+import com.neoterm.utils.NLog
 import java.util.concurrent.ConcurrentHashMap
 
 interface NeoComponent {

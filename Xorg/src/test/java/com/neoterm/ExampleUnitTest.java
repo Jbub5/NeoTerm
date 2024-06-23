@@ -1,4 +1,4 @@
-package io.neoterm;
+package com.neoterm;
 
 import org.junit.Test;
 

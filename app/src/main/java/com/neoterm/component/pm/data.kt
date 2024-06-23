@@ -1,4 +1,4 @@
-package io.neoterm.component.pm
+package com.neoterm.component.pm
 
 enum class Architecture {
   ALL, ARM, AARCH64, X86, X86_64;

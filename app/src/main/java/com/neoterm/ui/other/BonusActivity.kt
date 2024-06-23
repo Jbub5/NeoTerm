@@ -1,4 +1,4 @@
-package io.neoterm.ui.other
+package com.neoterm.ui.other
 
 import android.animation.ObjectAnimator
 import android.content.res.ColorStateList
@@ -17,7 +17,7 @@ import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.R
+import com.neoterm.R
 
 /**
  * @author kiva

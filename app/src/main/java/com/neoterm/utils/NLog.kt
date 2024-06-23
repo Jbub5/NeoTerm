@@ -1,4 +1,4 @@
-package io.neoterm.utils
+package com.neoterm.utils
 
 import android.content.Context
 import android.util.Log

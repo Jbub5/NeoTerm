@@ -1,4 +1,4 @@
-package io.neoterm.backend;
+package com.neoterm.backend;
 
 /**
  * A circular byte buffer allowing one producer and one consumer thread.

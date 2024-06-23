@@ -1,10 +1,10 @@
-package io.neoterm.component.extrakey
+package com.neoterm.component.extrakey
 
 import io.neolang.frontend.ConfigVisitor
-import io.neoterm.component.ConfigFileBasedObject
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.frontend.session.view.extrakey.IExtraButton
-import io.neoterm.frontend.session.view.extrakey.TextButton
+import com.neoterm.component.ConfigFileBasedObject
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.frontend.session.view.extrakey.IExtraButton
+import com.neoterm.frontend.session.view.extrakey.TextButton
 
 /**
  * @author kiva

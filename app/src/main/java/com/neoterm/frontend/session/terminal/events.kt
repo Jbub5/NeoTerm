@@ -1,6 +1,6 @@
-package io.neoterm.frontend.session.terminal
+package com.neoterm.frontend.session.terminal
 
-import io.neoterm.ui.term.TermTab
+import com.neoterm.ui.term.TermTab
 
 class CreateNewSessionEvent
 class SwitchIndexedSessionEvent(val index: Int)

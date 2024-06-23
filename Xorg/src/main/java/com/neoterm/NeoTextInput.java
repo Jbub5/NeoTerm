@@ -1,6 +1,6 @@
-package io.neoterm;
+package com.neoterm;
 
-import io.neoterm.xorg.R;
+import com.neoterm.xorg.R;
 
 /**
  * @author kiva

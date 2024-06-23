@@ -1,4 +1,4 @@
-package io.neoterm.ui.pm
+package com.neoterm.ui.pm
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
-import io.neoterm.R
-import io.neoterm.component.pm.NeoPackageInfo
-import io.neoterm.utils.formatSizeInKB
+import com.neoterm.R
+import com.neoterm.component.pm.NeoPackageInfo
+import com.neoterm.utils.formatSizeInKB
 
 class PackageAdapter(
   context: Context,

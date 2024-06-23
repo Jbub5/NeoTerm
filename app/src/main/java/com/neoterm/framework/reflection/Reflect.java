@@ -1,4 +1,4 @@
-package io.neoterm.framework.reflection;
+package com.neoterm.framework.reflection;
 
 import java.lang.reflect.*;
 import java.util.Arrays;

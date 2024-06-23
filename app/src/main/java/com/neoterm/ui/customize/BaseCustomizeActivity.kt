@@ -1,18 +1,18 @@
-package io.neoterm.ui.customize
+package com.neoterm.ui.customize
 
 import android.annotation.SuppressLint
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import io.neoterm.R
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.component.session.ShellParameter
-import io.neoterm.frontend.session.terminal.BasicSessionCallback
-import io.neoterm.frontend.session.terminal.BasicViewClient
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
-import io.neoterm.utils.Terminals
+import com.neoterm.R
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.component.session.ShellParameter
+import com.neoterm.frontend.session.terminal.BasicSessionCallback
+import com.neoterm.frontend.session.terminal.BasicViewClient
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.utils.Terminals
 
 /**
  * @author kiva

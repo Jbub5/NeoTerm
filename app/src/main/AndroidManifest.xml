@@ -55,7 +55,7 @@
 
     <activity-alias
       android:name=".NeoLotMainActivity"
-      android:targetActivity="io.neoterm.ui.term.NeoTermActivity">
+      android:targetActivity="com.neoterm.ui.term.NeoTermActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

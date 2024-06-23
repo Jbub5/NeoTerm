@@ -1,12 +1,12 @@
-package io.neoterm.setup;
+package com.neoterm.setup;
 
 import android.app.ProgressDialog;
 import android.system.Os;
 import android.util.Pair;
 import androidx.appcompat.app.AppCompatActivity;
-import io.neoterm.backend.EmulatorDebug;
-import io.neoterm.component.config.NeoTermPath;
-import io.neoterm.utils.NLog;
+import com.neoterm.backend.EmulatorDebug;
+import com.neoterm.component.config.NeoTermPath;
+import com.neoterm.utils.NLog;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package io.neoterm.backend;
+package com.neoterm.backend;
 
 /**
  * Implementation of wcwidth(3) for Unicode 15.

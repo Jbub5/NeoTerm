@@ -1,4 +1,4 @@
-package io.neoterm.ui.other
+package com.neoterm.ui.other
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -9,13 +9,13 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.component.pm.SourceHelper
-import io.neoterm.setup.*
-import io.neoterm.utils.getPathOfMediaUri
-import io.neoterm.utils.runApt
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.component.pm.SourceHelper
+import com.neoterm.setup.*
+import com.neoterm.utils.getPathOfMediaUri
+import com.neoterm.utils.runApt
 import java.io.File
 
 

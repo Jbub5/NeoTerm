@@ -20,7 +20,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
-package io.neoterm;
+package com.neoterm;
 
 
 import android.media.AudioFormat;
@@ -29,7 +29,7 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder.AudioSource;
 import android.util.Log;
-import io.neoterm.xorg.NeoXorgViewClient;
+import com.neoterm.xorg.NeoXorgViewClient;
 
 import java.util.concurrent.Semaphore;
 

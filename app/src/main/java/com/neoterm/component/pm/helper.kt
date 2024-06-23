@@ -1,11 +1,11 @@
-package io.neoterm.component.pm
+package com.neoterm.component.pm
 
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.framework.NeoTermDatabase
-import io.neoterm.utils.NLog
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.framework.NeoTermDatabase
+import com.neoterm.utils.NLog
 import java.io.File
 import java.net.URL
 import java.nio.file.Files

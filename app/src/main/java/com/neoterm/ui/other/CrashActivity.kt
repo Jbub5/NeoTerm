@@ -1,10 +1,10 @@
-package io.neoterm.ui.other
+package com.neoterm.ui.other
 
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.R
+import com.neoterm.R
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 

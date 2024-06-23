@@ -1,4 +1,4 @@
-package io.neoterm.utils
+package com.neoterm.utils
 
 import android.content.ContentUris
 import android.content.Context
@@ -6,9 +6,9 @@ import android.net.Uri
 import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
-import io.neoterm.R
-import io.neoterm.component.config.NeoTermPath
-import io.neoterm.frontend.floating.TerminalDialog
+import com.neoterm.R
+import com.neoterm.component.config.NeoTermPath
+import com.neoterm.frontend.floating.TerminalDialog
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.DecimalFormat

@@ -1,4 +1,4 @@
-package io.neoterm.ui.other
+package com.neoterm.ui.other
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,8 +15,8 @@ import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30
 import de.psdev.licensesdialog.licenses.MITLicense
 import de.psdev.licensesdialog.model.Notice
 import de.psdev.licensesdialog.model.Notices
-import io.neoterm.App
-import io.neoterm.R
+import com.neoterm.App
+import com.neoterm.R
 
 
 /**

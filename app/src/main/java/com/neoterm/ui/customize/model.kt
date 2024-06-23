@@ -1,4 +1,4 @@
-package io.neoterm.ui.customize
+package com.neoterm.ui.customize
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
-import io.neoterm.App
-import io.neoterm.R
-import io.neoterm.backend.TerminalColors
-import io.neoterm.component.colorscheme.NeoColorScheme
+import com.neoterm.App
+import com.neoterm.R
+import com.neoterm.backend.TerminalColors
+import com.neoterm.component.colorscheme.NeoColorScheme
 
 /**
  * @author kiva

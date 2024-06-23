@@ -1,18 +1,18 @@
-package io.neoterm.utils
+package com.neoterm.utils
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import io.neoterm.backend.TerminalSession
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.font.FontComponent
-import io.neoterm.component.session.SessionComponent
-import io.neoterm.component.session.ShellParameter
-import io.neoterm.component.session.XParameter
-import io.neoterm.component.session.XSession
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.frontend.session.view.TerminalViewClient
-import io.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.neoterm.backend.TerminalSession
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.font.FontComponent
+import com.neoterm.component.session.SessionComponent
+import com.neoterm.component.session.ShellParameter
+import com.neoterm.component.session.XParameter
+import com.neoterm.component.session.XSession
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.frontend.session.view.TerminalViewClient
+import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
 
 /**
  * @author kiva

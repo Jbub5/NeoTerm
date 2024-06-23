@@ -1,4 +1,4 @@
-package io.neoterm.ui.customize
+package com.neoterm.ui.customize
 
 import android.os.Bundle
 import android.text.Editable
@@ -16,13 +16,13 @@ import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import es.dmoral.coloromatic.ColorOMaticDialog
 import es.dmoral.coloromatic.IndicatorMode
 import es.dmoral.coloromatic.colormode.ColorMode
-import io.neoterm.R
-import io.neoterm.backend.TerminalColors
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.colorscheme.ColorSchemeComponent
-import io.neoterm.component.colorscheme.NeoColorScheme
-import io.neoterm.frontend.session.view.TerminalView
-import io.neoterm.utils.Terminals
+import com.neoterm.R
+import com.neoterm.backend.TerminalColors
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.colorscheme.ColorSchemeComponent
+import com.neoterm.component.colorscheme.NeoColorScheme
+import com.neoterm.frontend.session.view.TerminalView
+import com.neoterm.utils.Terminals
 
 
 /**

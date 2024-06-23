@@ -1,4 +1,4 @@
-package io.neoterm.ui.pm
+package com.neoterm.ui.pm
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,12 +15,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
-import io.neoterm.R
-import io.neoterm.component.ComponentManager
-import io.neoterm.component.config.NeoPreference
-import io.neoterm.component.pm.*
-import io.neoterm.utils.StringDistance
-import io.neoterm.utils.runApt
+import com.neoterm.R
+import com.neoterm.component.ComponentManager
+import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.pm.*
+import com.neoterm.utils.StringDistance
+import com.neoterm.utils.runApt
 import java.util.*
 
 /**

@@ -21,4 +21,4 @@ View on [GitHub](https://github.com/NeoTerm/NeoTerm-Wiki)
 
 [GitHub Release Page](https://github.com/NeoTerm/NeoTerm/releases)
 
-[lzzySoft's F-Droid repo](https://apt.izzysoft.de/fdroid/index/apk/io.neoterm) (thanks to @lzzySoft)
+[lzzySoft's F-Droid repo](https://apt.izzysoft.de/fdroid/index/apk/com.neoterm) (thanks to @lzzySoft)
