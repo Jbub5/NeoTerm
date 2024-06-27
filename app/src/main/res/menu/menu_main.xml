@@ -23,8 +23,8 @@
         app:showAsAction="never"/>
 
       <item
-        android:id="@+id/menu_item_new_system_session"
-        android:title="@string/new_system_session"
+        android:id="@+id/menu_item_new_rescue_session"
+        android:title="@string/new_rescue_session"
         app:showAsAction="never"/>
 
       <item
