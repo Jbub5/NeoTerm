@@ -12,7 +12,7 @@ import android.provider.DocumentsProvider;
 import android.webkit.MimeTypeMap;
 
 import com.neoterm.R;
-import com.termux.shared.termux.TermuxConstants;
+import com.neoterm.component.config.NeoTermPath;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,7 +35,8 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
 
     private static final String ALL_MIME_TYPES = "*/*";
 
-    private static final File BASE_DIR = TermuxConstants.TERMUX_HOME_DIR;
+    public static final File HOME_PATH_FILE = new File(NeoTermPath.HOME_PATH);
+    private static final File BASE_DIR = HOME_PATH_FILE;
 
 
     // The default columns to return information about a root if no specific
@@ -65,7 +66,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
     @Override
     public Cursor queryRoots(String[] projection) {
         final MatrixCursor result = new MatrixCursor(projection != null ? projection : DEFAULT_ROOT_PROJECTION);
-        final String applicationName = getContext().getString(R.string.application_name);
+        final String applicationName = getContext().getString(R.string.app_name);
 
         final MatrixCursor.RowBuilder row = result.newRow();
         row.add(Root.COLUMN_ROOT_ID, getDocIdForFile(BASE_DIR));
@@ -171,7 +172,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
             // through the whole SD card).
             boolean isInsideHome;
             try {
-                isInsideHome = file.getCanonicalPath().startsWith(TermuxConstants.TERMUX_HOME_DIR_PATH);
+                isInsideHome = file.getCanonicalPath().startsWith(NeoTermPath.ROOT_PATH);
             } catch (IOException e) {
                 isInsideHome = true;
             }
