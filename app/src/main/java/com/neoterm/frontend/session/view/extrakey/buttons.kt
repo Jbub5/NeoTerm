@@ -50,7 +50,7 @@ abstract class IExtraButton : View.OnClickListener {
     const val KEY_ARROW_LEFT_TEXT = "Left"
     const val KEY_ARROW_RIGHT_TEXT = "Right"
     const val KEY_SHOW_ALL_BUTTONS = "···"
-    const val KEY_TOGGLE_IME = "Im"
+    const val KEY_TOGGLE_IME = "⌨"
 
     const val KEY_ARROW_UP = "▲"
     const val KEY_ARROW_DOWN = "▼"

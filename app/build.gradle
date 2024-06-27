@@ -12,10 +12,11 @@ android {
     versionName "2.0.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
       //resourceConfigurations += ['zh-rCN', 'zh-rTW']
+    resConfigs "en"
       externalNativeBuild {
       cmake {
-        cppFlags "-std=c++11 -flto"
-        abiFilters 'arm64-v8a'
+        cppFlags "-std=c++11", "-flto"
+        abiFilters 'arm64-v8a', 'x86', 'x86_64'
       }
     }
     sourceSets {
