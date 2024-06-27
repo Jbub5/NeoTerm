@@ -27,7 +27,7 @@ android {
     }
   }
   packagingOptions {
-    resources.excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version"]
+    resources.excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version", "drawable-ldrtl-*dpi"]
   }
   buildTypes {
     release {
