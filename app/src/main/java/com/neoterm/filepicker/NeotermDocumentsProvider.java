@@ -31,12 +31,12 @@ import java.util.LinkedList;
  * offering two different ways of accessing your stored data. This would be confusing for users."
  * - http://developer.android.com/guide/topics/providers/document-provider.html#43
  */
-public class TermuxDocumentsProvider extends DocumentsProvider {
+public class NeotermDocumentsProvider extends DocumentsProvider {
 
     private static final String ALL_MIME_TYPES = "*/*";
 
-    public static final File HOME_PATH_FILE = new File(NeoTermPath.HOME_PATH);
-    private static final File BASE_DIR = HOME_PATH_FILE;
+    public static final File HOME_DIR = new File(NeoTermPath.HOME_PATH);
+    private static final File BASE_DIR = HOME_DIR;
 
 
     // The default columns to return information about a root if no specific
@@ -172,7 +172,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
             // through the whole SD card).
             boolean isInsideHome;
             try {
-                isInsideHome = file.getCanonicalPath().startsWith(NeoTermPath.ROOT_PATH);
+                isInsideHome = file.getCanonicalPath().startsWith(NeoTermPath.HOME_PATH);
             } catch (IOException e) {
                 isInsideHome = true;
             }

@@ -29,7 +29,7 @@ object NeoTermPath {
   val USER_DATA_PATH = "/data/user/${Process.myUid() / 100000}"
   @JvmField val ROOT_PATH = "${USER_DATA_PATH}/com.neoterm/files"
   val USR_PATH = "$ROOT_PATH/usr"
-  val HOME_PATH = "$ROOT_PATH/home"
+  @JvmField val HOME_PATH = "$ROOT_PATH/home"
   val APT_BIN_PATH = "$USR_PATH/bin/apt"
   val LIB_PATH = "$USR_PATH/lib"
 
