@@ -4,15 +4,15 @@ buildscript {
   ext.kotlin_version = '1.6.21'
   ext.android = [
     KOTLIN_VERSION     : '1.6.21',
-    MIN_SDK_VERSION    : 26,
+    MIN_SDK_VERSION    : 24,
     COMPILE_SDK_VERSION: 28,
     TARGET_SDK_VERSION : 28,
     JUNIT_VERSION      : "4.12"
   ]
 
   ext.deps = [
-    "annotations"         : "androidx.annotation:annotation:1.0.0",
-    "appcompat-v7"        : "androidx.appcompat:appcompat:1.0.0",
+    "annotations"         : "androidx.annotation:annotation:1.3.0",
+    "appcompat-v7"        : "androidx.appcompat:appcompat:1.3.1",
     "design"              : "com.android.support:design:${ext.android.ANDROID_SUPPORT_VERSION}",
     "cardview-v7"         : "com.android.support:cardview-v7:${ext.android.ANDROID_SUPPORT_VERSION}",
     "kotlin-stdlib"       : "org.jetbrains.kotlin:kotlin-stdlib:${ext.android.KOTLIN_VERSION}",
@@ -22,12 +22,13 @@ buildscript {
 
   repositories {
     maven { url 'https://dl.google.com/dl/android/maven2/' }
+    mavenCentral()
     jcenter()
     google()
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:8.0.2'
+    classpath 'com.android.tools.build:gradle:8.1.4'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath rootProject.ext.deps["kotlin-gradle-plugin"]
 
@@ -42,6 +43,7 @@ buildscript {
 allprojects {
   repositories {
     jcenter()
+    mavenCentral()
     maven { url 'https://dl.google.com/dl/android/maven2/' }
     mavenCentral()
     maven { url "https://jitpack.io" }
