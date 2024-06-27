@@ -150,7 +150,7 @@ class VisitorFactory(private val ast: NeoLangAst) {
 
   fun getVisitor(callbackInterface: Class<out IVisitorCallback>): AstVisitor? {
     try {
-      return AstVisitor(ast, callbackInterface.newInstance())
+      return AstVisitor(ast, callbackInterface.getDeclaredConstructor().newInstance())
     } catch (e: Exception) {
       return null
     }

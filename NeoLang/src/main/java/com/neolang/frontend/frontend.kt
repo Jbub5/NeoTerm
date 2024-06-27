@@ -136,8 +136,7 @@ class NeoLangLexer {
   }
 
   private fun getNextTokenAsNumber(): String {
-    var numberValue: Double = (currentChar.toInt() - '0'.toInt()).toDouble()
-
+    var numberValue: Double = currentChar.code - '0'.code.toDouble()
     // Four types of numbers are supported:
     // Dec(123) Hex(0x123) Oct(017) Bin(0b11)
 
@@ -187,7 +186,7 @@ class NeoLangLexer {
     var value = numberValue
     var loop = moveToNextChar() // skip 'x' or 'X'
     while (loop && (currentChar.isHexNumber())) {
-      value *= 16 + (currentChar.toInt().and(15)) + if (currentChar >= 'A') 9 else 0
+      value *= 16 + (currentChar.code and 15) + if (currentChar >= 'A') 9 else 0
       loop = moveToNextChar()
     }
     return value
@@ -240,7 +239,7 @@ class NeoLangLexer {
 
   private fun Char.toNumber(): Int {
     return if (isNumber()) {
-      this.toInt() - '0'.toInt()
+      code - '0'.code
     } else 0
   }
 
