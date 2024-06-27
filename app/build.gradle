@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 android {
   namespace 'com.neoterm'
   compileSdk rootProject.ext.android.COMPILE_SDK_VERSION
+  ndkVersion "26.3.11579264"
 
   defaultConfig {
     applicationId "com.neoterm"
@@ -58,6 +59,10 @@ android {
   packagingOptions {
     jniLibs {
       useLegacyPackaging true
+    }
+
+    resources {
+      excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version"]
     }
   }
 }
