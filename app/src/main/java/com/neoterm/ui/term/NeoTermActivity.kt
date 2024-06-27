@@ -171,8 +171,8 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         showProfileDialog()
         true
       }
-      R.id.menu_item_new_system_session -> {
-        forceAddSystemSession()
+      R.id.menu_item_new_rescue_session -> {
+        addNewRescueSession("Rescue Shell")
         true
       }
       R.id.menu_item_new_x_session -> {
@@ -354,7 +354,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
           AppCompatActivity.RESULT_OK -> enterMain()
           AppCompatActivity.RESULT_CANCELED -> {
             setSystemShellMode(true)
-            forceAddSystemSession()
+            addNewSession()
           }
         }
       }
@@ -375,15 +375,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         it.resetStatus()
       }
     }
-  }
-
-  private fun forceAddSystemSession() {
-    if (!tabSwitcher.isSwitcherShown) {
-      toggleSwitcher(showSwitcher = true, easterEgg = false)
-    }
-
-    // Fore system shell mode to be enabled.
-    addNewSession(null, true, createRevealAnimation())
   }
 
   private fun enterMain() {
@@ -528,6 +519,24 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     val viewClient = TermViewClient(this)
 
     val tab = createTab(session.title) as TermTab
+    tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
+
+    addNewTab(tab, createRevealAnimation())
+    switchToSession(tab)
+  }
+
+  private fun addNewRescueSession(sessionName: String?) {
+    val sessionCallback = TermSessionCallback()
+    val viewClient = TermViewClient(this)
+
+    val parameter = ShellParameter()
+      .callback(sessionCallback)
+      .executablePath("/system/bin/sh")
+    val session = termService!!.createTermSession(parameter)
+
+    session.mSessionName = sessionName ?: generateSessionName("Rescue Shell")
+
+    val tab = createTab(session.mSessionName) as TermTab
     tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
 
     addNewTab(tab, createRevealAnimation())
