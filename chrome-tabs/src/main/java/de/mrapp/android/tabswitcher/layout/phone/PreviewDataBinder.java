@@ -106,7 +106,7 @@ public class PreviewDataBinder extends AbstractDataBinder<Bitmap, Tab, ImageView
 
   @Override
   protected final void onPostExecute(@NonNull final ImageView view, @Nullable final Bitmap data,
-                                     @NonNull final TabItem... params) {
+                                     long duration, @NonNull final TabItem... params) {
     view.setImageBitmap(data);
     view.setVisibility(data != null ? View.VISIBLE : View.GONE);
     TabItem tabItem = params[0];
