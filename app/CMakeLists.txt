@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-add_library(neoterm
+add_library(termux
              SHARED
-             src/main/cpp/neoterm.cpp)
+             src/main/cpp/termux.cpp)
 
-target_link_libraries(neoterm)
+target_link_libraries(termux)
 
 #add_library(nexec
 #             SHARED
