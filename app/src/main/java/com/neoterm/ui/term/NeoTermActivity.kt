@@ -32,8 +32,6 @@ import com.neoterm.component.session.XParameter
 import com.neoterm.component.session.XSession
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.services.NeoTermService
-import com.neoterm.setup.SetupHelper
-import com.neoterm.ui.other.SetupActivity
 import com.neoterm.ui.pm.PackageManagerActivity
 import com.neoterm.ui.settings.SettingActivity
 import com.neoterm.utils.FullScreenHelper
@@ -337,11 +335,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
 
     if (!isRecreating()) {
-      if (SetupHelper.needSetup()) {
-        val intent = Intent(this, SetupActivity::class.java)
-        startActivityForResult(intent, REQUEST_SETUP)
-        return
-      }
       enterMain()
       update_colors()
     }
