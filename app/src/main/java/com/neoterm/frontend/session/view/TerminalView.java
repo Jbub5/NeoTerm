@@ -448,7 +448,7 @@ public final class TerminalView extends View {
   public void onScreenUpdated() {
     if (mEmulator == null) return;
     boolean skipScrolling = false;
-    boolean isScreenHeld = false;
+    boolean isScreenHeld = mTopRow != 0;
 
     // currentScroll 记录了当前滚动到的位置
     // expectedScroll 记录了假设一直跟随输出滚动在最底部时的滚动位置
@@ -457,10 +457,6 @@ public final class TerminalView extends View {
     // 那么这个时候我们就不跟随输出滚动屏幕
     // int currentScroll = computeVerticalScrollOffset();
     // int expectedScroll = mEmulator.getScreen().getActiveRows() - mEmulator.mRows;
-
-    if (mTopRow != 0) {
-      isScreenHeld = true;
-    }
 
     int rowsInHistory = mEmulator.getScreen().getActiveTranscriptRows();
     if (mTopRow < -rowsInHistory) mTopRow = -rowsInHistory;
