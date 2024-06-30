@@ -12,7 +12,7 @@ import com.neoterm.App
 import com.neoterm.R
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.NeoComponent
-import com.neoterm.services.NeoTermService
+import com.termux.app.TermuxService
 import com.neoterm.utils.NLog
 import java.io.File
 import java.nio.file.Files
@@ -140,7 +140,7 @@ object NeoPreference {
       .apply()
   }
 
-  fun getCurrentSession(termService: NeoTermService?): TerminalSession? {
+  fun getCurrentSession(termService: TermuxService?): TerminalSession? {
     val sessionHandle = PreferenceManager.getDefaultSharedPreferences(termService!!)
       .getString(KEY_CURRENT_SESSION, "")
 

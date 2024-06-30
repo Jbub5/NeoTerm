@@ -28,7 +28,7 @@ import com.neoterm.component.profile.ProfileComponent
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.session.ShellProfile
 import com.neoterm.frontend.session.terminal.*
-import com.neoterm.services.NeoTermService
+import com.termux.app.TermuxService
 import com.neoterm.ui.pm.PackageManagerActivity
 import com.neoterm.ui.settings.SettingActivity
 import com.neoterm.utils.FullScreenHelper
@@ -50,7 +50,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   lateinit var toolbar: Toolbar
 
   var addSessionListener = createAddSessionListener()
-  private var termService: NeoTermService? = null
+  private var termService: TermuxService? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -99,7 +99,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     ViewCompat.setOnApplyWindowInsetsListener(tabSwitcher, createWindowInsetsListener())
     tabSwitcher.showToolbars(false)
 
-    val serviceIntent = Intent(this, NeoTermService::class.java)
+    val serviceIntent = Intent(this, TermuxService::class.java)
     startService(serviceIntent)
     bindService(serviceIntent, this, 0)
   }
@@ -317,7 +317,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   }
 
   override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-    termService = (service as NeoTermService.NeoTermBinder).service
+    termService = (service as TermuxService.NeoTermBinder).service
     if (termService == null) {
       finish()
       return
