@@ -9,7 +9,7 @@ import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
 import com.neoterm.App
 import com.neoterm.R
-import com.neoterm.backend.TerminalColors
+import com.termux.terminal.TerminalColors
 import com.neoterm.component.colorscheme.NeoColorScheme
 
 /**

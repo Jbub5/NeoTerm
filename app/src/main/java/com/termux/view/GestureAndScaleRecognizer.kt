@@ -1,4 +1,4 @@
-package com.neoterm.frontend.session.view
+package com.termux.view
 
 import android.content.Context
 import android.view.GestureDetector

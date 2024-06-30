@@ -1,4 +1,4 @@
-package com.neoterm.backend;
+package com.termux.terminal;
 
 import java.nio.charset.StandardCharsets;
 

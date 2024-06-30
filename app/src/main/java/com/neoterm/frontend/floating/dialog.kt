@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.session.ShellTermSession
 import com.neoterm.frontend.session.terminal.BasicSessionCallback
 import com.neoterm.frontend.session.terminal.BasicViewClient
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.TerminalViewClient
+import com.termux.view.TerminalView
+import com.termux.view.TerminalViewClient
 import com.neoterm.utils.Terminals
 
 typealias DialogSessionFinished = (TerminalDialog, TerminalSession?) -> Unit

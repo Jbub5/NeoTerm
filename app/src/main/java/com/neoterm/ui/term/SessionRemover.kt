@@ -1,6 +1,6 @@
 package com.neoterm.ui.term
 
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.XSession
 import com.neoterm.services.NeoTermService
 

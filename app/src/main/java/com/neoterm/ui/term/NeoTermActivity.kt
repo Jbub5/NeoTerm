@@ -22,7 +22,7 @@ import de.mrapp.android.tabswitcher.*
 import com.neoterm.App
 import com.neoterm.BuildConfig
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.profile.ProfileComponent

@@ -10,7 +10,7 @@ import io.neolang.frontend.ConfigVisitor
 import io.neolang.frontend.NeoLangParser
 import com.neoterm.App
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.NeoComponent
 import com.neoterm.services.NeoTermService
 import com.neoterm.utils.NLog
