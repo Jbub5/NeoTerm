@@ -85,7 +85,6 @@ dependencies {
   implementation project(':chrome-tabs')
   implementation project(':NeoLang')
   implementation project(':NeoTermBridge')
-  implementation project(':Xorg')
   androidTestImplementation project(path: ':NeoLang')
   testImplementation "junit:junit:${rootProject.ext.deps.JUNIT_VERSION}"
 }
