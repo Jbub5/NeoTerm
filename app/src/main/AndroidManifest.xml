@@ -197,7 +197,7 @@
       android:theme="@style/AppTheme.Dark"/>
 
     <service
-      android:name=".services.NeoTermService"
+      android:name="com.termux.app.TermuxService"
       android:enabled="true"/>
 
     <meta-data
