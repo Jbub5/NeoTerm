@@ -1,4 +1,4 @@
-package com.neoterm.frontend.session.view;
+package com.termux.view;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -24,7 +24,7 @@ import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.neoterm.R;
-import com.neoterm.backend.*;
+import com.termux.terminal.*;
 import com.neoterm.component.completion.OnAutoCompleteListener;
 
 /**

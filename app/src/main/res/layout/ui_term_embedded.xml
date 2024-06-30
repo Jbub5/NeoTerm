@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-  <com.neoterm.frontend.session.view.TerminalView
+  <com.termux.view.TerminalView
     android:id="@+id/terminal_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

@@ -14,16 +14,16 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.neoterm.BuildConfig
 import com.neoterm.R
-import com.neoterm.backend.KeyHandler
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.KeyHandler
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.completion.*
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.extrakey.ExtraKeyComponent
 import com.neoterm.component.session.ShellTermSession
 import com.neoterm.frontend.completion.CandidatePopupWindow
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.TerminalViewClient
+import com.termux.view.TerminalView
+import com.termux.view.TerminalViewClient
 import java.util.*
 
 /**

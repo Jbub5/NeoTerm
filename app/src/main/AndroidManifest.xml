@@ -211,7 +211,7 @@
       android:value="true"/>
 
     <provider
-      android:name=".filepicker.NeotermDocumentsProvider"
+      android:name="com.termux.filepicker.TermuxDocumentsProvider"
       android:authorities="com.neoterm.documents"
       android:exported="true"
       android:grantUriPermissions="true"

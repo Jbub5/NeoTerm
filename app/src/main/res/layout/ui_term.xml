@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-  <com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+  <com.termux.view.extrakey.ExtraKeysView
     android:id="@+id/extra_keys"
     android:theme="@style/Theme.AppCompat"
     style="?android:buttonBarStyle"
@@ -13,7 +13,7 @@
     android:backgroundTint="@color/colorPrimary"
     android:orientation="horizontal"/>
 
-  <com.neoterm.frontend.session.view.TerminalView
+  <com.termux.view.TerminalView
     android:id="@+id/terminal_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

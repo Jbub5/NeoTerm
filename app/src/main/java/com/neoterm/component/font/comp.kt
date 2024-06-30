@@ -8,8 +8,8 @@ import com.neoterm.component.NeoComponent
 import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.config.NeoTermPath
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.termux.view.TerminalView
+import com.termux.view.extrakey.ExtraKeysView
 import com.neoterm.utils.extractAssetsDir
 import java.io.File
 

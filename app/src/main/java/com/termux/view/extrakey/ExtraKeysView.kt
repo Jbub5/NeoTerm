@@ -1,4 +1,4 @@
-package com.neoterm.frontend.session.view.extrakey
+package com.termux.view.extrakey
 
 import android.content.Context
 import android.graphics.Typeface

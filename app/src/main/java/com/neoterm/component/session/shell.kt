@@ -3,7 +3,7 @@ package com.neoterm.component.session
 import io.neolang.frontend.ConfigVisitor
 import com.neoterm.App
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.bridge.SessionId
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent

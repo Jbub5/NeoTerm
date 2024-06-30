@@ -14,8 +14,8 @@ import androidx.core.app.NotificationCompat
 import android.provider.Settings
 import android.net.Uri
 import com.neoterm.R
-import com.neoterm.backend.EmulatorDebug
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.EmulatorDebug
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.session.XParameter
 import com.neoterm.component.session.XSession
