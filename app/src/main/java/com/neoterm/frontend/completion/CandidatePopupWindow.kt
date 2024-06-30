@@ -15,7 +15,7 @@ import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
 import com.neoterm.component.completion.CompletionCandidate
 import com.neoterm.component.completion.OnCandidateSelectedListener
-import com.neoterm.frontend.session.view.TerminalView
+import com.termux.view.TerminalView
 
 /**
  * @author kiva

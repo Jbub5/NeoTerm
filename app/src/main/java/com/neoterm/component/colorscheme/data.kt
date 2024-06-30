@@ -8,8 +8,8 @@ import com.neoterm.component.codegen.CodeGenObject
 import com.neoterm.component.codegen.CodeGenParameter
 import com.neoterm.component.codegen.CodeGenerator
 import com.neoterm.component.codegen.NeoColorGenerator
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.termux.view.TerminalView
+import com.termux.view.extrakey.ExtraKeysView
 import com.neoterm.utils.NLog
 
 open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {

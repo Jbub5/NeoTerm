@@ -4,7 +4,7 @@ import io.neolang.frontend.ConfigVisitor
 import io.neolang.runtime.NeoLangValue
 import com.neoterm.component.colorscheme.NeoColorScheme
 import com.neoterm.component.extrakey.NeoExtraKey
-import com.neoterm.frontend.session.view.extrakey.TextButton
+import com.termux.view.extrakey.TextButton
 import com.neoterm.utils.NLog
 import java.io.BufferedReader
 import java.io.File
