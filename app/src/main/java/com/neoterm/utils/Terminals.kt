@@ -8,8 +8,6 @@ import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.font.FontComponent
 import com.neoterm.component.session.SessionComponent
 import com.neoterm.component.session.ShellParameter
-import com.neoterm.component.session.XParameter
-import com.neoterm.component.session.XSession
 import com.termux.view.TerminalView
 import com.termux.view.TerminalViewClient
 import com.termux.view.extrakey.ExtraKeysView
@@ -38,11 +36,6 @@ object Terminals {
   fun createSession(context: Context, parameter: ShellParameter): TerminalSession {
     val sessionComponent = ComponentManager.getComponent<SessionComponent>()
     return sessionComponent.createSession(context, parameter)
-  }
-
-  fun createSession(activity: AppCompatActivity, parameter: XParameter): XSession {
-    val sessionComponent = ComponentManager.getComponent<SessionComponent>()
-    return sessionComponent.createSession(activity, parameter)
   }
 
   fun escapeString(s: String?): String {

@@ -17,8 +17,6 @@ import com.neoterm.R
 import com.termux.terminal.EmulatorDebug
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
-import com.neoterm.component.session.XParameter
-import com.neoterm.component.session.XSession
 import com.neoterm.ui.term.NeoTermActivity
 import com.neoterm.utils.NLog
 import com.neoterm.utils.Terminals
@@ -35,7 +33,6 @@ class NeoTermService : Service() {
 
   private val serviceBinder = NeoTermBinder()
   private val mTerminalSessions = ArrayList<TerminalSession>()
-  private val mXSessions = ArrayList<XSession>()
   private var mWakeLock: PowerManager.WakeLock? = null
   private var mWifiLock: WifiManager.WifiLock? = null
 
@@ -77,9 +74,6 @@ class NeoTermService : Service() {
   val sessions: List<TerminalSession>
     get() = mTerminalSessions
 
-  val xSessions: List<XSession>
-    get() = mXSessions
-
   fun createTermSession(parameter: ShellParameter): TerminalSession {
     val session = createOrFindSession(parameter)
     updateNotification()
@@ -90,22 +84,6 @@ class NeoTermService : Service() {
     val indexOfRemoved = mTerminalSessions.indexOf(sessionToRemove)
     if (indexOfRemoved >= 0) {
       mTerminalSessions.removeAt(indexOfRemoved)
-      updateNotification()
-    }
-    return indexOfRemoved
-  }
-
-  fun createXSession(activity: AppCompatActivity, parameter: XParameter): XSession {
-    val session = Terminals.createSession(activity, parameter)
-    mXSessions.add(session)
-    updateNotification()
-    return session
-  }
-
-  fun removeXSession(sessionToRemove: XSession): Int {
-    val indexOfRemoved = mXSessions.indexOf(sessionToRemove)
-    if (indexOfRemoved >= 0) {
-      mXSessions.removeAt(indexOfRemoved)
       updateNotification()
     }
     return indexOfRemoved
@@ -140,7 +118,6 @@ class NeoTermService : Service() {
     val pendingIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0)
 
     val sessionCount = mTerminalSessions.size
-    val xSessionCount = mXSessions.size
     var contentText = getString(R.string.service_status_text, sessionCount)
 
     val lockAcquired = mWakeLock != null

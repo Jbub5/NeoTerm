@@ -81,7 +81,6 @@ dependencies {
   implementation project(':chrome-tabs')
   implementation project(':NeoLang')
   implementation project(':NeoTermBridge')
-  implementation project(':Xorg')
 }
 
 java {
