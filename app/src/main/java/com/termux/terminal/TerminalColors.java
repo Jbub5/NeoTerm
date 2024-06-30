@@ -1,4 +1,4 @@
-package com.neoterm.backend;
+package com.termux.terminal;
 
 /**
  * Current terminal colors (if different from default).

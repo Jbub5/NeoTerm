@@ -1,15 +1,15 @@
 package com.neoterm.component.colorscheme
 
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.backend.TerminalColorScheme
-import com.neoterm.backend.TerminalColors
+import com.termux.terminal.TerminalColorScheme
+import com.termux.terminal.TerminalColors
 import com.neoterm.component.ConfigFileBasedObject
 import com.neoterm.component.codegen.CodeGenObject
 import com.neoterm.component.codegen.CodeGenParameter
 import com.neoterm.component.codegen.CodeGenerator
 import com.neoterm.component.codegen.NeoColorGenerator
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.termux.view.TerminalView
+import com.termux.view.extrakey.ExtraKeysView
 import com.neoterm.utils.NLog
 
 open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {

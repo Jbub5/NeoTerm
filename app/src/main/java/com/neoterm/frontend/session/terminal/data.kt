@@ -1,11 +1,11 @@
 package com.neoterm.frontend.session.terminal
 
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.completion.OnAutoCompleteListener
 import com.neoterm.component.session.ShellProfile
 import com.neoterm.component.session.ShellTermSession
-import com.neoterm.frontend.session.view.TerminalView
-import com.neoterm.frontend.session.view.extrakey.ExtraKeysView
+import com.termux.view.TerminalView
+import com.termux.view.extrakey.ExtraKeysView
 
 class TermSessionData {
   var termSession: TerminalSession? = null

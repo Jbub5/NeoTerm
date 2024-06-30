@@ -17,11 +17,11 @@ import es.dmoral.coloromatic.ColorOMaticDialog
 import es.dmoral.coloromatic.IndicatorMode
 import es.dmoral.coloromatic.colormode.ColorMode
 import com.neoterm.R
-import com.neoterm.backend.TerminalColors
+import com.termux.terminal.TerminalColors
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
 import com.neoterm.component.colorscheme.NeoColorScheme
-import com.neoterm.frontend.session.view.TerminalView
+import com.termux.view.TerminalView
 import com.neoterm.utils.Terminals
 
 
