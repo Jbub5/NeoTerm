@@ -1,4 +1,4 @@
-package com.neoterm.frontend.session.view;
+package com.termux.view;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
