@@ -20,7 +20,7 @@ import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.userscript.UserScript
 import com.neoterm.component.userscript.UserScriptComponent
 import com.neoterm.frontend.session.terminal.TermSessionCallback
-import com.neoterm.services.NeoTermService
+import com.termux.app.TermuxService
 import com.neoterm.utils.Terminals
 import com.neoterm.utils.getPathOfMediaUri
 import java.io.File
@@ -29,11 +29,11 @@ import java.io.File
  * @author kiva
  */
 class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
-  private var termService: NeoTermService? = null
+  private var termService: TermuxService? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    val serviceIntent = Intent(this, NeoTermService::class.java)
+    val serviceIntent = Intent(this, TermuxService::class.java)
     startService(serviceIntent)
     if (!bindService(serviceIntent, this, 0)) {
       App.get().errorDialog(this, R.string.service_connection_failed, { finish() })
@@ -58,7 +58,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
   }
 
   override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-    termService = (service as NeoTermService.NeoTermBinder).service
+    termService = (service as TermuxService.NeoTermBinder).service
     if (termService == null) {
       finish()
       return

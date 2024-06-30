@@ -1,18 +1,16 @@
-package com.neoterm.services
+package com.termux.app
 
 import android.annotation.SuppressLint
 import android.app.*
-import android.content.Context
 import android.content.Intent
 import android.net.wifi.WifiManager
-import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import android.provider.Settings
 import android.net.Uri
+import android.os.Binder
+import androidx.core.app.NotificationCompat
 import com.neoterm.R
 import com.termux.terminal.EmulatorDebug
 import com.termux.terminal.TerminalSession
@@ -26,9 +24,9 @@ import com.neoterm.utils.Terminals
  * @author kiva
  */
 
-class NeoTermService : Service() {
+class TermuxService  : Service() {
   inner class NeoTermBinder : Binder() {
-    var service = this@NeoTermService
+    var service = this@TermuxService
   }
 
   private val serviceBinder = NeoTermBinder()
@@ -60,7 +58,7 @@ class NeoTermService : Service() {
       ACTION_RELEASE_LOCK -> releaseLock()
     }
 
-    return Service.START_NOT_STICKY
+    return START_NOT_STICKY
   }
 
   override fun onDestroy() {
@@ -108,7 +106,7 @@ class NeoTermService : Service() {
   }
 
   private fun updateNotification() {
-    val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    val service = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     service.notify(NOTIFICATION_ID, createNotification())
   }
 
@@ -134,7 +132,7 @@ class NeoTermService : Service() {
 
     builder.priority = if (lockAcquired) Notification.PRIORITY_HIGH else Notification.PRIORITY_LOW
 
-    val exitIntent = Intent(this, NeoTermService::class.java).setAction(ACTION_SERVICE_STOP)
+    val exitIntent = Intent(this, TermuxService ::class.java).setAction(ACTION_SERVICE_STOP)
     builder.addAction(
       android.R.drawable.ic_delete,
       getString(R.string.exit),
@@ -142,7 +140,7 @@ class NeoTermService : Service() {
     )
 
     val newWakeAction = if (lockAcquired) ACTION_RELEASE_LOCK else ACTION_ACQUIRE_LOCK
-    val toggleWakeLockIntent = Intent(this, NeoTermService::class.java).setAction(newWakeAction)
+    val toggleWakeLockIntent = Intent(this, TermuxService ::class.java).setAction(newWakeAction)
     val actionTitle = getString(
       if (lockAcquired)
         R.string.service_release_lock
@@ -160,7 +158,7 @@ class NeoTermService : Service() {
 
     val channel = NotificationChannel(DEFAULT_CHANNEL_ID, "NeoTerm", NotificationManager.IMPORTANCE_LOW)
     channel.description = "NeoTerm notifications"
-    val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     manager.createNotificationChannel(channel)
   }
 
@@ -168,7 +166,7 @@ class NeoTermService : Service() {
   private fun requestIgnoreBatteryOptimizations() {
     val packageName = getPackageName()
     val intent = Intent()
-    val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+    val pm = getSystemService(POWER_SERVICE) as PowerManager
     if (!pm.isIgnoringBatteryOptimizations(packageName)) {
       intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
       intent.data = Uri.parse("package:$packageName")
@@ -178,14 +176,14 @@ class NeoTermService : Service() {
   private fun acquireLock() {
     requestIgnoreBatteryOptimizations()
     if (mWakeLock == null) {
-      val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+      val pm = getSystemService(POWER_SERVICE) as PowerManager
       mWakeLock = pm.newWakeLock(
         PowerManager.PARTIAL_WAKE_LOCK,
         EmulatorDebug.LOG_TAG + ":"
       )
       mWakeLock!!.acquire()
 
-      val wm = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+      val wm = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
       mWifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, EmulatorDebug.LOG_TAG)
       mWifiLock!!.acquire()
 
