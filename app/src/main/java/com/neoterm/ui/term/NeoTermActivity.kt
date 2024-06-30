@@ -20,7 +20,6 @@ import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import de.mrapp.android.tabswitcher.*
 import com.neoterm.App
-import com.neoterm.BuildConfig
 import com.neoterm.R
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
@@ -28,8 +27,6 @@ import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.profile.ProfileComponent
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.session.ShellProfile
-import com.neoterm.component.session.XParameter
-import com.neoterm.component.session.XSession
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.services.NeoTermService
 import com.neoterm.ui.pm.PackageManagerActivity
@@ -173,10 +170,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         addNewRescueSession("Rescue Shell")
         true
       }
-      R.id.menu_item_new_x_session -> {
-        addXSession()
-        true
-      }
       else -> super.onOptionsItemSelected(item)
     }
   }
@@ -218,11 +211,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       }
 
       override fun onTabRemoved(tabSwitcher: TabSwitcher, index: Int, tab: Tab, animation: Animation) {
-        if (tab is TermTab) {
-          SessionRemover.removeSession(termService, tab)
-        } else if (tab is XSessionTab) {
-          SessionRemover.removeXSession(termService, tab)
-        }
+        SessionRemover.removeSession(termService, tab as TermTab)
       }
 
       override fun onAllTabsRemoved(tabSwitcher: TabSwitcher, tabs: Array<out Tab>, animation: Animation) {
@@ -380,10 +369,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         addNewSessionFromExisting(session)
       }
 
-      for (session in termService!!.xSessions) {
-        addXSession(session)
-      }
-
       if (intent?.action == Intent.ACTION_RUN) {
         // app shortcuts
         addNewSession(
@@ -536,56 +521,8 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     switchToSession(tab)
   }
 
-  private fun addXSession() {
-    if (!BuildConfig.DEBUG) {
-      AlertDialog.Builder(this)
-        .setTitle(R.string.error)
-        .setMessage(R.string.sorry_for_development)
-        .setPositiveButton(android.R.string.yes, null)
-        .show()
-      return
-    }
-
-    if (!tabSwitcher.isSwitcherShown) {
-      toggleSwitcher(showSwitcher = true, easterEgg = false)
-    }
-
-    val parameter = XParameter()
-    val session = termService!!.createXSession(this, parameter)
-
-    session.mSessionName = generateXSessionName("X")
-    val tab = createXTab(session.mSessionName) as XSessionTab
-    tab.session = session
-
-    addNewTab(tab, createRevealAnimation())
-    switchToSession(tab)
-  }
-
-  private fun addXSession(session: XSession?) {
-    if (session == null) {
-      return
-    }
-
-    // Do not add the same session again
-    // Or app will crash when rotate
-    val tabCount = tabSwitcher.count
-    (0..(tabCount - 1))
-      .map { tabSwitcher.getTab(it) }
-      .filter { it is XSessionTab && it.session == session }
-      .forEach { return }
-
-    val tab = createXTab(session.mSessionName) as XSessionTab
-
-    addNewTab(tab, createRevealAnimation())
-    switchToSession(tab)
-  }
-
   private fun generateSessionName(prefix: String): String {
     return "$prefix #${termService!!.sessions.size}"
-  }
-
-  private fun generateXSessionName(prefix: String): String {
-    return "$prefix #${termService!!.xSessions.size}"
   }
 
   private fun switchToSession(session: TerminalSession?) {
@@ -629,10 +566,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
   private fun createTab(tabTitle: String?): Tab {
     return postTabCreated(TermTab(tabTitle ?: "NeoTerm"))
-  }
-
-  private fun createXTab(tabTitle: String?): Tab {
-    return postTabCreated(XSessionTab(tabTitle ?: "NeoTerm"))
   }
 
   private fun <T : NeoTab> postTabCreated(tab: T): T {
