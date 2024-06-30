@@ -12,11 +12,11 @@ android {
     versionCode 38
     versionName "2.0.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-      //resourceConfigurations += ['zh-rCN', 'zh-rTW']
     resConfigs "en"
       externalNativeBuild {
       cmake {
-        cppFlags "-std=c++11", "-flto"
+        cppFlags "-std=c++11", "-Wall", "-Wextra", "-Werror", "-Os", "-fno-stack-protector", "-Wl,--gc-sections"
+        arguments "-DCMAKE_BUILD_TYPE=Release"
         abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
       }
     }
@@ -26,18 +26,25 @@ android {
       }
     }
   }
-  packagingOptions {
-    resources.excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version", "drawable-ldrtl-*dpi"]
-  }
+
   buildTypes {
     release {
       zipAlignEnabled true
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.debug
+    }
+    debug {
+      zipAlignEnabled true
+      minifyEnabled false
+      shrinkResources false
       signingConfig signingConfigs.debug
     }
   }
   externalNativeBuild {
     cmake {
-      path "CMakeLists.txt"
+      path file('src/main/jni/CMakeLists.txt')
     }
   }
   compileOptions {
@@ -56,6 +63,9 @@ android {
         jniLibs {
             useLegacyPackaging true
         }
+        resources {
+            excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version", "drawable-ldrtl-*dpi"]
+      }
     }
 }
 
