@@ -1,7 +1,6 @@
 package com.neoterm.ui.term
 
 import com.termux.terminal.TerminalSession
-import com.neoterm.component.session.XSession
 import com.neoterm.services.NeoTermService
 
 /**
@@ -14,23 +13,11 @@ object SessionRemover {
     tab.cleanup()
   }
 
-  fun removeXSession(termService: NeoTermService?, tab: XSessionTab?) {
-    removeFinishedSession(termService, tab?.session)
-  }
-
   private fun removeFinishedSession(termService: NeoTermService?, finishedSession: TerminalSession?) {
     if (termService == null || finishedSession == null) {
       return
     }
 
     termService.removeTermSession(finishedSession)
-  }
-
-  private fun removeFinishedSession(termService: NeoTermService?, finishedSession: XSession?) {
-    if (termService == null || finishedSession == null) {
-      return
-    }
-
-    termService.removeXSession(finishedSession)
   }
 }

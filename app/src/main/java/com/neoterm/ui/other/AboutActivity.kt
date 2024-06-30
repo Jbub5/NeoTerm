@@ -135,7 +135,7 @@ class AboutActivity : AppCompatActivity() {
     findViewById<View>(R.id.about_reset_app_view).setOnClickListener {
       AlertDialog.Builder(this)
         .setMessage(R.string.reset_app_warning)
-        .setPositiveButton(R.string.yes) { _, _ ->
+        .setPositiveButton(android.R.string.yes) { _, _ ->
           resetApp()
         }
         .setNegativeButton(android.R.string.no, null)

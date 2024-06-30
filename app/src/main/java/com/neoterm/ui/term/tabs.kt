@@ -14,14 +14,12 @@ import androidx.appcompat.widget.Toolbar
 import de.mrapp.android.tabswitcher.Tab
 import de.mrapp.android.tabswitcher.TabSwitcher
 import de.mrapp.android.tabswitcher.TabSwitcherDecorator
-import com.neoterm.NeoGLView
 import com.neoterm.R
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
 import com.neoterm.component.completion.OnAutoCompleteListener
 import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
-import com.neoterm.component.session.XSession
 import com.neoterm.frontend.session.terminal.*
 import com.termux.view.TerminalView
 import com.termux.view.extrakey.ExtraKeysView
@@ -101,85 +99,6 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
           terminalView.requestFocus()
         }
       }
-
-      VIEW_TYPE_X -> {
-        toolbar.visibility = View.GONE
-        bindXSessionView(tab as XSessionTab)
-      }
-    }
-  }
-
-  private fun bindXSessionView(tab: XSessionTab) {
-    val sessionData = tab.sessionData ?: return
-
-    if (sessionData.videoLayout == null) {
-      val videoLayout = findViewById<FrameLayout>(R.id.xorg_video_layout)
-      sessionData.videoLayout = videoLayout
-      setViewLayerType(videoLayout)
-    }
-
-    val videoLayout = sessionData.videoLayout!!
-
-    if (sessionData.glView == null) {
-      Thread {
-        sessionData.client?.runOnUiThread {
-          sessionData.glView = NeoGLView(sessionData.client)
-          sessionData.glView?.isFocusableInTouchMode = true
-          sessionData.glView?.isFocusable = true
-          sessionData.glView?.requestFocus()
-
-          setViewLayerType(sessionData.glView)
-          videoLayout.addView(
-            sessionData.glView,
-            FrameLayout.LayoutParams(
-              FrameLayout.LayoutParams.MATCH_PARENT,
-              FrameLayout.LayoutParams.MATCH_PARENT
-            )
-          )
-
-          sessionData.glView?.pointerIcon =
-            android.view.PointerIcon.getSystemIcon(
-              context,
-              android.view.PointerIcon.TYPE_NULL
-            )
-
-          val r = Rect()
-          videoLayout.getWindowVisibleDisplayFrame(r)
-          sessionData.glView?.callNativeScreenVisibleRect(r.left, r.top, r.right, r.bottom)
-          videoLayout.viewTreeObserver.addOnGlobalLayoutListener {
-            val r = Rect()
-            videoLayout.getWindowVisibleDisplayFrame(r)
-            val heightDiff = videoLayout.rootView.height - videoLayout.height // Take system bar into consideration
-            val widthDiff = videoLayout.rootView.width - videoLayout.width // Nexus 5 has system bar at the right side
-            Log.v(
-              "SDL",
-              "Main window visible region changed: " + r.left + ":" + r.top + ":" + r.width() + ":" + r.height()
-            )
-            videoLayout.postDelayed(
-              {
-                sessionData.glView?.callNativeScreenVisibleRect(
-                  r.left + widthDiff,
-                  r.top + heightDiff,
-                  r.width(),
-                  r.height()
-                )
-              },
-              300
-            )
-            videoLayout.postDelayed(
-              {
-                sessionData.glView?.callNativeScreenVisibleRect(
-                  r.left + widthDiff,
-                  r.top + heightDiff,
-                  r.width(),
-                  r.height()
-                )
-              },
-              600
-            )
-          }
-        }
-      }.start()
     }
   }
 
@@ -218,45 +137,8 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
   override fun getViewType(tab: Tab, index: Int): Int {
     if (tab is TermTab) {
       return VIEW_TYPE_TERM
-    } else if (tab is XSessionTab) {
-      return VIEW_TYPE_X
     }
     return -1
-  }
-}
-
-class XSessionTab(title: CharSequence) : NeoTab(title) {
-  var session: XSession? = null
-  val sessionData
-    get() = session?.mSessionData
-
-  override fun onWindowFocusChanged(hasFocus: Boolean) {
-    super.onWindowFocusChanged(hasFocus)
-    if (!hasFocus) {
-      onPause()
-    } else {
-      onResume()
-    }
-  }
-
-  override fun onConfigurationChanged(newConfig: Configuration) {
-    super.onConfigurationChanged(newConfig)
-    session?.updateScreenOrientation()
-  }
-
-  override fun onPause() {
-    session?.onPause()
-    super.onPause()
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-    session?.onDestroy()
-  }
-
-  override fun onResume() {
-    super.onResume()
-    session?.onResume()
   }
 }
 
