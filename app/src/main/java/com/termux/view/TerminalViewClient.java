@@ -3,7 +3,7 @@ package com.termux.view;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import com.neoterm.backend.TerminalSession;
+import com.termux.terminal.TerminalSession;
 
 /**
  * Input and scale listener which may be set on a {@link TerminalView} through

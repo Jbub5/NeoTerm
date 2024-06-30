@@ -2,7 +2,7 @@ package com.neoterm.utils
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.font.FontComponent

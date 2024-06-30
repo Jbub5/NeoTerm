@@ -1,8 +1,8 @@
 package com.neoterm.component.colorscheme
 
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.backend.TerminalColorScheme
-import com.neoterm.backend.TerminalColors
+import com.termux.terminal.TerminalColorScheme
+import com.termux.terminal.TerminalColors
 import com.neoterm.component.ConfigFileBasedObject
 import com.neoterm.component.codegen.CodeGenObject
 import com.neoterm.component.codegen.CodeGenParameter

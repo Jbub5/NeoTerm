@@ -1,6 +1,6 @@
 package com.neoterm.frontend.session.terminal
 
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.completion.OnAutoCompleteListener
 import com.neoterm.component.session.ShellProfile
 import com.neoterm.component.session.ShellTermSession

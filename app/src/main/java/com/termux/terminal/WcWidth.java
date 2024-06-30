@@ -1,4 +1,4 @@
-package com.neoterm.backend;
+package com.termux.terminal;
 
 /**
  * Implementation of wcwidth(3) for Unicode 15.

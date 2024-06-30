@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.system.Os;
 import android.util.Pair;
 import androidx.appcompat.app.AppCompatActivity;
-import com.neoterm.backend.EmulatorDebug;
+import com.termux.terminal.EmulatorDebug;
 import com.neoterm.component.config.NeoTermPath;
 import com.neoterm.utils.NLog;
 

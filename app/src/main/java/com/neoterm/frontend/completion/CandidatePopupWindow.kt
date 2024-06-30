@@ -10,7 +10,7 @@ import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.TextView
 import com.neoterm.R
-import com.neoterm.backend.TerminalColors
+import com.termux.terminal.TerminalColors
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
 import com.neoterm.component.completion.CompletionCandidate

@@ -24,7 +24,7 @@ import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.neoterm.R;
-import com.neoterm.backend.*;
+import com.termux.terminal.*;
 import com.neoterm.component.completion.OnAutoCompleteListener;
 
 /**

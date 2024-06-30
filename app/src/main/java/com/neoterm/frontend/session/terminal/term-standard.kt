@@ -14,8 +14,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.neoterm.BuildConfig
 import com.neoterm.R
-import com.neoterm.backend.KeyHandler
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.KeyHandler
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.completion.*
 import com.neoterm.component.config.NeoPreference

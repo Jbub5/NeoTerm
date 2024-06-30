@@ -5,7 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.frontend.session.terminal.BasicSessionCallback
 import com.neoterm.frontend.session.terminal.BasicViewClient

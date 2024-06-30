@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.frontend.session.view.TerminalView
 import com.neoterm.frontend.session.view.TerminalViewClient

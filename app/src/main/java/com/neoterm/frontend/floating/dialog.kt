@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.neoterm.R
-import com.neoterm.backend.TerminalSession
+import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.component.session.ShellTermSession
 import com.neoterm.frontend.session.terminal.BasicSessionCallback
