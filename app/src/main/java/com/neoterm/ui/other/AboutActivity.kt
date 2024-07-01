@@ -14,7 +14,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import com.neoterm.App
 import com.neoterm.R
 
 
@@ -62,10 +61,6 @@ class AboutActivity : AppCompatActivity() {
 
     findViewById<View>(R.id.about_licenses_view).setOnClickListener {
       OpenSourceLicensesDialog().showLicenses(this)
-    }
-
-    findViewById<View>(R.id.about_version_view).setOnClickListener {
-      App.get().easterEgg(this, "Emmmmmm...")
     }
 
     findViewById<View>(R.id.about_source_code_view).setOnClickListener {

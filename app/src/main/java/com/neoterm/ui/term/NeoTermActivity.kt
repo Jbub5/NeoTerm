@@ -18,7 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
-import com.neoterm.App
 import com.neoterm.R
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.session.ShellParameter
@@ -137,9 +136,9 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
           val tab = tabSwitcher.selectedTab as TermTab
           tab.requireHideIme()
         }
-        toggleSwitcher(showSwitcher = true, easterEgg = true)
+        toggleSwitcher(showSwitcher = true)
       } else {
-        toggleSwitcher(showSwitcher = false, easterEgg = true)
+        toggleSwitcher(showSwitcher = false)
       }
     })
     return true
@@ -257,7 +256,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     when (keyCode) {
       KeyEvent.KEYCODE_BACK -> {
         if (event?.action == KeyEvent.ACTION_DOWN && tabSwitcher.isSwitcherShown && tabSwitcher.count > 0) {
-          toggleSwitcher(showSwitcher = false, easterEgg = false)
+          toggleSwitcher(showSwitcher = false)
           return true
         }
       }
@@ -373,7 +372,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       }
 
     } else {
-      toggleSwitcher(showSwitcher = true, easterEgg = false)
+      toggleSwitcher(showSwitcher = true)
       // Fore system shell mode to be disabled.
       addNewSession(null, createRevealAnimation())
     }
@@ -419,7 +418,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
   private fun addNewSessionWithProfile() {
     if (!tabSwitcher.isSwitcherShown) {
-      toggleSwitcher(showSwitcher = true, easterEgg = false)
+      toggleSwitcher(showSwitcher = true)
     }
     addNewSessionWithProfile(
       null,
@@ -587,12 +586,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
   }
 
-  private fun toggleSwitcher(showSwitcher: Boolean, easterEgg: Boolean) {
-    if (tabSwitcher.count == 0 && easterEgg) {
-      App.get().easterEgg(this, "Stop! You don't know what you are doing!")
-      return
-    }
-
+  private fun toggleSwitcher(showSwitcher: Boolean) {
     if (showSwitcher) {
       tabSwitcher.showSwitcher()
     } else {
@@ -619,7 +613,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   @Subscribe(threadMode = ThreadMode.MAIN)
   fun onTabCloseEvent(tabCloseEvent: TabCloseEvent) {
     val tab = tabCloseEvent.termTab
-    toggleSwitcher(showSwitcher = true, easterEgg = false)
+    toggleSwitcher(showSwitcher = true)
     tabSwitcher.removeTab(tab)
 
     if (tabSwitcher.count > 1) {
