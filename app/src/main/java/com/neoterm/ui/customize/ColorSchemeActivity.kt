@@ -134,7 +134,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
       .setView(view)
       .setNegativeButton(android.R.string.no, null)
       .setPositiveButton(android.R.string.yes) { _, _ ->
-        applyColor(edit.text.toString());
+        applyColor(edit.text.toString())
       }
       .setNeutralButton(R.string.select_new_value) { _, _ ->
         ColorOMaticDialog.Builder()

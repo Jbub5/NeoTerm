@@ -265,16 +265,11 @@ public class PhoneRecyclerAdapter extends AbstractViewRecycler.Adapter<TabItem, 
   @NonNull
   private OnClickListener createCloseButtonClickListener(@NonNull final ImageButton closeButton,
                                                          @NonNull final Tab tab) {
-    return new OnClickListener() {
-
-      @Override
-      public void onClick(final View v) {
-        if (notifyOnCloseTab(tab)) {
-          closeButton.setOnClickListener(null);
-          tabSwitcher.removeTab(tab);
-        }
+    return v -> {
+      if (notifyOnCloseTab(tab)) {
+        closeButton.setOnClickListener(null);
+        tabSwitcher.removeTab(tab);
       }
-
     };
   }
 

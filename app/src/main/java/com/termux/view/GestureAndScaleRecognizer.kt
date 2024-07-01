@@ -100,7 +100,7 @@ internal class GestureAndScaleRecognizer(context: Context, val mListener: Listen
 
     // For treating double tap as MOUSE_LEFT_BUTTON_MOVED event
     // e.g in vim, we can change window size with fingers moving.
-    mScaleDetector.isQuickScaleEnabled = false;
+    mScaleDetector.isQuickScaleEnabled = false
   }
 
   fun onTouchEvent(event: MotionEvent) {
