@@ -43,7 +43,7 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
     private val VIEW_TYPE_X = VIEW_TYPE_COUNT++
   }
 
-  private fun setViewLayerType(view: View?) = view?.setLayerType(View.LAYER_TYPE_NONE, null)
+  //private fun setViewLayerType(view: View?) = view?.setLayerType(View.LAYER_TYPE_NONE, null)
 
   override fun onInflateView(inflater: LayoutInflater, parent: ViewGroup?, viewType: Int): View {
     return when (viewType) {

@@ -37,10 +37,10 @@ class ShellParameter {
     return this
   }
 
-  fun currentWorkingDirectory(cwd: String?): ShellParameter {
-    this.cwd = cwd
-    return this
-  }
+  //fun currentWorkingDirectory(cwd: String?): ShellParameter {
+    //this.cwd = cwd
+    //return this
+  //}
 
   fun initialCommand(initialCommand: String?): ShellParameter {
     this.initialCommand = initialCommand

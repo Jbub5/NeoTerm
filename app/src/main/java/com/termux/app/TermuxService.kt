@@ -90,7 +90,7 @@ class TermuxService  : Service() {
   private fun createOrFindSession(parameter: ShellParameter): TerminalSession {
     if (parameter.willCreateNewSession()) {
       NLog.d("createOrFindSession: creating new session")
-      val session = Terminals.createSession(this, parameter)
+      val session = Terminals.createSession(parameter)
       mTerminalSessions.add(session)
       return session
     }
