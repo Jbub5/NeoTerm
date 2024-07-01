@@ -26,12 +26,6 @@
         android:id="@+id/menu_item_new_rescue_session"
         android:title="@string/new_rescue_session"
         app:showAsAction="never"/>
-
-      <item
-        android:id="@+id/menu_item_new_x_session"
-        android:title="@string/new_x_session"
-        android:visible="false"
-        app:showAsAction="never"/>
     </menu>
   </item>
 
