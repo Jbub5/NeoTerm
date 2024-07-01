@@ -53,7 +53,7 @@ class TerminalDialog(val context: Context) {
       .executablePath(executablePath)
       .arguments(arguments)
       .callback(terminalSessionCallback)
-    terminalSession = Terminals.createSession(context, parameter)
+    terminalSession = Terminals.createSession(parameter)
     if (terminalSession is ShellTermSession) {
       (terminalSession as ShellTermSession).exitPrompt = context.getString(R.string.process_exit_prompt_press_back)
     }
@@ -61,10 +61,10 @@ class TerminalDialog(val context: Context) {
     return this
   }
 
-  fun onDismiss(cancelListener: DialogInterface.OnCancelListener?): TerminalDialog {
-    this.cancelListener = cancelListener
-    return this
-  }
+  //fun onDismiss(cancelListener: DialogInterface.OnCancelListener?): TerminalDialog {
+    //this.cancelListener = cancelListener
+    //return this
+  //}
 
   fun setTitle(title: String?): TerminalDialog {
     dialog?.setTitle(title)

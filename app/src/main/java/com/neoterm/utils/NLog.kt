@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.util.zip.DataFormatException
-import java.util.zip.Deflater
-import java.util.zip.Inflater
 
 object NLog {
 
@@ -59,13 +56,13 @@ object NLog {
     sGlobalTag = "NeoTerm"
   }
 
-  fun v(contents: Any) {
+  /* fun v(contents: Any) {
     log(V, sGlobalTag, contents)
-  }
+  } */
 
-  fun v(tag: String, vararg contents: Any) {
+  /* fun v(tag: String, vararg contents: Any) {
     log(V, tag, *contents)
-  }
+  } */
 
   fun d(contents: Any) {
     log(D, sGlobalTag, contents)
@@ -283,7 +280,7 @@ object NLog {
     return s?.isEmpty() ?: true
   }
 
-  fun compress(input: ByteArray): ByteArray {
+  /* fun compress(input: ByteArray): ByteArray {
     val bos = ByteArrayOutputStream()
     val compressor = Deflater(1)
     try {
@@ -298,9 +295,9 @@ object NLog {
       compressor.end()
     }
     return bos.toByteArray()
-  }
+  } */
 
-  fun uncompress(input: ByteArray): ByteArray {
+  /* fun uncompress(input: ByteArray): ByteArray {
     val bos = ByteArrayOutputStream()
     val inflater = Inflater()
     try {
@@ -320,6 +317,6 @@ object NLog {
       inflater.end()
     }
     return bos.toByteArray()
-  }
+  } */
 
 }

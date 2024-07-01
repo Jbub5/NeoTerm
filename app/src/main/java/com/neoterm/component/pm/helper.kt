@@ -89,9 +89,9 @@ class SourceManager internal constructor() {
     database.saveBean(Source(sourceUrl, repo, enabled))
   }
 
-  fun removeSource(sourceUrl: String) {
-    database.deleteBeanByWhere(Source::class.java, "url == '$sourceUrl'")
-  }
+  //fun removeSource(sourceUrl: String) {
+    //database.deleteBeanByWhere(Source::class.java, "url == '$sourceUrl'")
+  //}
 
   fun updateAll(sources: List<Source>) {
     database.dropAllTable()

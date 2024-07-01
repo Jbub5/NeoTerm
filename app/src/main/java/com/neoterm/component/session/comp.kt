@@ -1,6 +1,5 @@
 package com.neoterm.component.session
 
-import android.content.Context
 import com.neoterm.component.NeoComponent
 
 class SessionComponent : NeoComponent {
@@ -14,7 +13,7 @@ class SessionComponent : NeoComponent {
   override fun onServiceObtained() {
   }
 
-  fun createSession(context: Context, parameter: ShellParameter): ShellTermSession {
+  fun createSession(parameter: ShellParameter): ShellTermSession {
     return ShellTermSession.Builder()
       .executablePath(parameter.executablePath)
       .currentWorkingDirectory(parameter.cwd)
