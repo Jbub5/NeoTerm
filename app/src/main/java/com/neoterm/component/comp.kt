@@ -30,13 +30,13 @@ object ComponentManager {
     component.onServiceInit()
   }
 
-  fun unregisterComponent(componentInterface: Class<out NeoComponent>) {
+  /* fun unregisterComponent(componentInterface: Class<out NeoComponent>) {
     val component = COMPONENTS[componentInterface]
     if (component != null) {
       component.onServiceDestroy()
       COMPONENTS.remove(componentInterface)
     }
-  }
+  } */
 
   @Suppress("UNCHECKED_CAST")
   fun <T : NeoComponent> getComponent(componentInterface: Class<T>, errorThrow: Boolean = true): T {

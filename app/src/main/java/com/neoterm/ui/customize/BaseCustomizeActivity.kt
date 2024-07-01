@@ -44,7 +44,7 @@ open class BaseCustomizeActivity : AppCompatActivity() {
       .arguments(arrayOf("echo", "-e", *script))
       .callback(sessionCallback)
 
-    session = Terminals.createSession(this, parameter)
+    session = Terminals.createSession(parameter)
     terminalView.attachSession(session)
   }
 

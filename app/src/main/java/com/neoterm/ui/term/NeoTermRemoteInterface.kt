@@ -141,12 +141,12 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     openTerm(parameter, foreground)
   }
 
-  private fun openCustomExecTerm(executablePath: String?, arguments: Array<String>?, cwd: String?) {
+  /* private fun openCustomExecTerm(executablePath: String?, arguments: Array<String>?, cwd: String?) {
     val parameter = ShellParameter()
       .executablePath(executablePath)
       .arguments(arguments)
       .currentWorkingDirectory(cwd)
       .callback(TermSessionCallback())
     openTerm(parameter)
-  }
+  } */
 }

@@ -62,7 +62,7 @@ object NeoPreference {
   const val KEY_FONT_SIZE = "neoterm_general_font_size"
   const val KEY_CURRENT_SESSION = "neoterm_service_current_session"
   const val KEY_SYSTEM_SHELL = "neoterm_core_system_shell"
-  const val KEY_SOURCES = "neoterm_package_enabled_sources"
+  //const val KEY_SOURCES = "neoterm_package_enabled_sources"
 
   const val VALUE_HAPPY_EGG_TRIGGER = 8
 
@@ -107,9 +107,9 @@ object NeoPreference {
     }
   }
 
-  fun loadInt(key: Int, defaultValue: Int): Int {
-    return loadInt(App.get().getString(key), defaultValue)
-  }
+  //fun loadInt(key: Int, defaultValue: Int): Int {
+    //return loadInt(App.get().getString(key), defaultValue)
+  //}
 
   fun loadString(key: Int, defaultValue: String?): String {
     return loadString(App.get().getString(key), defaultValue)

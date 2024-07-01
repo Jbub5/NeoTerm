@@ -1,6 +1,5 @@
 package com.neoterm.utils
 
-import android.content.Context
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.font.FontComponent
@@ -32,9 +31,9 @@ object Terminals {
     fontComponent.applyFont(null, extraKeysView, font)
   }
 
-  fun createSession(context: Context, parameter: ShellParameter): TerminalSession {
+  fun createSession(parameter: ShellParameter): TerminalSession {
     val sessionComponent = ComponentManager.getComponent<SessionComponent>()
-    return sessionComponent.createSession(context, parameter)
+    return sessionComponent.createSession(parameter)
   }
 
   fun escapeString(s: String?): String {

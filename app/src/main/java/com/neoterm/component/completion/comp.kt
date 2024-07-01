@@ -22,17 +22,17 @@ object CompletionManager {
     this.candidateProviders[provider.providerName] = provider
   }
 
-  fun unregisterProvider(providerName: String) {
-    this.candidateProviders.remove(providerName)
-  }
+  //fun unregisterProvider(providerName: String) {
+    //this.candidateProviders.remove(providerName)
+  //}
 
-  fun unregisterProvider(provider: ICandidateProvider) {
-    unregisterProvider(provider.providerName)
-  }
+  //fun unregisterProvider(provider: ICandidateProvider) {
+    //unregisterProvider(provider.providerName)
+  //}
 
-  fun getProvider(providerName: String): ICandidateProvider? {
-    return candidateProviders[providerName]
-  }
+  //fun getProvider(providerName: String): ICandidateProvider? {
+    //return candidateProviders[providerName]
+  //}
 
   fun tryCompleteFor(text: String): CompletionResult {
     val detector = detectProviders(text)

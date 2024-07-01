@@ -30,7 +30,7 @@ object NeoTermPath {
   val USR_PATH = "$ROOT_PATH/usr"
   @JvmField val HOME_PATH = "$ROOT_PATH/home"
   val APT_BIN_PATH = "$USR_PATH/bin/apt"
-  val LIB_PATH = "$USR_PATH/lib"
+  //val LIB_PATH = "$USR_PATH/lib"
 
   val CUSTOM_PATH = "$HOME_PATH/.termux"
   val EKS_PATH = "$CUSTOM_PATH/eks"
