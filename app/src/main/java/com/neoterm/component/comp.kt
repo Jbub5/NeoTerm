@@ -8,10 +8,7 @@ import com.neoterm.component.config.ConfigureComponent
 import com.neoterm.component.extrakey.ExtraKeyComponent
 import com.neoterm.component.font.FontComponent
 import com.neoterm.component.pm.PackageComponent
-import com.neoterm.component.profile.ProfileComponent
 import com.neoterm.component.session.SessionComponent
-import com.neoterm.component.session.ShellProfile
-import com.neoterm.component.userscript.UserScriptComponent
 import com.neoterm.utils.NLog
 import java.util.concurrent.ConcurrentHashMap
 
@@ -77,14 +74,9 @@ object NeoInitializer {
     ComponentManager.registerComponent(CodeGenComponent::class.java)
     ComponentManager.registerComponent(ColorSchemeComponent::class.java)
     ComponentManager.registerComponent(FontComponent::class.java)
-    ComponentManager.registerComponent(UserScriptComponent::class.java)
     ComponentManager.registerComponent(ExtraKeyComponent::class.java)
     ComponentManager.registerComponent(CompletionComponent::class.java)
-    ComponentManager.registerComponent(PackageComponent::class.java)
     ComponentManager.registerComponent(SessionComponent::class.java)
-    ComponentManager.registerComponent(ProfileComponent::class.java)
-
-    val profileComp = ComponentManager.getComponent<ProfileComponent>()
-    profileComp.registerProfile(ShellProfile.PROFILE_META_NAME, ShellProfile::class.java)
+    ComponentManager.registerComponent(PackageComponent::class.java)
   }
 }

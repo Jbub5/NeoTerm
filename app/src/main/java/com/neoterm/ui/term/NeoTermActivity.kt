@@ -18,22 +18,19 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
-import de.mrapp.android.tabswitcher.*
 import com.neoterm.App
 import com.neoterm.R
-import com.termux.terminal.TerminalSession
-import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
-import com.neoterm.component.profile.ProfileComponent
 import com.neoterm.component.session.ShellParameter
-import com.neoterm.component.session.ShellProfile
 import com.neoterm.frontend.session.terminal.*
-import com.termux.app.TermuxService
 import com.neoterm.ui.pm.PackageManagerActivity
 import com.neoterm.ui.settings.SettingActivity
 import com.neoterm.utils.FullScreenHelper
 import com.neoterm.utils.NeoPermission
 import com.neoterm.utils.RangedInt
+import com.termux.app.TermuxService
+import com.termux.terminal.TerminalSession
+import de.mrapp.android.tabswitcher.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -160,10 +157,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       }
       R.id.menu_item_new_session -> {
         addNewSession()
-        true
-      }
-      R.id.menu_item_new_session_with_profile -> {
-        showProfileDialog()
         true
       }
       R.id.menu_item_new_rescue_session -> {
@@ -417,28 +410,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
     NeoPreference.store(R.string.key_ui_fullscreen, fullScreen)
     this@NeoTermActivity.recreate()
-  }
-
-  private fun showProfileDialog() {
-    val profileComponent = ComponentManager.getComponent<ProfileComponent>()
-    val profiles = profileComponent.getProfiles(ShellProfile.PROFILE_META_NAME)
-
-    if (profiles.isEmpty()) {
-      AlertDialog.Builder(this)
-        .setTitle(R.string.error)
-        .setMessage(R.string.no_profile_available)
-        .setPositiveButton(android.R.string.yes, null)
-        .show()
-      return
-    }
-
-    AlertDialog.Builder(this)
-      .setTitle(R.string.new_session_with_profile)
-      .setItems(profiles.map { it.profileName }.toTypedArray(), { dialog, which ->
-        addNewSessionWithProfile()
-      })
-      .setPositiveButton(android.R.string.no, null)
-      .show()
   }
 
   private fun addNewSession() = addNewSessionWithProfile()
