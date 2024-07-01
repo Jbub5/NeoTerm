@@ -1,17 +1,17 @@
 package com.neoterm.component.profile
 
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.component.ComponentManager
+//import com.neoterm.component.ComponentManager
 import com.neoterm.component.ConfigFileBasedObject
 import com.neoterm.component.codegen.CodeGenObject
 import com.neoterm.component.codegen.CodeGenParameter
 import com.neoterm.component.codegen.CodeGenerator
 import com.neoterm.component.codegen.NeoProfileGenerator
-import com.neoterm.component.config.ConfigureComponent
-import com.neoterm.component.config.NeoConfigureFile
-import com.neoterm.utils.NLog
-import org.jetbrains.annotations.TestOnly
-import java.io.File
+//import com.neoterm.component.config.ConfigureComponent
+//import com.neoterm.component.config.NeoConfigureFile
+//import com.neoterm.utils.NLog
+//import org.jetbrains.annotations.TestOnly
+//import java.io.File
 
 abstract class NeoProfile : CodeGenObject, ConfigFileBasedObject {
   companion object {
@@ -32,25 +32,25 @@ abstract class NeoProfile : CodeGenObject, ConfigFileBasedObject {
     return NeoProfileGenerator(parameter)
   }
 
-  @TestOnly
-  fun testLoadConfigure(file: File): Boolean {
-    val loaderService = ComponentManager.getComponent<ConfigureComponent>()
+  //@TestOnly
+  //fun testLoadConfigure(file: File): Boolean {
+    //val loaderService = ComponentManager.getComponent<ConfigureComponent>()
 
-    val configure: NeoConfigureFile?
-    try {
-      configure = loaderService.newLoader(file).loadConfigure()
-      if (configure == null) {
-        throw RuntimeException("Parse configuration failed.")
-      }
-    } catch (e: Exception) {
-      NLog.e("Profile", "Failed to load profile: ${file.absolutePath}: ${e.localizedMessage}")
-      return false
-    }
+    //val configure: NeoConfigureFile?
+    //try {
+      //configure = loaderService.newLoader(file).loadConfigure()
+      //if (configure == null) {
+        //throw RuntimeException("Parse configuration failed.")
+      //}
+    //} catch (e: Exception) {
+      //NLog.e("Profile", "Failed to load profile: ${file.absolutePath}: ${e.localizedMessage}")
+      //return false
+    //}
 
-    val visitor = configure.getVisitor()
-    onConfigLoaded(visitor)
-    return true
-  }
+    //val visitor = configure.getVisitor()
+    //onConfigLoaded(visitor)
+    //return true
+  //}
 
   protected fun ConfigVisitor.getProfileString(key: String, fallback: String): String {
     return getProfileString(key) ?: fallback
