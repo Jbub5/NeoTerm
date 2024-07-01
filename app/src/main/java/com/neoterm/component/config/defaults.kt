@@ -37,7 +37,6 @@ object NeoTermPath {
   val EKS_DEFAULT_FILE = "$EKS_PATH/default.nl"
   val FONT_PATH = "$CUSTOM_PATH/font"
   val COLORS_PATH = "$CUSTOM_PATH/color"
-  val USER_SCRIPT_PATH = "$CUSTOM_PATH/script"
 
   var SOURCE_FILE = "$USR_PATH/etc/apt/sources.list"
   var PACKAGE_LIST_DIR = "$USR_PATH/var/lib/apt/lists"
