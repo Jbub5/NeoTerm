@@ -26,8 +26,6 @@ class ShellParameter {
   var initialCommand: String? = null
   var env: Array<Pair<String, String>>? = null
   var sessionCallback: TerminalSession.SessionChangedCallback? = null
-  var systemShell: Boolean = false
-  var shellProfile: ShellProfile? = null
 
   fun executablePath(executablePath: String?): ShellParameter {
     this.executablePath = executablePath
@@ -51,16 +49,6 @@ class ShellParameter {
 
   fun callback(callback: TerminalSession.SessionChangedCallback?): ShellParameter {
     this.sessionCallback = callback
-    return this
-  }
-
-  fun systemShell(systemShell: Boolean): ShellParameter {
-    this.systemShell = systemShell
-    return this
-  }
-
-  fun profile(shellProfile: ShellProfile): ShellParameter {
-    this.shellProfile = shellProfile
     return this
   }
 
@@ -198,16 +186,8 @@ open class ShellTermSession private constructor(
     private var args: MutableList<String>? = null
     private var env: MutableList<Pair<String, String>>? = null
     private var changeCallback: SessionChangedCallback? = null
-    private var systemShell = false
     private var initialCommand: String? = null
     private var shellProfile = ShellProfile()
-
-    fun profile(shellProfile: ShellProfile?): Builder {
-      if (shellProfile != null) {
-        this.shellProfile = shellProfile
-      }
-      return this
-    }
 
     fun initialCommand(command: String?): Builder {
       this.initialCommand = command
@@ -281,18 +261,13 @@ open class ShellTermSession private constructor(
       return this
     }
 
-    fun systemShell(systemShell: Boolean): Builder {
-      this.systemShell = systemShell
-      return this
-    }
-
     fun create(): ShellTermSession {
       val cwd = this.cwd ?: NeoTermPath.HOME_PATH
 
       val shell = this.executablePath ?: "${App.get().applicationInfo.nativeLibraryDir}/libstartup.so"
 
       val args = this.args ?: mutableListOf(shell)
-      val env = transformEnvironment(this.env) ?: buildEnvironment(cwd, systemShell)
+      val env = transformEnvironment(this.env) ?: buildEnvironment(cwd)
       val callback = changeCallback ?: TermSessionCallback()
       return ShellTermSession(
         shell, cwd, args.toTypedArray(), env, callback,
@@ -311,7 +286,7 @@ open class ShellTermSession private constructor(
     }
 
 
-    private fun buildEnvironment(cwd: String?, systemShell: Boolean): Array<String> {
+    private fun buildEnvironment(cwd: String?): Array<String> {
       val selectedCwd = cwd ?: NeoTermPath.HOME_PATH
       File(NeoTermPath.HOME_PATH).mkdirs()
 
@@ -337,31 +312,15 @@ open class ShellTermSession private constructor(
       //val neotermIdEnv = "__NEOTERM=1"
       //val originPathEnv = "__NEOTERM_ORIGIN_PATH=" + buildOriginPathEnv()
       //val originLdEnv = "__NEOTERM_ORIGIN_LD_LIBRARY_PATH=" + buildOriginLdLibEnv()
+      //val pathEnv = "PATH=" + System.getenv("PATH")
+      //val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
 
-      return if (systemShell) {
-        //val pathEnv = "PATH=" + System.getenv("PATH")
-        //arrayOf(
-          //neotermIdEnv, originPathEnv, originLdEnv,
-          //termEnv, homeEnv, androidRootEnv, androidDataEnv,
-          //externalStorageEnv, pathEnv, prefixEnv, colorterm
-        //)
-        //val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
-        arrayOf(
-          //neotermIdEnv, originPathEnv, originLdEnv, ldEnv,
-          termEnv, homeEnv, androidRootEnv, androidDataEnv,
-          externalStorageEnv, pathEnv, prefixEnv, colorterm,
-          langEnv, pwdEnv, tmpdirEnv,
-          dex2oatbootclasspath, androidi18nroot, bootclasspath, androidtzdatanroot, androidartroot
-        )
-
-      } else {
-        arrayOf(
-          termEnv, homeEnv, androidRootEnv, androidDataEnv,
-          externalStorageEnv, pathEnv, prefixEnv, colorterm,
-          langEnv, pwdEnv, tmpdirEnv,
-          dex2oatbootclasspath, androidi18nroot, bootclasspath, androidtzdatanroot, androidartroot
-        )
-      }
+      return arrayOf(
+        termEnv, homeEnv, androidRootEnv, androidDataEnv,
+        externalStorageEnv, pathEnv, prefixEnv, colorterm,
+        langEnv, pwdEnv, tmpdirEnv,
+        dex2oatbootclasspath, androidi18nroot, bootclasspath, androidtzdatanroot, androidartroot
+      )
         .filter { it.isNotEmpty() }
         .toTypedArray()
     }

@@ -19,11 +19,9 @@ class SessionComponent : NeoComponent {
       .executablePath(parameter.executablePath)
       .currentWorkingDirectory(parameter.cwd)
       .callback(parameter.sessionCallback)
-      .systemShell(parameter.systemShell)
       .envArray(parameter.env)
       .argArray(parameter.arguments)
       .initialCommand(parameter.initialCommand)
-      .profile(parameter.shellProfile)
       .create()
   }
 }

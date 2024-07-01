@@ -373,7 +373,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         // app shortcuts
         addNewSession(
           null,
-          false, createRevealAnimation()
+          createRevealAnimation()
         )
       } else {
         switchToSession(lastSession)
@@ -382,7 +382,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     } else {
       toggleSwitcher(showSwitcher = true, easterEgg = false)
       // Fore system shell mode to be disabled.
-      addNewSession(null, false, createRevealAnimation())
+      addNewSession(null, createRevealAnimation())
     }
   }
 
@@ -422,7 +422,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   private fun showProfileDialog() {
     val profileComponent = ComponentManager.getComponent<ProfileComponent>()
     val profiles = profileComponent.getProfiles(ShellProfile.PROFILE_META_NAME)
-    val profilesShell = profiles.filterIsInstance<ShellProfile>()
 
     if (profiles.isEmpty()) {
       AlertDialog.Builder(this)
@@ -436,39 +435,36 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     AlertDialog.Builder(this)
       .setTitle(R.string.new_session_with_profile)
       .setItems(profiles.map { it.profileName }.toTypedArray(), { dialog, which ->
-        val selectedProfile = profilesShell[which]
-        addNewSessionWithProfile(selectedProfile)
+        addNewSessionWithProfile()
       })
       .setPositiveButton(android.R.string.no, null)
       .show()
   }
 
-  private fun addNewSession() = addNewSessionWithProfile(ShellProfile.create())
+  private fun addNewSession() = addNewSessionWithProfile()
 
-  private fun addNewSession(sessionName: String?, systemShell: Boolean, animation: Animation) =
-    addNewSessionWithProfile(sessionName, systemShell, animation, ShellProfile.create())
+  private fun addNewSession(sessionName: String?, animation: Animation) =
+    addNewSessionWithProfile(sessionName, animation)
 
-  private fun addNewSessionWithProfile(profile: ShellProfile) {
+  private fun addNewSessionWithProfile() {
     if (!tabSwitcher.isSwitcherShown) {
       toggleSwitcher(showSwitcher = true, easterEgg = false)
     }
     addNewSessionWithProfile(
-      null, getSystemShellMode(),
-      createRevealAnimation(), profile
+      null,
+      createRevealAnimation()
     )
   }
 
   private fun addNewSessionWithProfile(
-    sessionName: String?, systemShell: Boolean,
-    animation: Animation, profile: ShellProfile
+    sessionName: String?,
+    animation: Animation
   ) {
     val sessionCallback = TermSessionCallback()
     val viewClient = TermViewClient(this)
 
     val parameter = ShellParameter()
       .callback(sessionCallback)
-      .systemShell(systemShell)
-      .profile(profile)
     val session = termService!!.createTermSession(parameter)
 
     session.mSessionName = sessionName ?: generateSessionName("NeoTerm")
