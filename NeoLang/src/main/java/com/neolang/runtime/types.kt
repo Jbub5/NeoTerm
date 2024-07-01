@@ -89,10 +89,10 @@ class NeoLangValue(private val rawValue: Any) {
       return 0.0
     }
 
-    try {
-      return rawValue.toString().toDouble()
+    return try {
+      rawValue.toString().toDouble()
     } catch (e: Throwable) {
-      return 0.0
+      0.0
     }
   }
 

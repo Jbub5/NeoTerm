@@ -77,6 +77,7 @@ object SetupHelper {
         "arm64-v8a" -> return "aarch64"
         "armeabi-v7a" -> return "arm"
         "x86_64" -> return "x86_64"
+        "x86" -> return "i686"
       }
     }
     throw RuntimeException(

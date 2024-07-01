@@ -19,7 +19,7 @@ class RangedInt(private val number: Int, private val range: IntRange) {
 }
 
 fun Long.formatSizeInKB(): String {
-  val decimalFormat = DecimalFormat("####.00");
+  val decimalFormat = DecimalFormat("####.00")
   if (this < 1024) {
     return "$this KB"
   } else if (this < 1024 * 1024) {

@@ -95,12 +95,12 @@ class FullScreenHelper private constructor(
     if (usableHeightNow != usableHeightPrevious) {
       val usableHeightSansKeyboard = mChildOfContent.rootView.height
       val heightDifference = usableHeightSansKeyboard - usableHeightNow
-      if (heightDifference > usableHeightSansKeyboard / 4) {
+      currentHeightLayoutHeight = if (heightDifference > usableHeightSansKeyboard / 4) {
         // screenKeyboard probably just became visible
-        currentHeightLayoutHeight = usableHeightSansKeyboard - heightDifference
+        usableHeightSansKeyboard - heightDifference
       } else {
         // screenKeyboard probably just became hidden
-        currentHeightLayoutHeight = usableHeightSansKeyboard
+        usableHeightSansKeyboard
       }
       frameLayoutParams.height = currentHeightLayoutHeight
       mChildOfContent.requestLayout()

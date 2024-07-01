@@ -2,18 +2,12 @@ package com.neoterm.ui.term
 
 import android.content.Context
 import android.content.res.Configuration
-import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
-import de.mrapp.android.tabswitcher.Tab
-import de.mrapp.android.tabswitcher.TabSwitcher
-import de.mrapp.android.tabswitcher.TabSwitcherDecorator
 import com.neoterm.R
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
@@ -21,9 +15,12 @@ import com.neoterm.component.completion.OnAutoCompleteListener
 import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.frontend.session.terminal.*
+import com.neoterm.utils.Terminals
 import com.termux.view.TerminalView
 import com.termux.view.extrakey.ExtraKeysView
-import com.neoterm.utils.Terminals
+import de.mrapp.android.tabswitcher.Tab
+import de.mrapp.android.tabswitcher.TabSwitcher
+import de.mrapp.android.tabswitcher.TabSwitcherDecorator
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -135,9 +132,9 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
   }
 
   override fun getViewType(tab: Tab, index: Int): Int {
-    if (tab is TermTab) {
+    //if (tab is TermTab) {
       return VIEW_TYPE_TERM
-    }
+    //}
     return -1
   }
 }
