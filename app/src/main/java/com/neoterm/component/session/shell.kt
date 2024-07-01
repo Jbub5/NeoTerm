@@ -81,7 +81,6 @@ class ShellProfile : NeoProfile() {
   companion object {
     const val PROFILE_META_NAME = "profile-shell"
 
-    private const val LOGIN_SHELL = "login-shell"
     private const val INITIAL_COMMAND = "init-command"
     private const val BELL = "bell"
     private const val VIBRATE = "vibrate"
@@ -101,7 +100,6 @@ class ShellProfile : NeoProfile() {
 
   override val profileMetaName = PROFILE_META_NAME
 
-  var loginShell = DefaultValues.loginShell
   var initialCommand = DefaultValues.initialCommand
 
   var enableBell = DefaultValues.enableBell
@@ -123,7 +121,6 @@ class ShellProfile : NeoProfile() {
     profileFont = fontComp.getCurrentFontName()
     profileColorScheme = colorComp.getCurrentColorSchemeName()
 
-    loginShell = NeoPreference.getLoginShellPath()
     initialCommand = NeoPreference.getInitialCommand()
     enableBell = NeoPreference.isBellEnabled()
     enableVibrate = NeoPreference.isVibrateEnabled()
@@ -137,7 +134,6 @@ class ShellProfile : NeoProfile() {
 
   override fun onConfigLoaded(configVisitor: ConfigVisitor) {
     super.onConfigLoaded(configVisitor)
-    loginShell = configVisitor.getProfileString(LOGIN_SHELL, loginShell)
     initialCommand = configVisitor.getProfileString(INITIAL_COMMAND, initialCommand)
     enableBell = configVisitor.getProfileBoolean(BELL, enableBell)
     enableVibrate = configVisitor.getProfileBoolean(VIBRATE, enableVibrate)

@@ -3,17 +3,14 @@ package com.neoterm.component.config
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import android.system.ErrnoException
-import android.system.Os
 import android.util.TypedValue
-import io.neolang.frontend.ConfigVisitor
-import io.neolang.frontend.NeoLangParser
 import com.neoterm.App
 import com.neoterm.R
-import com.termux.terminal.TerminalSession
 import com.neoterm.component.NeoComponent
 import com.termux.app.TermuxService
-import com.neoterm.utils.NLog
+import com.termux.terminal.TerminalSession
+import io.neolang.frontend.ConfigVisitor
+import io.neolang.frontend.NeoLangParser
 import java.io.File
 import java.nio.file.Files
 
@@ -148,61 +145,8 @@ object NeoPreference {
       .singleOrNull { it.mHandle == sessionHandle }
   }
 
-  fun setLoginShellName(loginProgramName: String?): Boolean {
-    if (loginProgramName == null) {
-      return false
-    }
-
-    val loginProgramPath = findLoginProgram(loginProgramName) ?: return false
-
-    store(R.string.key_general_shell, loginProgramName)
-    symlinkLoginShell(loginProgramPath)
-    return true
-  }
-
-  fun getLoginShellName(): String {
-    return loadString(R.string.key_general_shell, DefaultValues.loginShell)
-  }
-
-  fun getLoginShellPath(): String {
-    val loginProgramName = getLoginShellName()
-
-    // Some programs like ssh needs it
-    val shell = File(NeoTermPath.NEOTERM_LOGIN_SHELL_PATH)
-    val loginProgramPath = findLoginProgram(loginProgramName) ?: {
-      setLoginShellName(DefaultValues.loginShell)
-      "${NeoTermPath.USR_PATH}/bin/${DefaultValues.loginShell}"
-    }()
-
-    if (!shell.exists()) {
-      symlinkLoginShell(loginProgramPath)
-    }
-
-    return loginProgramPath
-  }
-
   fun validateFontSize(fontSize: Int): Int {
     return Math.max(MIN_FONT_SIZE, Math.min(fontSize, MAX_FONT_SIZE))
-  }
-
-  private fun symlinkLoginShell(loginProgramPath: String) {
-    File(NeoTermPath.CUSTOM_PATH).mkdirs()
-    try {
-      val shellSymlink = File(NeoTermPath.NEOTERM_LOGIN_SHELL_PATH)
-      if (shellSymlink.exists()) {
-        shellSymlink.delete()
-      }
-      Os.symlink(loginProgramPath, NeoTermPath.NEOTERM_LOGIN_SHELL_PATH)
-      Os.chmod(NeoTermPath.NEOTERM_LOGIN_SHELL_PATH, 448 /* Decimal of 0700 */)
-    } catch (e: ErrnoException) {
-      NLog.e("Preference", "Failed to symlink login shell: ${e.localizedMessage}")
-      e.printStackTrace()
-    }
-  }
-
-  fun findLoginProgram(loginProgramName: String): String? {
-    val file = File("${NeoTermPath.USR_PATH}/bin", loginProgramName)
-    return if (file.canExecute()) file.absolutePath else null
   }
 
   fun getFontSize(): Int {
