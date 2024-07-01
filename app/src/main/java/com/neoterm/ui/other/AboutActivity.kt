@@ -1,23 +1,48 @@
 package com.neoterm.ui.other
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import de.psdev.licensesdialog.LicensesDialog
-import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20
-import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30
-import de.psdev.licensesdialog.licenses.MITLicense
-import de.psdev.licensesdialog.model.Notice
-import de.psdev.licensesdialog.model.Notices
+import androidx.fragment.app.DialogFragment
 import com.neoterm.App
 import com.neoterm.R
 
+
+class OpenSourceLicensesDialog : DialogFragment() {
+  @SuppressLint("CommitTransaction")
+  fun showLicenses(activity: AppCompatActivity) {
+    val fragmentManager = activity.supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
+    val previousFragment = fragmentManager.findFragmentByTag("dialog_licenses")
+    if (previousFragment != null) {
+      fragmentTransaction.remove(previousFragment)
+    }
+    fragmentTransaction.addToBackStack(null)
+
+    show(fragmentManager, "dialog_licenses")
+  }
+
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    val webView = WebView(requireActivity())
+    webView.loadUrl("file:///android_asset/licenses.html")
+
+    return AlertDialog.Builder(requireActivity())
+      .setTitle(R.string.about_libraries_label)
+      .setView(webView)
+      .setPositiveButton(android.R.string.yes) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+      .create()
+  }
+}
 
 /**
  * @author kiva
@@ -36,92 +61,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     findViewById<View>(R.id.about_licenses_view).setOnClickListener {
-      val notices = Notices()
-      notices.addNotice(
-        Notice(
-          "ADBToolkitInstaller",
-          "https://github.com/Crixec/ADBToolKitsInstaller",
-          "Copyright (c) 2017 Crixec",
-          GnuGeneralPublicLicense30()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "Android-Terminal-Emulator",
-          "https://github.com/jackpal/Android-Terminal-Emulator",
-          "Copyright (c) 2011-2016 Steven Luo",
-          ApacheSoftwareLicense20()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "ChromeLikeTabSwitcher",
-          "https://github.com/michael-rapp/ChromeLikeTabSwitcher",
-          "Copyright (c) 2016-2017 Michael Rapp",
-          ApacheSoftwareLicense20()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "Color-O-Matic",
-          "https://github.com/GrenderG/Color-O-Matic",
-          "Copyright 2016-2017 GrenderG",
-          GnuGeneralPublicLicense30()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "EventBus",
-          "http://greenrobot.org",
-          "Copyright (C) 2012-2016 Markus Junginger, greenrobot (http://greenrobot.org)",
-          ApacheSoftwareLicense20()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "ModularAdapter",
-          "https://wrdlbrnft.github.io/ModularAdapter",
-          "Copyright (c) 2017 Wrdlbrnft",
-          MITLicense()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "RecyclerTabLayout",
-          "https://github.com/nshmura/RecyclerTabLayout",
-          "Copyright (C) 2017 nshmura",
-          ApacheSoftwareLicense20()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "RecyclerView-FastScroll",
-          "Copyright (c) 2016, Tim Malseed",
-          "Copyright (c) 2016, Tim Malseed",
-          ApacheSoftwareLicense20()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "SortedListAdapter",
-          "https://wrdlbrnft.github.io/SortedListAdapter/",
-          "Copyright (c) 2017 Wrdlbrnft",
-          MITLicense()
-        )
-      )
-      notices.addNotice(
-        Notice(
-          "Termux",
-          "https://termux.com",
-          "Copyright 2016-2017 Fredrik Fornwall",
-          GnuGeneralPublicLicense30()
-        )
-      )
-      LicensesDialog.Builder(this)
-        .setNotices(notices)
-        .setIncludeOwnLicense(true)
-        .build()
-        .show()
+      OpenSourceLicensesDialog().showLicenses(this)
     }
 
     findViewById<View>(R.id.about_version_view).setOnClickListener {
