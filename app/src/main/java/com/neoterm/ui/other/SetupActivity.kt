@@ -24,7 +24,7 @@ import java.io.File
  */
 class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener {
   companion object {
-    private const val REQUEST_SELECT_PARAMETER = 520;
+    private const val REQUEST_SELECT_PARAMETER = 520
   }
 
   private var setupParameter = ""
