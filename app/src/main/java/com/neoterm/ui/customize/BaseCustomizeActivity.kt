@@ -43,7 +43,6 @@ open class BaseCustomizeActivity : AppCompatActivity() {
       .executablePath("/system/bin/echo")
       .arguments(arrayOf("echo", "-e", *script))
       .callback(sessionCallback)
-      .systemShell(false)
 
     session = Terminals.createSession(this, parameter)
     terminalView.attachSession(session)

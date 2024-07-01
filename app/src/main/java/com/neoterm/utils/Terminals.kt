@@ -1,13 +1,12 @@
 package com.neoterm.utils
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.font.FontComponent
 import com.neoterm.component.session.SessionComponent
 import com.neoterm.component.session.ShellParameter
+import com.termux.terminal.TerminalSession
 import com.termux.view.TerminalView
 import com.termux.view.TerminalViewClient
 import com.termux.view.extrakey.ExtraKeysView
@@ -17,7 +16,7 @@ import com.termux.view.extrakey.ExtraKeysView
  */
 object Terminals {
   fun setupTerminalView(terminalView: TerminalView?, terminalViewClient: TerminalViewClient? = null) {
-    terminalView?.textSize = NeoPreference.getFontSize();
+    terminalView?.textSize = NeoPreference.getFontSize()
 
     val fontComponent = ComponentManager.getComponent<FontComponent>()
     fontComponent.applyFont(terminalView, null, fontComponent.getCurrentFont())

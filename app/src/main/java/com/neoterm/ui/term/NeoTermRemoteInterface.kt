@@ -6,23 +6,17 @@ import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.neoterm.App
 import com.neoterm.R
 import com.neoterm.bridge.Bridge.*
 import com.neoterm.bridge.SessionId
-import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.session.ShellParameter
-import com.neoterm.component.userscript.UserScript
-import com.neoterm.component.userscript.UserScriptComponent
 import com.neoterm.frontend.session.terminal.TermSessionCallback
-import com.termux.app.TermuxService
 import com.neoterm.utils.Terminals
 import com.neoterm.utils.getPathOfMediaUri
+import com.termux.app.TermuxService
 import java.io.File
 
 /**
@@ -69,7 +63,6 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
 
   private fun handleIntent() = when (intent.component?.className?.substringAfterLast('.')) {
     "TermHere" -> handleTermHere()
-    "UserScript" -> handleUserScript()
     else -> handleNormal()
   }
 
@@ -114,85 +107,6 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     }
   }
 
-  private fun handleUserScript() {
-    val filesToHandle = mutableListOf<String>()
-    val comp = ComponentManager.getComponent<UserScriptComponent>()
-    val userScripts = comp.userScripts
-    if (userScripts.isEmpty()) {
-      App.get().errorDialog(this, R.string.no_user_script_found, { finish() })
-      return
-    }
-
-    if (intent.hasExtra(Intent.EXTRA_STREAM)) {
-      // action send
-      val extra = intent.extras?.get(Intent.EXTRA_STREAM)
-
-      when (extra) {
-        is ArrayList<*> -> {
-          extra.takeWhile { it is Uri }
-            .mapTo(filesToHandle) {
-              val uri = it as Uri
-              File(this.getPathOfMediaUri(uri)).absolutePath
-            }
-        }
-        is Uri -> {
-          filesToHandle.add(File(this.getPathOfMediaUri(extra)).absolutePath)
-        }
-      }
-    } else if (intent.data != null) {
-      // action view
-      filesToHandle.add(File(intent.data?.path).absolutePath)
-    }
-
-    if (filesToHandle.isNotEmpty()) {
-      setupUserScriptView(filesToHandle, userScripts)
-    } else {
-      App.get().errorDialog(
-        this,
-        getString(R.string.no_files_selected, intent?.toString())
-      ) { finish() }
-    }
-  }
-
-  private fun setupUserScriptView(filesToHandle: MutableList<String>, userScripts: List<UserScript>) {
-    setContentView(R.layout.ui_user_script_list)
-    val filesList = findViewById<ListView>(R.id.user_script_file_list)
-    val filesAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, filesToHandle)
-    filesList.adapter = filesAdapter
-    filesList.setOnItemClickListener { _, _, position, _ ->
-      AlertDialog.Builder(this@NeoTermRemoteInterface)
-        .setMessage(R.string.confirm_remove_file_from_list)
-        .setPositiveButton(android.R.string.yes) { _, _ ->
-          filesToHandle.removeAt(position)
-          filesAdapter.notifyDataSetChanged()
-        }
-        .setNegativeButton(android.R.string.no, null)
-        .show()
-    }
-
-    val scriptsList = findViewById<ListView>(R.id.user_script_script_list)
-    val scriptsListItem = mutableListOf<String>()
-    userScripts.mapTo(scriptsListItem, { it.scriptFile.nameWithoutExtension })
-
-    val scriptsAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scriptsListItem)
-    scriptsList.adapter = scriptsAdapter
-
-    scriptsList.setOnItemClickListener { _, _, position, _ ->
-      val userScript = userScripts[position]
-      val userScriptPath = userScript.scriptFile.absolutePath
-      val arguments = buildUserScriptArgument(userScriptPath, filesToHandle)
-
-      openCustomExecTerm(userScriptPath, arguments, userScript.scriptFile.parent)
-      finish()
-    }
-  }
-
-  private fun buildUserScriptArgument(userScriptPath: String, files: List<String>): Array<String> {
-    val arguments = mutableListOf(userScriptPath)
-    arguments.addAll(files)
-    return arguments.toTypedArray()
-  }
-
   private fun openTerm(
     parameter: ShellParameter,
     foreground: Boolean = true
@@ -223,7 +137,6 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     val parameter = ShellParameter()
       .initialCommand(initialCommand)
       .callback(TermSessionCallback())
-      .systemShell(detectSystemShell())
       .session(sessionId)
     openTerm(parameter, foreground)
   }
@@ -234,11 +147,6 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
       .arguments(arguments)
       .currentWorkingDirectory(cwd)
       .callback(TermSessionCallback())
-      .systemShell(detectSystemShell())
     openTerm(parameter)
-  }
-
-  private fun detectSystemShell(): Boolean {
-    return false
   }
 }
