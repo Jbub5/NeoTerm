@@ -52,7 +52,7 @@ object ComponentManager {
 
   inline fun <reified T : NeoComponent> getComponent(): T {
     val componentInterface = T::class.java
-    return getComponent(componentInterface);
+    return getComponent(componentInterface)
   }
 
   private fun createServiceInstance(componentInterface: Class<out NeoComponent>): NeoComponent {
