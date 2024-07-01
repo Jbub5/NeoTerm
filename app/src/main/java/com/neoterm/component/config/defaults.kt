@@ -19,7 +19,6 @@ object DefaultValues {
   const val enableSpecialVolumeKeys = false
   const val enableWordBasedIme = false
 
-  const val loginShell = "bash"
   const val initialCommand = ""
   const val defaultFont = "SourceCodePro"
 }
@@ -34,13 +33,10 @@ object NeoTermPath {
   val LIB_PATH = "$USR_PATH/lib"
 
   val CUSTOM_PATH = "$HOME_PATH/.termux"
-  val NEOTERM_LOGIN_SHELL_PATH = "$CUSTOM_PATH/shell"
   val EKS_PATH = "$CUSTOM_PATH/eks"
   val EKS_DEFAULT_FILE = "$EKS_PATH/default.nl"
   val FONT_PATH = "$CUSTOM_PATH/font"
   val COLORS_PATH = "$CUSTOM_PATH/color"
-  val USER_SCRIPT_PATH = "$CUSTOM_PATH/script"
-  val PROFILE_PATH = "$CUSTOM_PATH/profile"
 
   var SOURCE_FILE = "$USR_PATH/etc/apt/sources.list"
   var PACKAGE_LIST_DIR = "$USR_PATH/var/lib/apt/lists"
