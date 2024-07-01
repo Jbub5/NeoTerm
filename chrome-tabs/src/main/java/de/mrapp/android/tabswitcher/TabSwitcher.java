@@ -205,14 +205,8 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
    *                         layout may not be null
    */
   private void initializeLayout(@NonNull final Layout layout, final boolean inflatedTabsOnly) {
-    if (layout == Layout.TABLET) {
-      // TODO: Use tablet layout once implemented
-      PhoneArithmetics arithmetics = new PhoneArithmetics(TabSwitcher.this);
-      this.layout = new PhoneTabSwitcherLayout(TabSwitcher.this, model, arithmetics);
-    } else {
-      PhoneArithmetics arithmetics = new PhoneArithmetics(TabSwitcher.this);
-      this.layout = new PhoneTabSwitcherLayout(TabSwitcher.this, model, arithmetics);
-    }
+    PhoneArithmetics arithmetics = new PhoneArithmetics(TabSwitcher.this);
+    this.layout = new PhoneTabSwitcherLayout(TabSwitcher.this, model, arithmetics);
 
     this.layout.setCallback(createLayoutCallback());
     this.model.addListener(this.layout);
@@ -428,15 +422,8 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
       final Runnable action = pendingActions.poll();
 
       if (action != null) {
-        new Runnable() {
-
-          @Override
-          public void run() {
-            action.run();
-            executePendingAction();
-          }
-
-        }.run();
+        action.run();
+        executePendingAction();
       }
     }
   }
@@ -594,14 +581,7 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
    */
   @NonNull
   private AbstractTabSwitcherLayout.Callback createLayoutCallback() {
-    return new AbstractTabSwitcherLayout.Callback() {
-
-      @Override
-      public void onAnimationsEnded() {
-        executePendingAction();
-      }
-
-    };
+    return () -> executePendingAction();
   }
 
   /**
@@ -614,15 +594,10 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
    */
   @NonNull
   private OnGlobalLayoutListener createGlobalLayoutListener(final boolean inflateTabsOnly) {
-    return new OnGlobalLayoutListener() {
-
-      @Override
-      public void onGlobalLayout() {
-        ensureNotNull(getDecorator(), "No decorator has been set",
-          IllegalStateException.class);
-        initializeLayout(getLayout(), inflateTabsOnly);
-      }
-
+    return () -> {
+      ensureNotNull(getDecorator(), "No decorator has been set",
+        IllegalStateException.class);
+      initializeLayout(getLayout(), inflateTabsOnly);
     };
   }
 
@@ -883,173 +858,75 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
 
   @Override
   public final void addTab(@NonNull final Tab tab) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addTab(tab);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addTab(tab));
   }
 
   @Override
   public final void addTab(@NonNull final Tab tab, final int index) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addTab(tab, index);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addTab(tab, index));
   }
 
   @Override
   public final void addTab(@NonNull final Tab tab, final int index,
                            @NonNull final Animation animation) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addTab(tab, index, animation);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addTab(tab, index, animation));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Collection<? extends Tab> tabs) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Collection<? extends Tab> tabs, final int index) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs, index);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs, index));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Collection<? extends Tab> tabs, final int index,
                                @NonNull final Animation animation) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs, index, animation);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs, index, animation));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Tab[] tabs) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Tab[] tabs, final int index) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs, index);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs, index));
   }
 
   @Override
   public final void addAllTabs(@NonNull final Tab[] tabs, final int index,
                                @NonNull final Animation animation) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.addAllTabs(tabs, index, animation);
-      }
-
-    });
+    enqueuePendingAction(() -> model.addAllTabs(tabs, index, animation));
   }
 
   @Override
   public final void removeTab(@NonNull final Tab tab) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.removeTab(tab);
-      }
-
-    });
+    enqueuePendingAction(() -> model.removeTab(tab));
   }
 
   @Override
   public final void removeTab(@NonNull final Tab tab, @NonNull final Animation animation) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.removeTab(tab, animation);
-      }
-
-    });
+    enqueuePendingAction(() -> model.removeTab(tab, animation));
   }
 
   @Override
   public final void clear() {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.clear();
-      }
-
-    });
+    enqueuePendingAction(() -> model.clear());
   }
 
   @Override
   public final void clear(@NonNull final Animation animationType) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.clear(animationType);
-      }
-
-    });
+    enqueuePendingAction(() -> model.clear(animationType));
   }
 
   @Override
   public final void selectTab(@NonNull final Tab tab) {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.selectTab(tab);
-      }
-
-    });
+    enqueuePendingAction(() -> model.selectTab(tab));
   }
 
   @Nullable
@@ -1096,38 +973,17 @@ public class TabSwitcher extends FrameLayout implements TabSwitcherLayout, Model
 
   @Override
   public final void showSwitcher() {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.showSwitcher();
-      }
-
-    });
+    enqueuePendingAction(() -> model.showSwitcher());
   }
 
   @Override
   public final void hideSwitcher() {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.hideSwitcher();
-      }
-
-    });
+    enqueuePendingAction(() -> model.hideSwitcher());
   }
 
   @Override
   public final void toggleSwitcherVisibility() {
-    enqueuePendingAction(new Runnable() {
-
-      @Override
-      public void run() {
-        model.toggleSwitcherVisibility();
-      }
-
-    });
+    enqueuePendingAction(() -> model.toggleSwitcherVisibility());
   }
 
   @Override

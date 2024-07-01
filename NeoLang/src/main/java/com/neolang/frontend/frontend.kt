@@ -150,12 +150,12 @@ class NeoLangLexer {
       }
 
       // Hex
-      if (currentChar == 'x' || currentChar == 'X') {
-        numberValue = getNextHexNumber(numberValue)
+      numberValue = if (currentChar == 'x' || currentChar == 'X') {
+        getNextHexNumber(numberValue)
       } else if (currentChar == 'b' || currentChar == 'B') {
-        numberValue = getNextBinaryNumber(numberValue)
+        getNextBinaryNumber(numberValue)
       } else {
-        numberValue = getNextOctalNumber(numberValue)
+        getNextOctalNumber(numberValue)
       }
     }
 
