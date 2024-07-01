@@ -140,7 +140,7 @@
   <string name="service_connection_failed">Failed to connect to service</string>
   <string name="about_version_label">Version</string>
   <string name="about_developers_label">Developers &amp; Contributors</string>
-  <string name="about_libraries_label">Libraries</string>
+  <string name="about_libraries_label">Licenses</string>
   <string name="about_source_label">Source Code</string>
   <string name="about_reset_label">Reset App</string>
   <string name="about_reset_label_desc">Clear all files except user home directory</string>
