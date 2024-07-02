@@ -1,7 +1,7 @@
 package com.neoterm.component.pm
 
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.config.NeoTermPath
 import com.neoterm.framework.NeoTermDatabase
@@ -78,7 +78,7 @@ class SourceManager internal constructor() {
 
   init {
     if (database.findAll<Source>(Source::class.java).isEmpty()) {
-      App.get().resources.getStringArray(R.array.pref_package_source_values)
+      TermuxApplication.get().resources.getStringArray(R.array.pref_package_source_values)
         .forEach {
           database.saveBean(Source(it, "stable main", true))
         }

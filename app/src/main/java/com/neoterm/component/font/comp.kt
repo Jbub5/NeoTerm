@@ -2,8 +2,8 @@ package com.neoterm.component.font
 
 import android.content.Context
 import android.graphics.Typeface
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.NeoComponent
 import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
@@ -106,7 +106,7 @@ class FontComponent : NeoComponent {
     File(NeoTermPath.FONT_PATH).mkdirs()
     fonts = mutableMapOf()
 
-    val context = App.get()
+    val context = TermuxApplication.get()
     val defaultFont = DefaultValues.defaultFont
     val defaultFontFile = fontFile(defaultFont)
 

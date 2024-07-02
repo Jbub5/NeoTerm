@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.TypedValue
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.NeoComponent
 import com.termux.app.TermuxService
 import com.termux.terminal.TerminalSession
@@ -93,7 +93,7 @@ object NeoPreference {
   }
 
   fun store(key: Int, value: Any) {
-    store(App.get().getString(key), value)
+    store(TermuxApplication.get().getString(key), value)
   }
 
   fun store(key: String, value: Any) {
@@ -109,11 +109,11 @@ object NeoPreference {
   //}
 
   fun loadString(key: Int, defaultValue: String?): String {
-    return loadString(App.get().getString(key), defaultValue)
+    return loadString(TermuxApplication.get().getString(key), defaultValue)
   }
 
   fun loadBoolean(key: Int, defaultValue: Boolean): Boolean {
-    return loadBoolean(App.get().getString(key), defaultValue)
+    return loadBoolean(TermuxApplication.get().getString(key), defaultValue)
   }
 
   fun loadInt(key: String?, defaultValue: Int): Int {

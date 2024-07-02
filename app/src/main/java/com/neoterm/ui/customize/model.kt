@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.termux.terminal.TerminalColors
 import com.neoterm.component.colorscheme.NeoColorScheme
 
@@ -29,7 +29,7 @@ class ColorItem(var colorType: Int, var colorValue: String) : SortedListAdapter.
     return isSameModelAs(t)
   }
 
-  var colorName = App.get().resources
+  var colorName = TermuxApplication.get().resources
     .getStringArray(R.array.color_item_names)[colorType - NeoColorScheme.COLOR_TYPE_BEGIN]
 }
 

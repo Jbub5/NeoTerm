@@ -7,8 +7,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
 import androidx.appcompat.app.AppCompatActivity
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxActivity
+import com.neoterm.app.TermuxApplication
 import com.neoterm.bridge.Bridge.*
 import com.neoterm.bridge.SessionId
 import com.neoterm.component.config.NeoPreference
@@ -30,7 +31,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     val serviceIntent = Intent(this, TermuxService::class.java)
     startService(serviceIntent)
     if (!bindService(serviceIntent, this, 0)) {
-      App.get().errorDialog(this, R.string.service_connection_failed, { finish() })
+      TermuxApplication.get().errorDialog(this, R.string.service_connection_failed, { finish() })
     }
   }
 
@@ -70,7 +71,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     when (intent.action) {
       ACTION_EXECUTE -> {
         if (!intent.hasExtra(EXTRA_COMMAND)) {
-          App.get().errorDialog(this, R.string.no_command_extra)
+          TermuxApplication.get().errorDialog(this, R.string.no_command_extra)
           { finish() }
           return
         }
@@ -98,7 +99,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
       }
       finish()
     } else {
-      App.get().errorDialog(
+      TermuxApplication.get().errorDialog(
         this,
         getString(R.string.unsupported_term_here, intent?.toString())
       ) {
@@ -119,10 +120,10 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
 
     if (foreground) {
       // Set current session to our new one
-      // In order to switch to it when entering NeoTermActivity
+      // In order to switch to it when entering TermuxActivity
       NeoPreference.storeCurrentSession(session)
 
-      val intent = Intent(this, NeoTermActivity::class.java)
+      val intent = Intent(this, TermuxActivity::class.java)
       intent.addCategory(Intent.CATEGORY_DEFAULT)
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       startActivity(intent)

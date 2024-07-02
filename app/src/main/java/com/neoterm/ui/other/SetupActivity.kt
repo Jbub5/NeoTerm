@@ -9,8 +9,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.config.NeoTermPath
 import com.neoterm.component.pm.SourceHelper
 import com.neoterm.setup.*
@@ -221,7 +221,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
           finish()
         }
         .setNeutralButton(R.string.show_help) { _, _ ->
-          App.get().openHelpLink()
+          TermuxApplication.get().openHelpLink()
         }
         .setPositiveButton(android.R.string.yes, null)
         .show()

@@ -53,7 +53,7 @@ class NetworkConnection(private val sourceUrl: String) : SourceConnection {
   private fun openHttpConnection(): HttpURLConnection {
     val arch = SetupHelper.determineArchName()
 
-    return URL("$sourceUrl/boot/$arch.zip").openConnection() as HttpURLConnection
+    return URL("$sourceUrl/bootstrap-$arch.zip").openConnection() as HttpURLConnection
   }
 }
 

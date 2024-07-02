@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.neoterm.App;
+import com.neoterm.app.TermuxApplication;
 import com.neoterm.framework.database.*;
 import com.neoterm.framework.database.bean.TableInfo;
 import com.neoterm.framework.reflection.Reflect;
@@ -55,7 +55,7 @@ public class NeoTermDatabase {
       this.db = createDataBaseFileOnSDCard(saveDir,
         config.getDatabaseName());
     } else {
-      this.db = new SQLiteDataBaseHelper(App.Companion.get()
+      this.db = new SQLiteDataBaseHelper(TermuxApplication.Companion.get()
         .getApplicationContext()
         .getApplicationContext(), config)
         .getWritableDatabase();

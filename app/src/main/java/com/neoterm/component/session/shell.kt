@@ -1,8 +1,8 @@
 package com.neoterm.component.session
 
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.termux.terminal.TerminalSession
 import com.neoterm.bridge.SessionId
 import com.neoterm.component.ComponentManager
@@ -147,7 +147,7 @@ open class ShellTermSession private constructor(
   val shellProfile: ShellProfile
 ) : TerminalSession(shellPath, cwd, args, env, changeCallback) {
 
-  var exitPrompt = App.get().getString(R.string.process_exit_prompt)
+  var exitPrompt = TermuxApplication.get().getString(R.string.process_exit_prompt)
 
   override fun initializeEmulator(columns: Int, rows: Int) {
     super.initializeEmulator(columns, rows)
@@ -157,7 +157,7 @@ open class ShellTermSession private constructor(
 
   override fun getExitDescription(exitCode: Int): String {
     val builder = StringBuilder("\r\n[")
-    val context = App.get()
+    val context = TermuxApplication.get()
     builder.append(context.getString(R.string.process_exit_info))
     if (exitCode > 0) {
       // Non-zero process exit.
@@ -264,7 +264,7 @@ open class ShellTermSession private constructor(
     fun create(): ShellTermSession {
       val cwd = this.cwd ?: NeoTermPath.HOME_PATH
 
-      val shell = this.executablePath ?: "${App.get().applicationInfo.nativeLibraryDir}/libstartup.so"
+      val shell = this.executablePath ?: "${TermuxApplication.get().applicationInfo.nativeLibraryDir}/libstartup.so"
 
       val args = this.args ?: mutableListOf(shell)
       val env = transformEnvironment(this.env) ?: buildEnvironment(cwd)
