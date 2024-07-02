@@ -87,9 +87,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     fullScreenHelper.setKeyBoardListener(object : FullScreenHelper.KeyBoardListener {
       override fun onKeyboardChange(isShow: Boolean, keyboardHeight: Int) {
         if (tabSwitcher.selectedTab is TermTab) {
-          val tab = tabSwitcher.selectedTab as TermTab
           // isShow -> toolbarHide
-          toggleToolbar(tab.toolbar, !isShow)
+          toggleToolbar((tabSwitcher.selectedTab as? TermTab)?.toolbar, !isShow)
         }
       }
     })
@@ -133,18 +132,17 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_main, menu)
 
-    TabSwitcher.setupWithMenu(tabSwitcher, toolbar.menu, {
+    TabSwitcher.setupWithMenu(tabSwitcher, toolbar.menu) {
       if (!tabSwitcher.isSwitcherShown) {
         val imm = this@TermuxActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         if (imm.isActive && tabSwitcher.selectedTab is TermTab) {
-          val tab = tabSwitcher.selectedTab as TermTab
-          tab.requireHideIme()
+          (tabSwitcher.selectedTab as? TermTab)?.requireHideIme()
         }
         toggleSwitcher(showSwitcher = true)
       } else {
         toggleSwitcher(showSwitcher = false)
       }
-    })
+    }
     return true
   }
 
@@ -283,9 +281,9 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
           || grantResults[0] != PackageManager.PERMISSION_GRANTED
         ) {
           AlertDialog.Builder(this).setMessage(R.string.permission_denied)
-            .setPositiveButton(android.R.string.ok, { _: DialogInterface, _: Int ->
+            .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
               finish()
-            })
+            }
             .show()
         }
         return
@@ -298,10 +296,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       setFullScreenMode(NeoPreference.isFullScreenEnabled())
     } else if (key == getString(R.string.key_customization_color_scheme)) {
       if (tabSwitcher.count > 0) {
-        val tab = tabSwitcher.selectedTab
-        if (tab is TermTab) {
-          tab.updateColorScheme()
-        }
+          (tabSwitcher.selectedTab as? TermTab)?.updateColorScheme()
       }
     }
   }
@@ -368,7 +363,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       if (intent?.action == Intent.ACTION_RUN) {
         // app shortcuts
         addNewSession(
-          null,
           createRevealAnimation()
         )
       } else {
@@ -378,7 +372,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     } else {
       toggleSwitcher(showSwitcher = true)
       // Fore system shell mode to be disabled.
-      addNewSession(null, createRevealAnimation())
+      addNewSession(createRevealAnimation())
     }
   }
 
@@ -407,9 +401,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   private fun setFullScreenMode(fullScreen: Boolean) {
     fullScreenHelper.fullScreen = fullScreen
     if (tabSwitcher.selectedTab is TermTab) {
-      val tab = tabSwitcher.selectedTab as TermTab
-      tab.requireHideIme()
-      tab.onFullScreenModeChanged(fullScreen)
+      (tabSwitcher.selectedTab as? TermTab)?.requireHideIme()
+      (tabSwitcher.selectedTab as? TermTab)?.onFullScreenModeChanged(fullScreen)
     }
     NeoPreference.store(R.string.key_ui_fullscreen, fullScreen)
     this@TermuxActivity.recreate()
@@ -417,8 +410,10 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
 
   private fun addNewSession() = addNewSessionWithProfile()
 
-  private fun addNewSession(sessionName: String?, animation: Animation) =
-    addNewSessionWithProfile(sessionName, animation)
+  //private fun addNewSession(sessionName: String?, animation: Animation) =
+    //addNewSessionWithProfile(sessionName, animation)
+  private fun addNewSession(animation: Animation) =
+    addNewSessionWithProfile(null, animation)
 
   private fun addNewSessionWithProfile() {
     if (!tabSwitcher.isSwitcherShown) {
@@ -501,8 +496,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     }
 
     for (i in 0 until tabSwitcher.count) {
-      val tab = tabSwitcher.getTab(i)
-      if (tab is TermTab && tab.termData.termSession == session) {
+      val tab = tabSwitcher.getTab(i) as TermTab
+      if (tab.termData.termSession == session) {
         switchToSession(tab)
         break
       }
@@ -572,7 +567,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
 
       (0 until size)
         .map { toolbar.getChildAt(it) }
-        .filterIsInstance(ImageButton::class.java)
+        .filterIsInstance<ImageButton>()
         .forEach { return it }
     }
 
@@ -693,10 +688,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     Handler().postDelayed({
 
       if (tabSwitcher.count > 0) {
-        val tab = tabSwitcher.selectedTab
-        if (tab is TermTab) {
-          tab.updateColorScheme()
-        }
+        (tabSwitcher.selectedTab as? TermTab)?.updateColorScheme()
       }
 
     }, 500)
