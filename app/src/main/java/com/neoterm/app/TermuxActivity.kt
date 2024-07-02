@@ -298,10 +298,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       setFullScreenMode(NeoPreference.isFullScreenEnabled())
     } else if (key == getString(R.string.key_customization_color_scheme)) {
       if (tabSwitcher.count > 0) {
-        val tab = tabSwitcher.selectedTab
-        if (tab is TermTab) {
-          tab.updateColorScheme()
-        }
+          (tabSwitcher.selectedTab as? TermTab)?.updateColorScheme()
       }
     }
   }
@@ -501,8 +498,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     }
 
     for (i in 0 until tabSwitcher.count) {
-      val tab = tabSwitcher.getTab(i)
-      if (tab is TermTab && tab.termData.termSession == session) {
+      val tab = tabSwitcher.getTab(i) as TermTab
+      if (tab.termData.termSession == session) {
         switchToSession(tab)
         break
       }
@@ -693,10 +690,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     Handler().postDelayed({
 
       if (tabSwitcher.count > 0) {
-        val tab = tabSwitcher.selectedTab
-        if (tab is TermTab) {
-          tab.updateColorScheme()
-        }
+        (tabSwitcher.selectedTab as? TermTab)?.updateColorScheme()
       }
 
     }, 500)
