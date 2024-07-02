@@ -20,7 +20,7 @@ object DefaultValues {
   const val enableWordBasedIme = false
 
   const val initialCommand = ""
-  const val defaultFont = "Monospace"
+  const val defaultFont = "SourceCodePro"
 }
 
 object NeoTermPath {
