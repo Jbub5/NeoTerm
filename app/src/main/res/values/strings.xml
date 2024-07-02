@@ -104,8 +104,6 @@
   <string name="exit">Exit</string>
   <string name="term_here">Term Here</string>
   <string name="unsupported_term_here">Unsupported term here\n\n(raw Intent: %s)</string>
-  <string name="command_shortcut_display_title">Title</string>
-  <string name="command_shortcut_command">Command</string>
   <string name="no_command_extra">No command provided, did you put extras?</string>
   <string name="menu_upgrade">Upgrade</string>
   <string name="apt_update_ok">Package list successfully updated</string>
