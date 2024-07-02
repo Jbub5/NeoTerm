@@ -38,7 +38,7 @@
     tools:ignore="ProtectedPermissions"/>
 
   <application
-    android:name=".App"
+    android:name=".app.TermuxApplication"
     android:allowBackup="true"
     android:banner="@drawable/banner"
     android:fullBackupContent="@xml/backup_config"
@@ -53,10 +53,11 @@
     tools:replace="android:supportsRtl"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".ui.term.NeoTermActivity"
-      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:name=".app.TermuxActivity"
       android:exported="true"
+      android:configChanges="orientation|screenSize|smallestScreenSize|density|screenLayout|keyboard|keyboardHidden|navigation"
       android:launchMode="singleTask"
+      android:resizeableActivity="true"
       android:theme="@style/AppTheme.NoActionBar.Dark"
       android:windowSoftInputMode="adjustResize|stateHidden">
       <intent-filter>
@@ -66,6 +67,7 @@
       </intent-filter>
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
       </intent-filter>
 
@@ -75,9 +77,9 @@
     </activity>
 
     <activity-alias
-      android:name=".NeoLotMainActivity"
+      android:name=".HomeActivity"
       android:exported="true"
-      android:targetActivity="com.neoterm.ui.term.NeoTermActivity">
+      android:targetActivity=".app.TermuxActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -111,43 +113,6 @@
       </intent-filter>
     </activity-alias>
 
-    <activity-alias
-      android:name=".ui.term.UserScript"
-      android:exported="true"
-      android:label="@string/user_script"
-      android:targetActivity=".ui.term.NeoTermRemoteInterface">
-      <intent-filter>
-        <action android:name="android.intent.action.SEND"/>
-        <action android:name="android.intent.action.SEND_MULTIPLE"/>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <data android:mimeType="*/*"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-      </intent-filter>
-      <intent-filter>
-        <data android:scheme="file"/>
-
-        <action android:name="android.intent.action.VIEW"/>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <data android:mimeType="*/*"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-      </intent-filter>
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW"/>
-
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-
-        <data android:scheme="http"/>
-        <data android:scheme="https"/>
-        <data android:scheme="ftp"/>
-        <data android:mimeType="application/*"/>
-        <data android:mimeType="audio/*"/>
-        <data android:mimeType="video/*"/>
-      </intent-filter>
-    </activity-alias>
-
     <activity
       android:name=".ui.other.AboutActivity"
       android:exported="false"
@@ -163,11 +128,6 @@
       android:configChanges="keyboardHidden|orientation|screenSize"
       android:exported="true"
       android:theme="@style/AppTheme.NoActionBar"/>
-    <activity
-      android:name=".ui.other.BonusActivity"
-      android:configChanges="orientation|keyboardHidden"
-      android:exported="false"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
     <activity
       android:name=".ui.pm.PackageManagerActivity"
       android:exported="false"

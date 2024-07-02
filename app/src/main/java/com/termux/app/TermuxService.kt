@@ -15,7 +15,7 @@ import com.neoterm.R
 import com.termux.terminal.EmulatorDebug
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.session.ShellParameter
-import com.neoterm.ui.term.NeoTermActivity
+import com.neoterm.app.TermuxActivity
 import com.neoterm.utils.NLog
 import com.neoterm.utils.Terminals
 
@@ -111,7 +111,7 @@ class TermuxService  : Service() {
   }
 
   private fun createNotification(): Notification {
-    val notifyIntent = Intent(this, NeoTermActivity::class.java)
+    val notifyIntent = Intent(this, TermuxActivity::class.java)
     notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     val pendingIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0)
 

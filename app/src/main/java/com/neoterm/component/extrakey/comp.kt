@@ -1,8 +1,8 @@
 package com.neoterm.component.extrakey
 
 import android.content.Context
+import com.neoterm.app.TermuxApplication
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.App
 import com.neoterm.component.ConfigFileBasedComponent
 import com.neoterm.component.config.NeoTermPath
 import com.termux.view.extrakey.ExtraKeysView
@@ -19,7 +19,7 @@ class ExtraKeyComponent : ConfigFileBasedComponent<NeoExtraKey>(NeoTermPath.EKS_
   override fun onCheckComponentFiles() {
     val defaultFile = File(NeoTermPath.EKS_DEFAULT_FILE)
     if (!defaultFile.exists()) {
-      extractDefaultConfig(App.get())
+      extractDefaultConfig(TermuxApplication.get())
     }
     reloadExtraKeyConfig()
   }

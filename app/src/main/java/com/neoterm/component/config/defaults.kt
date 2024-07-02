@@ -20,7 +20,7 @@ object DefaultValues {
   const val enableWordBasedIme = false
 
   const val initialCommand = ""
-  const val defaultFont = "SourceCodePro"
+  const val defaultFont = "Monospace"
 }
 
 object NeoTermPath {
@@ -41,7 +41,7 @@ object NeoTermPath {
   var SOURCE_FILE = "$USR_PATH/etc/apt/sources.list"
   var PACKAGE_LIST_DIR = "$USR_PATH/var/lib/apt/lists"
 
-  private const val SOURCE = "https://raw.githubusercontent.com/NeoTerm/NeoTerm-repo/main"
+  private const val SOURCE = "https://packages-cf.termux.dev/apt/termux-main"
 
   val DEFAULT_MAIN_PACKAGE_SOURCE: String
 

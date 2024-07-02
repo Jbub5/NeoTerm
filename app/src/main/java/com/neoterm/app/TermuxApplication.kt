@@ -1,10 +1,11 @@
-package com.neoterm
+package com.neoterm.app
 
 import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AlertDialog
+import com.neoterm.R
 import com.neoterm.component.NeoInitializer
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.utils.CrashHandler
@@ -12,7 +13,7 @@ import com.neoterm.utils.CrashHandler
 /**
  * @author kiva
  */
-class App : Application() {
+class TermuxApplication : Application() {
   override fun onCreate() {
     super.onCreate()
     app = this
@@ -46,9 +47,9 @@ class App : Application() {
   }
 
   companion object {
-    private var app: App? = null
+    private var app: TermuxApplication? = null
 
-    fun get(): App {
+    fun get(): TermuxApplication {
       return app!!
     }
   }

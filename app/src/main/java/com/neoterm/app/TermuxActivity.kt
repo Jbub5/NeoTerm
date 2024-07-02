@@ -1,4 +1,4 @@
-package com.neoterm.ui.term
+package com.neoterm.app
 
 import android.Manifest
 import android.content.*
@@ -24,6 +24,10 @@ import com.neoterm.component.session.ShellParameter
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.ui.pm.PackageManagerActivity
 import com.neoterm.ui.settings.SettingActivity
+import com.neoterm.ui.term.NeoTab
+import com.neoterm.ui.term.NeoTabDecorator
+import com.neoterm.ui.term.SessionRemover
+import com.neoterm.ui.term.TermTab
 import com.neoterm.utils.FullScreenHelper
 import com.neoterm.utils.NeoPermission
 import com.neoterm.utils.RangedInt
@@ -35,7 +39,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreferences.OnSharedPreferenceChangeListener {
+class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences.OnSharedPreferenceChangeListener {
   companion object {
     const val KEY_NO_RESTORE = "no_restore"
     const val REQUEST_SETUP = 22313
@@ -131,7 +135,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
     TabSwitcher.setupWithMenu(tabSwitcher, toolbar.menu, {
       if (!tabSwitcher.isSwitcherShown) {
-        val imm = this@NeoTermActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = this@TermuxActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         if (imm.isActive && tabSwitcher.selectedTab is TermTab) {
           val tab = tabSwitcher.selectedTab as TermTab
           tab.requireHideIme()
@@ -325,8 +329,8 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     when (requestCode) {
       REQUEST_SETUP -> {
         when (resultCode) {
-          AppCompatActivity.RESULT_OK -> enterMain()
-          AppCompatActivity.RESULT_CANCELED -> {
+          RESULT_OK -> enterMain()
+          RESULT_CANCELED -> {
             setSystemShellMode(true)
             addNewSession()
           }
@@ -408,7 +412,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       tab.onFullScreenModeChanged(fullScreen)
     }
     NeoPreference.store(R.string.key_ui_fullscreen, fullScreen)
-    this@NeoTermActivity.recreate()
+    this@TermuxActivity.recreate()
   }
 
   private fun addNewSession() = addNewSessionWithProfile()
@@ -640,7 +644,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   @Subscribe(threadMode = ThreadMode.MAIN)
   fun onToggleImeEvent(toggleImeEvent: ToggleImeEvent) {
     if (!tabSwitcher.isSwitcherShown) {
-      val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
       imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
     }
   }

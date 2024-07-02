@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
 import com.neoterm.R
+import com.neoterm.app.TermuxActivity
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.ColorSchemeComponent
 import com.neoterm.component.completion.OnAutoCompleteListener
@@ -36,11 +37,10 @@ open class NeoTab(title: CharSequence) : Tab(title) {
   open fun onConfigurationChanged(newConfig: Configuration) {}
 }
 
-class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
+class NeoTabDecorator(val context: TermuxActivity) : TabSwitcherDecorator() {
   companion object {
     private var VIEW_TYPE_COUNT = 0
     private val VIEW_TYPE_TERM = VIEW_TYPE_COUNT++
-    private val VIEW_TYPE_X = VIEW_TYPE_COUNT++
   }
 
   //private fun setViewLayerType(view: View?) = view?.setLayerType(View.LAYER_TYPE_NONE, null)
@@ -60,10 +60,6 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
           colorSchemeManager.getCurrentColorScheme()
         )
         view
-      }
-
-      VIEW_TYPE_X -> {
-        inflater.inflate(R.layout.ui_xorg, parent, false)
       }
 
       else -> {
@@ -140,9 +136,9 @@ class NeoTabDecorator(val context: NeoTermActivity) : TabSwitcherDecorator() {
 }
 
 class TermTab(title: CharSequence) : NeoTab(title), TermUiPresenter {
-  companion object {
-    val PARAMETER_SHOW_EKS = "show_eks"
-  }
+  //companion object {
+    //val PARAMETER_SHOW_EKS = "show_eks"
+  //}
 
   var termData = TermSessionData()
   var toolbar: Toolbar? = null

@@ -2,8 +2,8 @@ package com.neoterm.component.colorscheme
 
 import android.content.Context
 import io.neolang.frontend.ConfigVisitor
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.ConfigFileBasedComponent
 import com.neoterm.component.codegen.CodeGenComponent
@@ -31,7 +31,7 @@ class ColorSchemeComponent : ConfigFileBasedComponent<NeoColorScheme>(NeoTermPat
   override fun onCheckComponentFiles() {
     val defaultColorFile = colorFile(DefaultColorScheme.colorName)
     if (!defaultColorFile.exists()) {
-      if (!extractDefaultColor(App.get())) {
+      if (!extractDefaultColor(TermuxApplication.get())) {
         DEFAULT_COLOR = DefaultColorScheme
         colors[DEFAULT_COLOR.colorName] = DEFAULT_COLOR
         return
