@@ -5,8 +5,8 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.neoterm.App
 import com.neoterm.R
+import com.neoterm.app.TermuxApplication
 import com.neoterm.component.config.NeoTermPath
 import java.io.File
 import java.util.*
@@ -67,7 +67,7 @@ object SetupHelper {
       .setTitle(R.string.error)
       .setMessage(message)
       .setPositiveButton(android.R.string.yes, null)
-      .setNeutralButton(R.string.show_help) { _, _ -> App.get().openHelpLink() }
+      .setNeutralButton(R.string.show_help) { _, _ -> TermuxApplication.get().openHelpLink() }
       .create()
   }
 

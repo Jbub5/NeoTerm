@@ -9,6 +9,6 @@
     <intent
       android:action="android.intent.action.RUN"
       android:targetPackage="com.neoterm"
-      android:targetClass="com.neoterm.ui.term.NeoTermActivity"/>
+      android:targetClass="com.neoterm.app.TermuxActivity"/>
   </shortcut>
 </shortcuts>

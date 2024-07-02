@@ -27,8 +27,6 @@
   <string name="setup_hint_backup">File path to backup file(*.neobackup)</string>
   <string name="setup_error_file_not_found">File not found</string>
   <string name="setup_error_invalid_url">Invalid URL</string>
-  <string name="setup_error_no_internet">No Internet connection</string>
-  <string name="setup_error_connection_failed">Failed to connect to server</string>
   <string name="setup_error_parameter_null">Setup parameter is null</string>
   <string name="setup_preparing">Preparing…</string>
   <string name="setup_confirm">Finish Setup</string>
@@ -105,17 +103,7 @@
 
   <string name="exit">Exit</string>
   <string name="term_here">Term Here</string>
-  <string name="user_script">User Script</string>
-  <string name="command_shortcut">Command Shortcut</string>
-  <string name="no_user_script_found">No user script found (Did you forget to set executable permissions?)</string>
-  <string name="no_files_selected">No files selected\n\n(raw Intent: %s)</string>
   <string name="unsupported_term_here">Unsupported term here\n\n(raw Intent: %s)</string>
-  <string name="files_to_handle">Files to Handle</string>
-  <string name="available_user_scripts">Available User Scripts</string>
-  <string name="confirm_remove_file_from_list">Remove file from list?</string>
-  <string name="confirm_remove">Remove?</string>
-  <string name="command_shortcut_display_title">Title</string>
-  <string name="command_shortcut_command">Command</string>
   <string name="no_command_extra">No command provided, did you put extras?</string>
   <string name="menu_upgrade">Upgrade</string>
   <string name="apt_update_ok">Package list successfully updated</string>
@@ -128,7 +116,6 @@
   <string name="about_reset_label">Reset App</string>
   <string name="about_reset_label_desc">Clear all files except user home directory</string>
   <string name="new_color_scheme">New Color Scheme</string>
-  <string name="faq">FAQ</string>
   <string name="new_source">New</string>
   <string name="process_exit_info">Process completed</string>
   <string name="process_exit_code">code %d</string>
@@ -151,11 +138,13 @@
   <string name="dangerous_zone">Dangerous Zone</string>
   <string name="reset_app_warning">You will have to re-setup later, confirm?</string>
 
-  <string name="default_source_url" translatable="false">https://raw.githubusercontent.com/NeoTerm/NeoTerm-repo/main
+  <string name="default_bootstrap_url" translatable="false">https://github.com/termux/termux-packages/releases/latest/download
   </string>
 
+  <string name="default_repo_url" translatable="false">https://packages-cf.termux.dev/apt/termux-main
+  </string>
   <string-array name="pref_package_source_values" translatable="false">
-    <item>@string/default_source_url</item>
+    <item>@string/default_repo_url</item>
   </string-array>
 
   <string-array name="color_item_names">
