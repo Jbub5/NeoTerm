@@ -7,19 +7,36 @@ android {
 
   defaultConfig {
     applicationId "com.neoterm"
+    namespace 'com.neoterm'
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
     versionCode 38
     versionName "2.0.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     resConfigs "en"
-      externalNativeBuild {
+
+    externalNativeBuild {
       cmake {
-        cppFlags "-std=c++11", "-Wall", "-Wextra", "-Werror", "-Os", "-fno-stack-protector", "-Wl,--gc-sections"
-        arguments "-DCMAKE_BUILD_TYPE=Release"
+        cFlags "-std=c11", "-Wall", "-Wextra", "-Werror", "-Os", "-fno-stack-protector"
         abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+        arguments "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_SHARED_LINKER_FLAGS=-flto -Xlinker --gc-sections -Xlinker --strip-all"
       }
     }
+
+    splits {
+      density {
+        enable false
+        reset()
+        include "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"
+      }
+      abi {
+        enable true
+        reset()
+        include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        universalApk true
+      }
+    }
+
     sourceSets {
       main {
         jniLibs.srcDirs = ['src/main/jniLibs']
@@ -34,39 +51,60 @@ android {
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       signingConfig signingConfigs.debug
+
+      externalNativeBuild {
+        cmake {
+          cFlags "-mtune=generic -flto -fvisibility=hidden", "-g0 -ggdb0 -fno-ident -fno-dwarf2-cfi-asm -gno-modules -gno-embed-source -gno-simple-template-names -gno-record-command-line -gno-record-gcc-switches -gno-column-info -gno-gnu-pubnames -gno-pubnames -fno-debug-types-section -fno-var-tracking -fno-stack-protector -ffunction-sections -fdata-sections"
+        }
+      }
+
     }
+
     debug {
+      debuggable true
       zipAlignEnabled true
       minifyEnabled false
       shrinkResources false
       signingConfig signingConfigs.debug
+
+      externalNativeBuild {
+        cmake {
+          cFlags "-g"
+          arguments "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_SHARED_LINKER_FLAGS=-Xlinker --gc-sections"
+        }
+      }
     }
+
   }
   externalNativeBuild {
     cmake {
       path file('src/main/jni/CMakeLists.txt')
     }
   }
+
   compileOptions {
     targetCompatibility 1.8
     sourceCompatibility 1.8
   }
+
   kotlinOptions {
     freeCompilerArgs = ["-Xallow-result-return-type"]
   }
+
   lint {
     abortOnError false
     checkReleaseBuilds false
   }
-  namespace 'com.neoterm'
+
     packagingOptions {
         jniLibs {
             useLegacyPackaging true
         }
         resources {
             excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version", "drawable-ldrtl-*dpi"]
-      }
+        }
     }
+
 }
 
 dependencies {
@@ -97,3 +135,5 @@ java {
   sourceCompatibility = JavaVersion.VERSION_17
   targetCompatibility = JavaVersion.VERSION_17
 }
+
+///c/Program\ Files/Android/Android\ Studio/jbr/bin/java.exe -jar /c/Users/User/AndroidStudioProjects/bundletool-all-1.17.0.jar build-apks --bundle=/c/Users/User/AndroidStudioProjects/NeoTerm/app/build/outputs/bundle/release/app-release.aab --output=/c/Users/User/AndroidStudioProjects/NeoTerm/app/build/outputs/bundle/release/app-release.apks --mode=universal
