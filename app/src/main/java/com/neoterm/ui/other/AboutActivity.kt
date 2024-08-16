@@ -1,48 +1,18 @@
 package com.neoterm.ui.other
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import com.neoterm.App
 import com.neoterm.R
 
 
-class OpenSourceLicensesDialog : DialogFragment() {
-  @SuppressLint("CommitTransaction")
-  fun showLicenses(activity: AppCompatActivity) {
-    val fragmentManager = activity.supportFragmentManager
-    val fragmentTransaction = fragmentManager.beginTransaction()
-    val previousFragment = fragmentManager.findFragmentByTag("dialog_licenses")
-    if (previousFragment != null) {
-      fragmentTransaction.remove(previousFragment)
-    }
-    fragmentTransaction.addToBackStack(null)
-
-    show(fragmentManager, "dialog_licenses")
-  }
-
-  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-    val webView = WebView(requireActivity())
-    webView.loadUrl("file:///android_asset/licenses.html")
-
-    return AlertDialog.Builder(requireActivity())
-      .setTitle(R.string.about_libraries_label)
-      .setView(webView)
-      .setPositiveButton(android.R.string.yes) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-      .create()
-  }
-}
 
 /**
  * @author kiva
