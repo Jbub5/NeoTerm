@@ -6,7 +6,7 @@ package com.neoterm.backend;
 final class JNI {
 
   static {
-    System.loadLibrary("neoterm");
+    System.loadLibrary("termux");
   }
 
   /**

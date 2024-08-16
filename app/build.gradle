@@ -16,7 +16,7 @@ android {
     resConfigs "en"
     externalNativeBuild {
       cmake {
-        cppFlags "-std=c++11"
+        cFlags "-std=c11"
         abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
       }
     }

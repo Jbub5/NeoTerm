@@ -114,7 +114,7 @@ static int create_subprocess(JNIEnv *env,
     }
 }
 
-extern "C" JNIEXPORT jint JNICALL Java_com_neoterm_backend_JNI_createSubprocess(
+extern "C" JNIEXPORT jint JNICALL Java_com_termux_terminal_JNI_createSubprocess(
         JNIEnv *env,
         jclass TERMUX_UNUSED(clazz),
         jstring cmd,
@@ -184,7 +184,7 @@ extern "C" JNIEXPORT jint JNICALL Java_com_neoterm_backend_JNI_createSubprocess(
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_neoterm_backend_JNI_setPtyWindowSize(JNIEnv *TERMUX_UNUSED(env),
+Java_com_termux_terminal_JNI_setPtyWindowSize(JNIEnv *TERMUX_UNUSED(env),
                                               jclass TERMUX_UNUSED(clazz),
                                               jint fd, jint rows,
                                               jint cols) {
@@ -193,7 +193,7 @@ Java_com_neoterm_backend_JNI_setPtyWindowSize(JNIEnv *TERMUX_UNUSED(env),
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_neoterm_backend_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
+Java_com_termux_terminal_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
                                             jint fd) {
     struct termios tios;
     tcgetattr(fd, &tios);
@@ -204,7 +204,7 @@ Java_com_neoterm_backend_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env), jclass T
 }
 
 extern "C" JNIEXPORT int JNICALL
-Java_com_neoterm_backend_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
+Java_com_termux_terminal_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
                                      jint pid) {
     int status;
     waitpid(pid, &status, 0);
@@ -219,7 +219,7 @@ Java_com_neoterm_backend_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_U
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_neoterm_backend_JNI_close(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
+Java_com_termux_terminal_JNI_close(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
                                    jint fileDescriptor) {
     close(fileDescriptor);
 }
