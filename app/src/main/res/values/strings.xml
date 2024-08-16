@@ -240,4 +240,22 @@
     <item>"\\e[1;37m Bright white \\e[0m\\n"</item>
   </string-array>
 
+  <string name="third_party_message">- <a href="https://github.com/zhanghai/AndroidFastScroll">AndroidFastScroll</a> (Apache 2.0)
+    - "<a href="https://github.com/LSPosed/AndroidHiddenApiBypass">AndroidHiddenApiBypass</a>" (Apache 2.0)
+    - "<a href="https://github.com/MuntashirAkon/apk-parser">APK-parser</a>" (BSD-2-Clause)
+    - "<a href="https://github.com/MuntashirAkon/apksig-android">apksig for android</a>" (Apache 2.0)
+    - "<a href="https://github.com/bcgit/bc-java">Bouncy Castle</a>" (MIT)
+    - "<a href="https://commons.apache.org/proper/commons-compress/">Commons Compress</a>" (Apache 2.0)
+    - "<a href="https://github.com/dkanada/frost">Frost</a>" Icons (GPLv3.0)
+    - "<a href="https://github.com/RikkaApps/HiddenApiRefinePlugin">HiddenApiRefinePlugin</a>" (MIT)
+    - "<a href="https://github.com/skylot/jadx">JADX</a>" (Apache 2.0)
+    - "<a href="https://github.com/MuntashirAkon/libadb-android">LibADB</a>" (Apache 2.0/GPLv3.0)
+    - "<a href="https://github.com/topjohnwu/libsu">libsu</a>" (Apache 2.0)
+    - "<a href="https://github.com/material-components/material-components-android">Material Components</a>" (Apache 2.0)
+    - "<a href="https://github.com/google/material-design-icons">Material Design Icons</a>" (Apache 2.0)
+    - "<a href="https://github.com/JesusFreke/smali">Smali/basksmali</a>" (MIT/Apache 2.0)
+    - "<a href="https://github.com/MuntashirAkon/spake2-java">SPAKE2 for Java</a>" (GPLv3.0)
+    - "<a href="https://github.com/MuntashirAkon/sun-security-android">sun.security for Android</a>" (GPL-2.0 "Classpath Exception")
+    - "<a href="https://github.com/MuntashirAkon/unapkm-android">UnAPKM Android</a>" (Apache 2.0)</string>
+
 </resources>

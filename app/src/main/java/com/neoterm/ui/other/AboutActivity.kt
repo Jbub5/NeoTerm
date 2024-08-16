@@ -1,18 +1,38 @@
 package com.neoterm.ui.other
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.neoterm.App
 import com.neoterm.R
 
+class OpenSourceLicensesDialog {
+  fun showLicenses(context: Context) {
+    val dialog = Dialog(context)
+    dialog.setContentView(R.layout.dialog_third_party_libraries)
+    dialog.setTitle(R.string.about_libraries_label)
 
+    val textViewMessage: TextView = dialog.findViewById(R.id.textViewMessage)
+    val buttonClose: Button = dialog.findViewById(R.id.buttonClose)
+
+    textViewMessage.text = context.getString(R.string.third_party_message)
+
+    buttonClose.setOnClickListener {
+      dialog.dismiss()
+    }
+
+    dialog.show()
+  }
+}
 
 /**
  * @author kiva
