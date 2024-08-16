@@ -7,37 +7,43 @@ android {
 
   defaultConfig {
     applicationId "com.neoterm"
+    namespace 'com.neoterm'
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
     versionCode 38
     versionName "2.0.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     resConfigs "en"
-    externalNativeBuild {
-      cmake {
-        cppFlags "-std=c++11"
-        abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
-      }
-    }
     sourceSets {
       main {
         jniLibs.srcDirs = ['src/main/jniLibs']
       }
     }
+    externalNativeBuild {
+      cmake {
+        cppFlags "-std=c++11 -Wall -Wextra -Werror -Os -fno-stack-protector -Wl,--gc-sections"
+        abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+      }
+    }
   }
-  packagingOptions {
-    resources.excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version"]
-  }
+
   buildTypes {
     release {
       zipAlignEnabled true
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.debug
+    }
+
+    debug {
+      zipAlignEnabled true
+      minifyEnabled false
+      shrinkResources false
+      signingConfig signingConfigs.debug
     }
   }
-  externalNativeBuild {
-    cmake {
-      path "CMakeLists.txt"
-    }
-  }
+
   compileOptions {
     targetCompatibility 1.8
     sourceCompatibility 1.8
@@ -49,12 +55,14 @@ android {
     abortOnError false
     checkReleaseBuilds false
   }
-  namespace 'com.neoterm'
-    packagingOptions {
-      jniLibs {
-        useLegacyPackaging true
-      }
+  packagingOptions {
+    jniLibs {
+      useLegacyPackaging true
     }
+    resources {
+      excludes += ["kotlin-tooling-metadata.json", "META-INF/*.version"]
+    }
+  }
 }
 
 dependencies {
