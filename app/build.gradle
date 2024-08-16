@@ -12,6 +12,7 @@ android {
     versionCode 38
     versionName "2.0.5"
     resourceConfigurations += ['zh-rCN', 'zh-rTW']
+    resConfigs "en"
 
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
