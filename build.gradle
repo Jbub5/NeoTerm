@@ -12,9 +12,6 @@ buildscript {
 
   ext.deps = [
     "annotations"         : "androidx.annotation:annotation:1.3.0",
-    "appcompat-v7"        : "androidx.appcompat:appcompat:1.3.1",
-    "design"              : "com.android.support:design:${ext.android.ANDROID_SUPPORT_VERSION}",
-    "cardview-v7"         : "com.android.support:cardview-v7:${ext.android.ANDROID_SUPPORT_VERSION}",
     "kotlin-stdlib"       : "org.jetbrains.kotlin:kotlin-stdlib:${ext.android.KOTLIN_VERSION}",
     "kotlin-gradle-plugin": "org.jetbrains.kotlin:kotlin-gradle-plugin:${ext.android.KOTLIN_VERSION}",
     "junit"               : "junit:junit:${ext.android.JUNIT_VERSION}"

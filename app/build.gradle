@@ -23,7 +23,21 @@ android {
       cmake {
         cFlags "-std=c11 -Wall -Wextra -Werror -Os -fno-stack-protector"
         abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
-        arguments "-DCMAKE_SHARED_LINKER_FLAGS=-Xlinker --gc-sections"
+        arguments "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_SHARED_LINKER_FLAGS=-flto -Xlinker --gc-sections -Xlinker --strip-all"
+      }
+    }
+
+    splits {
+      density {
+        enable false
+        reset()
+        include "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"
+      }
+      abi {
+        enable true
+        reset()
+        include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        universalApk true
       }
     }
   }
@@ -41,27 +55,46 @@ android {
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       signingConfig signingConfigs.debug
+
+      externalNativeBuild {
+        cmake {
+          cFlags "-mtune=generic -flto -fvisibility=hidden -g0 -ggdb0 -fno-ident -fno-dwarf2-cfi-asm -gno-modules -gno-embed-source -gno-simple-template-names -gno-record-command-line -gno-record-gcc-switches -gno-column-info -gno-gnu-pubnames -gno-pubnames -fno-debug-types-section -fno-var-tracking -fno-stack-protector -ffunction-sections -fdata-sections"
+        }
+      }
+
     }
 
     debug {
+      debuggable true
       zipAlignEnabled true
       minifyEnabled false
       shrinkResources false
       signingConfig signingConfigs.debug
+
+      externalNativeBuild {
+        cmake {
+          cFlags "-g"
+          arguments "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_SHARED_LINKER_FLAGS=-Xlinker --gc-sections"
+        }
+      }
     }
+
   }
 
   compileOptions {
     targetCompatibility 1.8
     sourceCompatibility 1.8
   }
+
   kotlinOptions {
     freeCompilerArgs = ["-Xallow-result-return-type"]
   }
+
   lint {
     abortOnError false
     checkReleaseBuilds false
   }
+
   packagingOptions {
     jniLibs {
       useLegacyPackaging true
@@ -80,7 +113,7 @@ dependencies {
   implementation rootProject.ext.deps["kotlin-stdlib"]
 
   implementation 'org.greenrobot:eventbus:3.3.1'
-  implementation 'com.simplecityapps:recyclerview-fastscroll:1.0.16'
+  implementation 'com.simplecityapps:recyclerview-fastscroll:1.0.21'
   implementation 'com.github.GrenderG:Color-O-Matic:1.1.5'
 
   implementation 'androidx.annotation:annotation:1.3.0'
