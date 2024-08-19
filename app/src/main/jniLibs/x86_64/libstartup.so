@@ -1,0 +1,9 @@
+#!/system/bin/sh
+t=/data/data/com.termux/files
+[ -f $t/home/.termux/enable ]&&{
+export PREFIX=$t/usr TERMUX_IS_DEBUGGABLE_BUILD=1 TERMUX_VERSION=0.118.0 HOME=$t/home TERMUX_APK_RELEASE=GITHUB TMPDIR=$t/usr/tmp TERMUX_APP_PID=$PPID
+cd $HOME
+exec ../usr/bin/login
+}
+[ -x ./.termux/.autostart.sh ]&&exec ./.termux/.autostart.sh
+exec /system/bin/sh
