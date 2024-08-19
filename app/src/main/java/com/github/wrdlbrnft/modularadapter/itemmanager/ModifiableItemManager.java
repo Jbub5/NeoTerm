@@ -1,6 +1,6 @@
 package com.github.wrdlbrnft.modularadapter.itemmanager;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Collection;
 

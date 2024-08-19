@@ -1,6 +1,6 @@
 package com.github.wrdlbrnft.sortedlistadapter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.github.wrdlbrnft.modularadapter.itemmanager.ModifiableItemManager;
 
