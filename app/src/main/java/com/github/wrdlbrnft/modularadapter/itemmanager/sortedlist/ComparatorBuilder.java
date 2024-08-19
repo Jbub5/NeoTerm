@@ -1,7 +1,7 @@
 package com.github.wrdlbrnft.modularadapter.itemmanager.sortedlist;
 
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collections;

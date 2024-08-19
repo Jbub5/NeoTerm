@@ -2,8 +2,8 @@ package com.github.wrdlbrnft.modularadapter.itemmanager.sortedlist;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.v7.util.SortedList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.SortedList;
 
 import com.github.wrdlbrnft.modularadapter.itemmanager.ChangeSet;
 import com.github.wrdlbrnft.modularadapter.itemmanager.ItemManager;
