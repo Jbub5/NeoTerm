@@ -75,8 +75,9 @@ class AboutActivity : AppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     try {
+      val versionPrefix = getString(R.string.about_version_label)
       val version = packageManager.getPackageInfo(packageName, 0).versionName
-      (findViewById<TextView>(R.id.app_version)).text = version
+      (findViewById<TextView>(R.id.app_version)).text = "$versionPrefix $version"
     } catch (ignored: PackageManager.NameNotFoundException) {
     }
 
