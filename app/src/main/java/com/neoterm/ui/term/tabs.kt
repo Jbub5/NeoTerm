@@ -119,7 +119,7 @@ class NeoTabDecorator(val context: TermuxActivity) : TabSwitcherDecorator() {
     }
   }
 
-  private fun createAutoCompleteListener(view: TerminalView): OnAutoCompleteListener? {
+  private fun createAutoCompleteListener(view: TerminalView): OnAutoCompleteListener {
     return TermCompleteListener(view)
   }
 
@@ -189,7 +189,7 @@ class TermTab(title: CharSequence) : NeoTab(title), TermUiPresenter {
   }
 
   override fun requireUpdateTitle(title: String?) {
-    if (title != null && title.isNotEmpty()) {
+    if (!title.isNullOrEmpty()) {
       this.title = title
       EventBus.getDefault().post(TitleChangedEvent(title))
       termData.viewClient?.updateExtraKeys(title)

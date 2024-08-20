@@ -228,12 +228,7 @@ public class RecyclerTabLayout extends RecyclerView {
       animator = ValueAnimator.ofFloat(-distance, 0);
     }
     animator.setDuration(DEFAULT_SCROLL_DURATION);
-    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      @Override
-      public void onAnimationUpdate(ValueAnimator animation) {
-        scrollToTab(position, (float) animation.getAnimatedValue(), true);
-      }
-    });
+    animator.addUpdateListener(animation -> scrollToTab(position, (float) animation.getAnimatedValue(), true));
     animator.start();
   }
 
@@ -591,13 +586,10 @@ public class RecyclerTabLayout extends RecyclerView {
       public ViewHolder(View itemView) {
         super(itemView);
         title = (TextView) itemView;
-        itemView.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            int pos = getAdapterPosition();
-            if (pos != NO_POSITION) {
-              getViewPager().setCurrentItem(pos, true);
-            }
+        itemView.setOnClickListener(v -> {
+          int pos = getAdapterPosition();
+          if (pos != NO_POSITION) {
+            getViewPager().setCurrentItem(pos, true);
           }
         });
       }
