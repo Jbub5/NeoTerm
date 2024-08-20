@@ -146,11 +146,11 @@ public class SortedListItemManager<T extends SortedListItemManager.ViewModel> im
             return this;
         }
 
-        @Override
+        /* @Override
         public Transaction<T> removeAll() {
             mActions.add(list -> mSortedList.clear());
             return this;
-        }
+        } */
 
         @Override
         public void commit() {

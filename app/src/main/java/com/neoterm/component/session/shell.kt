@@ -277,7 +277,7 @@ open class ShellTermSession private constructor(
       }
 
       val result = mutableListOf<String>()
-      return env.mapTo(result, { "${it.first}=${it.second}" })
+      return env.mapTo(result) { "${it.first}=${it.second}" }
         .toTypedArray()
     }
 
