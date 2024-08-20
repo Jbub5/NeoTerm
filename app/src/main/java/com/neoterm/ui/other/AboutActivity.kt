@@ -90,7 +90,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     findViewById<View>(R.id.about_source_code_view).setOnClickListener {
-      openUrl("https://github.com/NeoTerm/NeoTerm")
+      openUrl("https://github.com/Jbub5/NeoTerm")
     }
 
     findViewById<View>(R.id.about_reset_app_view).setOnClickListener {
