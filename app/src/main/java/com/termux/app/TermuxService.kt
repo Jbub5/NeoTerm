@@ -124,7 +124,7 @@ class TermuxService  : Service() {
     val builder = NotificationCompat.Builder(this, DEFAULT_CHANNEL_ID)
     builder.setContentTitle(getText(R.string.app_name))
     builder.setContentText(contentText)
-    builder.setSmallIcon(R.drawable.ic_terminal_running)
+    builder.setSmallIcon(R.drawable.ic_notification_icon)
     builder.setContentIntent(pendingIntent)
     builder.setOngoing(true)
     builder.setShowWhen(false)
