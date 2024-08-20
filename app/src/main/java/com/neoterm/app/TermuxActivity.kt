@@ -326,7 +326,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
         when (resultCode) {
           RESULT_OK -> enterMain()
           RESULT_CANCELED -> {
-            setSystemShellMode(true)
             addNewSession()
           }
         }
@@ -351,7 +350,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   }
 
   private fun enterMain() {
-    setSystemShellMode(false)
 
     if (termService!!.sessions.isNotEmpty()) {
       val lastSession = getStoredCurrentSessionOrLast()
@@ -378,7 +376,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
 
   override fun recreate() {
     NeoPreference.store(KEY_NO_RESTORE, true)
-    saveCurrentStatus()
     super.recreate()
   }
 
@@ -388,10 +385,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       NeoPreference.store(KEY_NO_RESTORE, !result)
     }
     return result
-  }
-
-  private fun saveCurrentStatus() {
-    setSystemShellMode(getSystemShellMode())
   }
 
   private fun peekRecreating(): Boolean {
@@ -591,14 +584,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     } else {
       tabSwitcher.hideSwitcher()
     }
-  }
-
-  private fun setSystemShellMode(systemShell: Boolean) {
-    NeoPreference.store(NeoPreference.KEY_SYSTEM_SHELL, systemShell)
-  }
-
-  private fun getSystemShellMode(): Boolean {
-    return NeoPreference.loadBoolean(NeoPreference.KEY_SYSTEM_SHELL, true)
   }
 
   private inline fun <reified T> forEachTab(callback: (T) -> Unit) {

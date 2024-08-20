@@ -8,7 +8,6 @@ object DefaultValues {
 
   const val enableBell = false
   const val enableVibrate = false
-  const val enableExecveWrapper = true
   const val enableAutoCompletion = false
   const val enableFullScreen = false
   const val enableAutoHideToolbar = false
