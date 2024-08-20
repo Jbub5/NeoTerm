@@ -9,7 +9,6 @@ import com.neoterm.R
 import com.neoterm.app.TermuxApplication
 import com.neoterm.component.config.NeoTermPath
 import java.io.File
-import java.util.*
 
 /**
  * @author kiva
@@ -82,7 +81,7 @@ object SetupHelper {
     }
     throw RuntimeException(
       "Unable to determine arch from Build.SUPPORTED_ABIS =  "
-        + Arrays.toString(Build.SUPPORTED_ABIS)
+        + Build.SUPPORTED_ABIS.contentToString()
     )
   }
 }

@@ -51,14 +51,14 @@ class FontComponent : NeoComponent {
 
   fun reloadFonts(): Boolean {
     fonts.clear()
-    fonts.put("Monospace", NeoFont(Typeface.MONOSPACE))
-    fonts.put("Sans Serif", NeoFont(Typeface.SANS_SERIF))
-    fonts.put("Serif", NeoFont(Typeface.SERIF))
+    fonts["Monospace"] = NeoFont(Typeface.MONOSPACE)
+    fonts["Sans Serif"] = NeoFont(Typeface.SANS_SERIF)
+    fonts["Serif"] = NeoFont(Typeface.SERIF)
     val fontDir = File(NeoTermPath.FONT_PATH)
-    for (file in fontDir.listFiles({ pathname -> pathname.name.endsWith(".ttf") })) {
+    for (file in fontDir.listFiles { pathname -> pathname.name.endsWith(".ttf") }) {
       val fontName = fontName(file)
       val font = NeoFont(file)
-      fonts.put(fontName, font)
+      fonts[fontName] = font
     }
 
     val defaultFont = DefaultValues.defaultFont
@@ -113,14 +113,14 @@ class FontComponent : NeoComponent {
     if (!defaultFontFile.exists()) {
       if (!extractDefaultFont(context)) {
         DEFAULT_FONT = loadDefaultFontFromAsset(context)
-        fonts.put(defaultFont, DEFAULT_FONT)
+        fonts[defaultFont] = DEFAULT_FONT
         return
       }
     }
 
     if (!reloadFonts()) {
       DEFAULT_FONT = loadDefaultFontFromAsset(context)
-      fonts.put(defaultFont, DEFAULT_FONT)
+      fonts[defaultFont] = DEFAULT_FONT
     }
   }
 }
