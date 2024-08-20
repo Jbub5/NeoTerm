@@ -33,24 +33,6 @@ open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {
     const val COLOR_BACKGROUND = -3
     const val COLOR_FOREGROUND = -2
     const val COLOR_CURSOR = -1
-
-    const val COLOR_DIM_BLACK = 0
-    const val COLOR_DIM_RED = 1
-    const val COLOR_DIM_GREEN = 2
-    const val COLOR_DIM_YELLOW = 3
-    const val COLOR_DIM_BLUE = 4
-    const val COLOR_DIM_MAGENTA = 5
-    const val COLOR_DIM_CYAN = 6
-    const val COLOR_DIM_WHITE = 7
-
-    const val COLOR_BRIGHT_BLACK = 8
-    const val COLOR_BRIGHT_RED = 9
-    const val COLOR_BRIGHT_GREEN = 10
-    const val COLOR_BRIGHT_YELLOW = 11
-    const val COLOR_BRIGHT_BLUE = 12
-    const val COLOR_BRIGHT_MAGENTA = 13
-    const val COLOR_BRIGHT_CYAN = 14
-    const val COLOR_BRIGHT_WHITE = 15
   }
 
   lateinit var colorName: String
@@ -149,7 +131,7 @@ open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {
   }
 
   override fun getCodeGenerator(parameter: CodeGenParameter): CodeGenerator {
-    return NeoColorGenerator(parameter)
+    return NeoColorGenerator()
   }
 
   private fun validateColors() {

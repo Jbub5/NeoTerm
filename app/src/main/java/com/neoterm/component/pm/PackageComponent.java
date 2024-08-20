@@ -25,9 +25,9 @@ public class PackageComponent implements NeoComponent {
     return queryEnabled ? neoPackages : new HashMap<>();
   }
 
-  public int getPackageCount() {
-    return queryEnabled ? neoPackages.size() : -1;
-  }
+  //public int getPackageCount() {
+    //return queryEnabled ? neoPackages.size() : -1;
+  //}
 
   public SourceManager getSourceManager() {
     return new SourceManager();

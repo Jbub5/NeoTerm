@@ -1,14 +1,14 @@
 package com.neoterm.component.completion
 
-import java.io.File
+//import java.io.File
 
 interface ICandidateProvider {
-  val providerName: String
+  //val providerName: String
   fun provideCandidates(text: String): List<CompletionCandidate>
   fun canComplete(text: String): Boolean
 }
 
-open class FileCompletionProvider : ICandidateProvider {
+/* open class FileCompletionProvider : ICandidateProvider {
   override val providerName: String
     get() = "NeoTermProvider.FileCompletionProvider"
 
@@ -59,4 +59,4 @@ class ProgramCompletionProvider : FileCompletionProvider() {
   override fun generateDesc(file: File): String? {
     return if (file.canExecute()) "<Program>" else super.generateDesc(file)
   }
-}
+} */

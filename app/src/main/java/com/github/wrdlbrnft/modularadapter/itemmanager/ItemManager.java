@@ -20,8 +20,8 @@ public interface ItemManager<T> {
     int getItemCount();
 
     void addChangeSetCallback(ChangeSetCallback callback);
-    void removeChangeSetCallback(ChangeSetCallback callback);
+    //void removeChangeSetCallback(ChangeSetCallback callback);
 
     void addStateCallback(StateCallback callback);
-    void removeStateCallback(StateCallback callback);
+    //void removeStateCallback(StateCallback callback);
 }

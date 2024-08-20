@@ -18,17 +18,17 @@ package com.neoterm.ui.pm.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.ColorStateList;
+//import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.text.TextUtils;
+//import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.Gravity;
+//import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.appcompat.content.res.AppCompatResources;
+//import android.view.ViewGroup;
+//import android.widget.TextView;
+//import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -157,7 +157,7 @@ public class RecyclerTabLayout extends RecyclerView {
     mIndicatorHeight = indicatorHeight;
   }
 
-  public void setAutoSelectionMode(boolean autoSelect) {
+  /* public void setAutoSelectionMode(boolean autoSelect) {
     if (mRecyclerOnScrollListener != null) {
       removeOnScrollListener(mRecyclerOnScrollListener);
       mRecyclerOnScrollListener = null;
@@ -166,13 +166,13 @@ public class RecyclerTabLayout extends RecyclerView {
       mRecyclerOnScrollListener = new RecyclerOnScrollListener(this, mLinearLayoutManager);
       addOnScrollListener(mRecyclerOnScrollListener);
     }
-  }
+  } */
 
-  public void setPositionThreshold(float positionThreshold) {
+  /* public void setPositionThreshold(float positionThreshold) {
     mPositionThreshold = positionThreshold;
-  }
+  } */
 
-  public void setUpWithViewPager(ViewPager viewPager) {
+  /* public void setUpWithViewPager(ViewPager viewPager) {
     DefaultAdapter adapter = new DefaultAdapter(viewPager);
     adapter.setTabPadding(mTabPaddingStart, mTabPaddingTop, mTabPaddingEnd, mTabPaddingBottom);
     adapter.setTabTextAppearance(mTabTextAppearance);
@@ -182,9 +182,9 @@ public class RecyclerTabLayout extends RecyclerView {
     adapter.setTabBackgroundResId(mTabBackgroundResId);
     adapter.setTabOnScreenLimit(mTabOnScreenLimit);
     setUpWithAdapter(adapter);
-  }
+  } */
 
-  public void setUpWithAdapter(RecyclerTabLayout.Adapter<?> adapter) {
+  /* public void setUpWithAdapter(RecyclerTabLayout.Adapter<?> adapter) {
     mAdapter = adapter;
     mViewPager = adapter.getViewPager();
     if (mViewPager.getAdapter() == null) {
@@ -193,7 +193,7 @@ public class RecyclerTabLayout extends RecyclerView {
     mViewPager.addOnPageChangeListener(new ViewPagerOnPageChangeListener(this));
     setAdapter(adapter);
     scrollToTab(mViewPager.getCurrentItem());
-  }
+  } */
 
   public void setCurrentItem(int position, boolean smoothScroll) {
     if (mViewPager != null) {
@@ -413,7 +413,7 @@ public class RecyclerTabLayout extends RecyclerView {
     }
   }
 
-  protected static class ViewPagerOnPageChangeListener implements ViewPager.OnPageChangeListener {
+  /* protected static class ViewPagerOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
     private final RecyclerTabLayout mRecyclerTabLayout;
     private int mScrollState;
@@ -440,7 +440,7 @@ public class RecyclerTabLayout extends RecyclerView {
         }
       }
     }
-  }
+  } */
 
   public static abstract class Adapter<T extends RecyclerView.ViewHolder>
     extends RecyclerView.Adapter<T> {
@@ -452,9 +452,9 @@ public class RecyclerTabLayout extends RecyclerView {
       mViewPager = viewPager;
     }
 
-    public ViewPager getViewPager() {
+    /* public ViewPager getViewPager() {
       return mViewPager;
-    }
+    } */
 
     public void setCurrentIndicatorPosition(int indicatorPosition) {
       mIndicatorPosition = indicatorPosition;
@@ -465,7 +465,7 @@ public class RecyclerTabLayout extends RecyclerView {
     }
   }
 
-  public static class DefaultAdapter
+  /* public static class DefaultAdapter
     extends RecyclerTabLayout.Adapter<DefaultAdapter.ViewHolder> {
 
     protected static final int MAX_TAB_TEXT_LINES = 2;
@@ -594,7 +594,7 @@ public class RecyclerTabLayout extends RecyclerView {
         });
       }
     }
-  }
+  } */
 
 
   public static class TabTextView extends AppCompatTextView {
@@ -603,7 +603,7 @@ public class RecyclerTabLayout extends RecyclerView {
       super(context);
     }
 
-    public ColorStateList createColorStateList(int defaultColor, int selectedColor) {
+    /* public ColorStateList createColorStateList(int defaultColor, int selectedColor) {
       final int[][] states = new int[2][];
       final int[] colors = new int[2];
       states[0] = SELECTED_STATE_SET;
@@ -612,6 +612,6 @@ public class RecyclerTabLayout extends RecyclerView {
       states[1] = EMPTY_STATE_SET;
       colors[1] = defaultColor;
       return new ColorStateList(states, colors);
-    }
+    } */
   }
 }

@@ -73,20 +73,20 @@ public class SortedListItemManager<T extends SortedListItemManager.ViewModel> im
         mChangeSetCallbacks.add(callback);
     }
 
-    @Override
+    /* @Override
     public void removeChangeSetCallback(ChangeSetCallback callback) {
         mChangeSetCallbacks.remove(callback);
-    }
+    } */
 
     @Override
     public void addStateCallback(StateCallback callback) {
         mStateCallbacks.add(callback);
     }
 
-    @Override
+    /* @Override
     public void removeStateCallback(StateCallback callback) {
         mStateCallbacks.remove(callback);
-    }
+    } */
 
     @Override
     public Transaction<T> newTransaction() {

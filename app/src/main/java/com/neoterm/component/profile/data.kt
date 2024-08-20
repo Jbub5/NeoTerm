@@ -29,7 +29,7 @@ abstract class NeoProfile : CodeGenObject, ConfigFileBasedObject {
   }
 
   override fun getCodeGenerator(parameter: CodeGenParameter): CodeGenerator {
-    return NeoProfileGenerator(parameter)
+    return NeoProfileGenerator()
   }
 
   //@TestOnly

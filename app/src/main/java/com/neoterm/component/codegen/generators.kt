@@ -4,7 +4,7 @@ import com.neoterm.component.ComponentManager
 import com.neoterm.component.colorscheme.NeoColorScheme
 import com.neoterm.component.config.ConfigureComponent
 
-class NeoColorGenerator(parameter: CodeGenParameter) : CodeGenerator(parameter) {
+class NeoColorGenerator : CodeGenerator() {
   override fun getGeneratorName(): String {
     return "NeoColorScheme-Generator"
   }
@@ -57,7 +57,7 @@ class NeoColorGenerator(parameter: CodeGenParameter) : CodeGenerator(parameter) 
   }
 }
 
-class NeoProfileGenerator(parameter: CodeGenParameter) : CodeGenerator(parameter) {
+class NeoProfileGenerator : CodeGenerator() {
   override fun getGeneratorName(): String {
     return "NeoProfile-Generator"
   }

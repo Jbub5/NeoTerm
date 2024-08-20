@@ -43,9 +43,9 @@ public abstract class ModularAdapter<T> extends RecyclerView.Adapter<ModularAdap
 
         }
 
-        public final T getCurrentItem() {
+        /* public final T getCurrentItem() {
             return mCurrentItem;
-        }
+        } */
     }
 
     public interface ViewHolderFactory<VH extends ViewHolder<?>> {
@@ -86,10 +86,10 @@ public abstract class ModularAdapter<T> extends RecyclerView.Adapter<ModularAdap
         mItemManager = itemManager;
 
         itemManager.addChangeSetCallback(changeSet -> changeSet.applyTo(new ChangeSet.AdapterInterface() {
-            @Override
+            /* @Override
             public void notifyDataSetChanged() {
                 ModularAdapter.this.notifyDataSetChanged();
-            }
+            } */
 
             @Override
             public void notifyMove(int fromPosition, int toPosition) {

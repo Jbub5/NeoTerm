@@ -402,7 +402,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     fullScreenHelper.fullScreen = fullScreen
     if (tabSwitcher.selectedTab is TermTab) {
       (tabSwitcher.selectedTab as? TermTab)?.requireHideIme()
-      (tabSwitcher.selectedTab as? TermTab)?.onFullScreenModeChanged(fullScreen)
+      (tabSwitcher.selectedTab as? TermTab)?.onFullScreenModeChanged()
     }
     NeoPreference.store(R.string.key_ui_fullscreen, fullScreen)
     this@TermuxActivity.recreate()

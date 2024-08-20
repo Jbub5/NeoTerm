@@ -34,7 +34,7 @@ public abstract class SortedListAdapter<T extends SortedListAdapter.ViewModel> e
         Editor<T> remove(@NonNull T item);
         Editor<T> remove(@NonNull Collection<T> items);
         Editor<T> replaceAll(@NonNull Collection<T> items);
-        Editor<T> removeAll();
+        //Editor<T> removeAll();
         void commit();
     }
 
@@ -115,9 +115,9 @@ public abstract class SortedListAdapter<T extends SortedListAdapter.ViewModel> e
         mCallbacks.add(callback);
     }
 
-    public void removeCallback(@NonNull Callback callback) {
+    /* public void removeCallback(@NonNull Callback callback) {
         mCallbacks.remove(callback);
-    }
+    } */
 
     @NonNull
     public final Editor<T> edit() {
