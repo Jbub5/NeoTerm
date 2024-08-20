@@ -31,7 +31,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     val serviceIntent = Intent(this, TermuxService::class.java)
     startService(serviceIntent)
     if (!bindService(serviceIntent, this, 0)) {
-      TermuxApplication.get().errorDialog(this, R.string.service_connection_failed, { finish() })
+      TermuxApplication.get().errorDialog(this, R.string.service_connection_failed) { finish() }
     }
   }
 

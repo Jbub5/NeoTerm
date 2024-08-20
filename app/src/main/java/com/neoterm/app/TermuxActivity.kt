@@ -353,7 +353,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   private fun enterMain() {
     setSystemShellMode(false)
 
-    if (!termService!!.sessions.isEmpty()) {
+    if (termService!!.sessions.isNotEmpty()) {
       val lastSession = getStoredCurrentSessionOrLast()
 
       for (session in termService!!.sessions) {

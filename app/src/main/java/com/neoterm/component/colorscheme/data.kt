@@ -95,7 +95,7 @@ open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {
     copy.backgroundColor = backgroundColor
     copy.foregroundColor = foregroundColor
     copy.cursorColor = cursorColor
-    this.color.forEach { copy.color.put(it.key, it.value) }
+    this.color.forEach { copy.color[it.key] = it.value }
     return copy
   }
 
