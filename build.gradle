@@ -25,7 +25,6 @@ buildscript {
     mavenCentral()
     maven { url "https://jitpack.io" }
     google()
-    jcenter()
   }
 
   dependencies {
@@ -33,7 +32,6 @@ buildscript {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath rootProject.ext.deps["kotlin-gradle-plugin"]
 
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
     classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
     // NOTE: Do not place your application dependencies here; they belong
@@ -47,7 +45,6 @@ allprojects {
     mavenCentral()
     maven { url "https://jitpack.io" }
     google()
-    jcenter()
   }
 }
 
