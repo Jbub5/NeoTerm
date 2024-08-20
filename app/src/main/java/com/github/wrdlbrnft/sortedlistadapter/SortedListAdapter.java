@@ -70,10 +70,10 @@ public abstract class SortedListAdapter<T extends SortedListAdapter.ViewModel> e
         }
 
         public <M extends T, VH extends ViewHolder<M>> Builder<T> add(@NonNull Class<M> modelClass, @NonNull ViewHolderFactory<VH> holderFactory) {
-            mModules.add(new ModularSortedListAdapterImpl.Module<M, VH>(
-                    mModules.size(),
-                    modelClass,
-                    holderFactory
+            mModules.add(new ModularSortedListAdapterImpl.Module<>(
+              mModules.size(),
+              modelClass,
+              holderFactory
             ));
             return this;
         }
@@ -83,32 +83,30 @@ public abstract class SortedListAdapter<T extends SortedListAdapter.ViewModel> e
         }
     }
 
-    private final ItemManager.StateCallback mStateCallback = new ItemManager.StateCallback() {
+  private final List<Callback> mCallbacks = new ArrayList<>();
+
+    public SortedListAdapter(@NonNull Context context, @NonNull Class<T> itemClass, @NonNull Comparator<T> comparator) {
+        super(context, new SortedListItemManager<>(itemClass, comparator));
+      ItemManager.StateCallback mStateCallback = new ItemManager.StateCallback() {
 
         @Override
         public void onChangesInProgress() {
-            for (Callback callback : mCallbacks) {
-                callback.onEditStarted();
-            }
+          for (Callback callback : mCallbacks) {
+            callback.onEditStarted();
+          }
         }
 
         @Override
         public void onChangesFinished() {
-            for (Callback callback : mCallbacks) {
-                callback.onEditFinished();
-            }
+          for (Callback callback : mCallbacks) {
+            callback.onEditFinished();
+          }
         }
-    };
-
-    private final List<Callback> mCallbacks = new ArrayList<>();
-
-    public SortedListAdapter(@NonNull Context context, @NonNull Class<T> itemClass, @NonNull Comparator<T> comparator) {
-        super(context, new SortedListItemManager<>(itemClass, comparator));
-        getItemManager().addStateCallback(mStateCallback);
+      };
+      getItemManager().addStateCallback(mStateCallback);
     }
 
     @NonNull
-    @SuppressWarnings("unchecked")
     protected abstract SortedListAdapter.ViewHolder<? extends T> onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent, int viewType);
 
     public void addCallback(@NonNull Callback callback) {

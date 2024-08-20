@@ -22,15 +22,12 @@ public abstract class ModularAdapter<T> extends RecyclerView.Adapter<ModularAdap
 
     public abstract static class ViewHolder<T> extends RecyclerView.ViewHolder {
 
-        private T mCurrentItem;
-
-        public ViewHolder(@NonNull View itemView) {
+      public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         public final void bind(T item) {
-            mCurrentItem = item;
-            performBind(item);
+          performBind(item);
         }
 
         protected abstract void performBind(@NonNull T item);
@@ -65,10 +62,10 @@ public abstract class ModularAdapter<T> extends RecyclerView.Adapter<ModularAdap
         }
 
         public <M extends T, VH extends ViewHolder<M>> Builder<T> add(@NonNull Class<M> modelClass, @NonNull ViewHolderFactory<VH> holderFactory) {
-            mModules.add(new ModularAdapterImpl.Module<M, VH>(
-                    mModules.size(),
-                    modelClass,
-                    holderFactory
+            mModules.add(new ModularAdapterImpl.Module<>(
+              mModules.size(),
+              modelClass,
+              holderFactory
             ));
             return this;
         }

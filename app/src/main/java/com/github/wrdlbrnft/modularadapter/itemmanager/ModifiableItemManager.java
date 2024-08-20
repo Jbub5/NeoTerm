@@ -17,7 +17,7 @@ public interface ModifiableItemManager<T> extends ItemManager<T> {
         Transaction<T> remove(@NonNull T item);
         Transaction<T> remove(@NonNull Collection<T> items);
         Transaction<T> replaceAll(@NonNull Collection<T> items);
-        Transaction<T> removeAll();
+        //Transaction<T> removeAll();
         void commit();
     }
 

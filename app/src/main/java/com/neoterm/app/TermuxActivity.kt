@@ -336,9 +336,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
 
   override fun onConfigurationChanged(newConfig: Configuration) {
     super.onConfigurationChanged(newConfig)
-    if (newConfig == null) {
-      return
-    }
 
     // When rotate the screen, extra keys may get updated.
     forEachTab<NeoTab> {
