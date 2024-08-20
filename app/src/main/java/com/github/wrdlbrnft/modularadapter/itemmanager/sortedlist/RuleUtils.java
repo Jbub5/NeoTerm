@@ -6,7 +6,7 @@ package com.github.wrdlbrnft.modularadapter.itemmanager.sortedlist;
  * Date: 27/03/2017
  */
 
-class RuleUtils {
+/* class RuleUtils {
 
     public static int getIndexOfClass(Class<?>[] classes, Class<?> item) {
         for (int i = 0; i < classes.length; i++) {
@@ -17,4 +17,4 @@ class RuleUtils {
         }
         return -1;
     }
-}
+} */

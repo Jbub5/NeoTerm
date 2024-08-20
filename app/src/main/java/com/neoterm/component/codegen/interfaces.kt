@@ -1,6 +1,6 @@
 package com.neoterm.component.codegen
 
-abstract class CodeGenerator(parameter: CodeGenParameter) {
+abstract class CodeGenerator {
   abstract fun getGeneratorName(): String
   abstract fun generateCode(codeGenObject: CodeGenObject): String
 }

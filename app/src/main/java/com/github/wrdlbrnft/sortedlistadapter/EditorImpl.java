@@ -50,11 +50,11 @@ class EditorImpl<T extends SortedListAdapter.ViewModel> implements SortedListAda
         return this;
     }
 
-    @Override
+    /* @Override
     public SortedListAdapter.Editor<T> removeAll() {
         mTransaction.removeAll();
         return this;
-    }
+    } */
 
     @Override
     public void commit() {

@@ -5,7 +5,7 @@ package com.github.wrdlbrnft.modularadapter.itemmanager.sortedlist;
  * User: Xaver<br>
  * Date: 27/03/2017
  */
-class GeneralOrderRuleImpl implements ComparatorBuilder.ComparatorRule {
+/* class GeneralOrderRuleImpl implements ComparatorBuilder.ComparatorRule {
 
     private final Class<? extends SortedListItemManager.ViewModel>[] mModelClasses;
 
@@ -50,4 +50,4 @@ class GeneralOrderRuleImpl implements ComparatorBuilder.ComparatorRule {
     public int getPriority() {
         return PRIORITY_LOW;
     }
-}
+} */

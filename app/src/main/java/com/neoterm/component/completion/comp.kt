@@ -1,8 +1,8 @@
 package com.neoterm.component.completion
 
-import com.neoterm.component.NeoComponent
+//import com.neoterm.component.NeoComponent
 
-class CompletionComponent : NeoComponent {
+/* class CompletionComponent : NeoComponent {
   override fun onServiceInit() {
     CompletionManager.registerProvider(FileCompletionProvider())
     CompletionManager.registerProvider(ProgramCompletionProvider())
@@ -13,14 +13,14 @@ class CompletionComponent : NeoComponent {
 
   override fun onServiceObtained() {
   }
-}
+}*/
 
 object CompletionManager {
   private val candidateProviders = mutableMapOf<String, ICandidateProvider>()
 
-  fun registerProvider(provider: ICandidateProvider) {
-    this.candidateProviders[provider.providerName] = provider
-  }
+  //fun registerProvider(provider: ICandidateProvider) {
+    //this.candidateProviders[provider.providerName] = provider
+  //}
 
   //fun unregisterProvider(providerName: String) {
     //this.candidateProviders.remove(providerName)

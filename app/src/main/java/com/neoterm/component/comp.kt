@@ -3,7 +3,6 @@ package com.neoterm.component
 import android.content.Context
 import com.neoterm.component.codegen.CodeGenComponent
 import com.neoterm.component.colorscheme.ColorSchemeComponent
-import com.neoterm.component.completion.CompletionComponent
 import com.neoterm.component.config.ConfigureComponent
 import com.neoterm.component.extrakey.ExtraKeyComponent
 import com.neoterm.component.font.FontComponent
@@ -39,7 +38,7 @@ object ComponentManager {
   } */
 
   @Suppress("UNCHECKED_CAST")
-  fun <T : NeoComponent> getComponent(componentInterface: Class<T>, errorThrow: Boolean = true): T {
+  fun <T : NeoComponent> getComponent(componentInterface: Class<T>): T {
     val component: NeoComponent =
       COMPONENTS[componentInterface] ?: throw ComponentNotFoundException(componentInterface.simpleName)
 
@@ -75,7 +74,6 @@ object NeoInitializer {
     ComponentManager.registerComponent(ColorSchemeComponent::class.java)
     ComponentManager.registerComponent(FontComponent::class.java)
     ComponentManager.registerComponent(ExtraKeyComponent::class.java)
-    ComponentManager.registerComponent(CompletionComponent::class.java)
     ComponentManager.registerComponent(SessionComponent::class.java)
     ComponentManager.registerComponent(PackageComponent::class.java)
   }

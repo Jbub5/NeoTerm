@@ -28,13 +28,13 @@ public class ComparatorBuilder<T extends SortedListItemManager.ViewModel> {
 
     private final List<ComparatorRule> mComparatorRules = new ArrayList<>();
 
-    @SafeVarargs
+    /* @SafeVarargs
     public final ComparatorBuilder<T> setGeneralOrder(@NonNull Class<? extends T>... modelClasses) {
         if (modelClasses.length > 1) {
             mComparatorRules.add(new GeneralOrderRuleImpl(modelClasses));
         }
         return this;
-    }
+    } */
 
     public final <M extends T> ComparatorBuilder<T> setOrderForModel(@NonNull Class<M> modelClass, @NonNull Comparator<M> comparator) {
         mComparatorRules.add(new ModelOrderRuleImpl<>(modelClass, comparator));

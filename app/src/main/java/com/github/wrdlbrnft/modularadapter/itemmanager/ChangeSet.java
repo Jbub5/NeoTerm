@@ -8,7 +8,7 @@ package com.github.wrdlbrnft.modularadapter.itemmanager;
 public interface ChangeSet {
 
     interface AdapterInterface {
-        void notifyDataSetChanged();
+        //void notifyDataSetChanged();
         void notifyMove(int fromPosition, int toPosition);
         void notifyAdd(int index, int count);
         void notifyRemove(int index, int count);

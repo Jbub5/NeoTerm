@@ -156,7 +156,7 @@ class TermTab(title: CharSequence) : NeoTab(title), TermUiPresenter {
     toolbar = null
   }
 
-  fun onFullScreenModeChanged(fullScreen: Boolean) {
+  fun onFullScreenModeChanged() {
     // Window token changed, we need to recreate PopupWindow
     resetAutoCompleteStatus()
   }
