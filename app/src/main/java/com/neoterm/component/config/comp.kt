@@ -60,7 +60,6 @@ open class NeoConfigureFile(val configureFile: File) {
 object NeoPreference {
   const val KEY_FONT_SIZE = "neoterm_general_font_size"
   const val KEY_CURRENT_SESSION = "neoterm_service_current_session"
-  const val KEY_SYSTEM_SHELL = "neoterm_core_system_shell"
   //const val KEY_SOURCES = "neoterm_package_enabled_sources"
 
   var MIN_FONT_SIZE: Int = 0
@@ -171,13 +170,6 @@ object NeoPreference {
     return loadBoolean(
       R.string.key_general_vibrate,
       DefaultValues.enableVibrate
-    )
-  }
-
-  fun isExecveWrapperEnabled(): Boolean {
-    return loadBoolean(
-      R.string.key_general_use_execve_wrapper,
-      DefaultValues.enableExecveWrapper
     )
   }
 

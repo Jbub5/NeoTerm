@@ -72,7 +72,6 @@ class ShellProfile : NeoProfile() {
     private const val INITIAL_COMMAND = "init-command"
     private const val BELL = "bell"
     private const val VIBRATE = "vibrate"
-    private const val EXECVE_WRAPPER = "execve-wrapper"
     private const val SPECIAL_VOLUME_KEYS = "special-volume-keys"
     private const val AUTO_COMPLETION = "auto-completion"
     private const val BACK_KEY_TO_ESC = "back-key-esc"
@@ -92,7 +91,6 @@ class ShellProfile : NeoProfile() {
 
   var enableBell = DefaultValues.enableBell
   var enableVibrate = DefaultValues.enableVibrate
-  var enableExecveWrapper = DefaultValues.enableExecveWrapper
   var enableSpecialVolumeKeys = DefaultValues.enableSpecialVolumeKeys
   var enableAutoCompletion = DefaultValues.enableAutoCompletion
   var enableBackKeyToEscape = DefaultValues.enableBackButtonBeMappedToEscape
@@ -112,7 +110,6 @@ class ShellProfile : NeoProfile() {
     initialCommand = NeoPreference.getInitialCommand()
     enableBell = NeoPreference.isBellEnabled()
     enableVibrate = NeoPreference.isVibrateEnabled()
-    enableExecveWrapper = NeoPreference.isExecveWrapperEnabled()
     enableSpecialVolumeKeys = NeoPreference.isSpecialVolumeKeysEnabled()
     enableAutoCompletion = NeoPreference.isAutoCompletionEnabled()
     enableBackKeyToEscape = NeoPreference.isBackButtonBeMappedToEscapeEnabled()
@@ -125,7 +122,6 @@ class ShellProfile : NeoProfile() {
     initialCommand = configVisitor.getProfileString(INITIAL_COMMAND, initialCommand)
     enableBell = configVisitor.getProfileBoolean(BELL, enableBell)
     enableVibrate = configVisitor.getProfileBoolean(VIBRATE, enableVibrate)
-    enableExecveWrapper = configVisitor.getProfileBoolean(EXECVE_WRAPPER, enableExecveWrapper)
     enableSpecialVolumeKeys = configVisitor.getProfileBoolean(SPECIAL_VOLUME_KEYS, enableSpecialVolumeKeys)
     enableAutoCompletion = configVisitor.getProfileBoolean(AUTO_COMPLETION, enableAutoCompletion)
     enableBackKeyToEscape = configVisitor.getProfileBoolean(BACK_KEY_TO_ESC, enableBackKeyToEscape)
