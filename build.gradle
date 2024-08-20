@@ -22,7 +22,6 @@ buildscript {
 
   repositories {
     maven { url 'https://dl.google.com/dl/android/maven2/' }
-    jcenter()
     google()
   }
 
@@ -31,7 +30,6 @@ buildscript {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath rootProject.ext.deps["kotlin-gradle-plugin"]
 
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
     classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
     // NOTE: Do not place your application dependencies here; they belong
@@ -41,7 +39,6 @@ buildscript {
 
 allprojects {
   repositories {
-    jcenter()
     maven { url 'https://dl.google.com/dl/android/maven2/' }
     mavenCentral()
     maven { url "https://jitpack.io" }
