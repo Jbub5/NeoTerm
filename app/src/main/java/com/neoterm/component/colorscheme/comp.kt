@@ -53,7 +53,7 @@ class ColorSchemeComponent : ConfigFileBasedComponent<NeoColorScheme>(NeoTermPat
       .listFiles(NEOLANG_FILTER)
       .mapNotNull { this.loadConfigure(it) }
       .forEach {
-        colors.put(it.colorName, it)
+        colors[it.colorName] = it
       }
 
     if (colors.containsKey(DefaultColorScheme.colorName)) {

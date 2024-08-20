@@ -143,7 +143,7 @@ object NeoPreference {
   }
 
   fun validateFontSize(fontSize: Int): Int {
-    return Math.max(MIN_FONT_SIZE, Math.min(fontSize, MAX_FONT_SIZE))
+    return MIN_FONT_SIZE.coerceAtLeast(fontSize.coerceAtMost(MAX_FONT_SIZE))
   }
 
   fun getFontSize(): Int {

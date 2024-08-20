@@ -52,7 +52,7 @@ class OldConfigureLoader(private val configFile: File) : IConfigureLoader {
 
           visitor.onEnterContext(NeoColorScheme.CONTEXT_COLOR_NAME)
 
-          return FileInputStream(configureFile).use {
+          return FileInputStream(configureFile).use { it ->
             val prop = Properties()
             prop.load(it)
             prop.forEach {

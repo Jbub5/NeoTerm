@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.SortedList;
 
 import com.github.wrdlbrnft.modularadapter.itemmanager.ChangeSet;
-import com.github.wrdlbrnft.modularadapter.itemmanager.ItemManager;
 import com.github.wrdlbrnft.modularadapter.itemmanager.ModifiableItemManager;
 
 import java.lang.reflect.Array;
