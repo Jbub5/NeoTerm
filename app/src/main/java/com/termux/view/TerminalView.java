@@ -327,9 +327,9 @@ public final class TerminalView extends View {
     // https://github.com/termux/termux-app/issues/137 (japanese chars and TYPE_NULL).
     if (mEnableWordBasedIme) {
       // Workaround for Google Pinying cannot input Chinese
-      outAttrs.inputType = InputType.TYPE_CLASS_TEXT;
+      outAttrs.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_CLASS_TEXT;
     } else {
-      outAttrs.inputType = InputType.TYPE_NULL;
+      outAttrs.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL | InputType.TYPE_NULL;
     }
 
     // Note that IME_ACTION_NONE cannot be used as that makes it impossible to input newlines using the on-screen

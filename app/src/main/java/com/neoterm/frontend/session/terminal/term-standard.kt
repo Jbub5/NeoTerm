@@ -5,15 +5,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.media.AudioManager
 import android.media.SoundPool
-import android.os.Vibrator
 import android.os.VibrationEffect
-import android.util.Log
+import android.os.Vibrator
 import android.view.InputDevice
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.neoterm.BuildConfig
 import com.neoterm.R
 import com.termux.terminal.KeyHandler
 import com.termux.terminal.TerminalSession
@@ -428,14 +426,6 @@ class TermCompleteListener(var terminalView: TerminalView?) : OnAutoCompleteList
         session.write("\b")
         popChar()
       }
-    }
-
-    if (BuildConfig.DEBUG) {
-      Log.e(
-        "NeoTerm-AC",
-        "currentEditing: $textNeedCompletion, " +
-          "deleteLength: $deleteLength, completeString: $newText"
-      )
     }
 
     pushString(newText)

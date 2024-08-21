@@ -29,14 +29,14 @@ import java.util.*
 
 class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListener, SortedListAdapter.Callback {
   private val comparator = SortedListAdapter.ComparatorBuilder<PackageModel>()
-    .setOrderForModel<PackageModel>(PackageModel::class.java) { a, b ->
+    .setOrderForModel(PackageModel::class.java) { a, b ->
       a.packageInfo.packageName!!.compareTo(b.packageInfo.packageName!!)
     }
     .build()
 
-  lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
-  lateinit var adapter: PackageAdapter
-  var models = listOf<PackageModel>()
+  private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
+  private lateinit var adapter: PackageAdapter
+  private var models = listOf<PackageModel>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -163,7 +163,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
   private fun executeAptUpgrade() = runApt("update") { update ->
     update.onSuccess {
       runApt("upgrade", "-y") {
-        it.onSuccess { Toast.makeText(this, R.string.apt_upgrade_ok, Toast.LENGTH_SHORT).show() }
+        it.onSuccess { Toast.makeText(this, R.string.apt_upgrade_ok, Toast.LENGTH_LONG).show() }
       }
     }
   }
@@ -190,7 +190,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
   ): List<Pair<PackageModel, Int>> {
     return models
       .map {
-        it to StringDistance.distance(mapper(it.packageInfo).toLowerCase(Locale.ROOT), query.toLowerCase(Locale.ROOT))
+        it to StringDistance.distance(mapper(it.packageInfo).lowercase(Locale.ENGLISH), query.lowercase(Locale.ENGLISH))
       }
       .sortedWith { l, r -> r.second.compareTo(l.second) }
       .toList()
