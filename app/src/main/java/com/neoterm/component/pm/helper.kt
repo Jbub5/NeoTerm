@@ -38,9 +38,8 @@ object SourceHelper {
 
       File(NeoTermPath.PACKAGE_LIST_DIR)
         .listFiles()
-        .filterTo(sourceFiles) { file ->
-          prefixes.filter { file.name.startsWith(it) }
-            .count() > 0
+        ?.filterTo(sourceFiles) { file ->
+          prefixes.count { file.name.startsWith(it) } > 0
         }
     } catch (e: Exception) {
       sourceFiles.clear()
@@ -50,7 +49,7 @@ object SourceHelper {
     return sourceFiles
   }
 
-  fun detectSourceFilePrefix(source: Source): String {
+  private fun detectSourceFilePrefix(source: Source): String {
     try {
       val url = URL(source.url)
       val builder = StringBuilder(url.host)

@@ -3,8 +3,8 @@ package com.neoterm.component.pm;
 import com.neoterm.component.NeoComponent;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 
 /**
@@ -54,7 +54,7 @@ public class PackageComponent implements NeoComponent {
   }
 
   private void tryParsePackages(File packageListFile, final boolean clearPrevious) throws IOException {
-    NeoPackageParser packageParser = new NeoPackageParser(new FileInputStream(packageListFile));
+    NeoPackageParser packageParser = new NeoPackageParser(Files.newInputStream(packageListFile.toPath()));
     packageParser.setStateListener(new NeoPackageParser.ParseStateListener() {
       @Override
       public void onStartState() {

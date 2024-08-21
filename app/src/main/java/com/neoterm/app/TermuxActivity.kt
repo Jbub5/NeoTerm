@@ -55,26 +55,23 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+    val SDCARD_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
+
     NeoPermission.initAppPermission(this, NeoPermission.REQUEST_APP_PERMISSION)
+
+    if (ContextCompat.checkSelfPermission(
+        this,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+      ) != PackageManager.PERMISSION_GRANTED
+    ) {
+      ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), SDCARD_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE)
+    }
 
     val fullscreen = NeoPreference.isFullScreenEnabled()
     if (fullscreen) {
       window.setFlags(
         WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN
-      )
-    }
-
-    val SDCARD_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
-    if (ContextCompat.checkSelfPermission(
-        this,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-      ) != PackageManager.PERMISSION_GRANTED
-    ) {
-      ActivityCompat.requestPermissions(
-        this,
-        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-        SDCARD_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE
       )
     }
 
@@ -275,6 +272,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
   }
 
   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     when (requestCode) {
       NeoPermission.REQUEST_APP_PERMISSION -> {
         if (grantResults.isEmpty()

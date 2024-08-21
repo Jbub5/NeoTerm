@@ -29,7 +29,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     private val ARROW_DOWN = ArrowButton(IExtraButton.KEY_ARROW_DOWN)
     private val ARROW_LEFT = ArrowButton(IExtraButton.KEY_ARROW_LEFT)
     private val ARROW_RIGHT = ArrowButton(IExtraButton.KEY_ARROW_RIGHT)
-    private val TOGGLE_IME = object : ControlButton(IExtraButton.KEY_TOGGLE_IME) {
+    private val TOGGLE_IME = object : ControlButton(KEY_TOGGLE_IME) {
       override fun onClick(view: View) {
         EventBus.getDefault().post(ToggleImeEvent())
       }
@@ -205,7 +205,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     outerButton.text = extraButton.displayText
     outerButton.setPadding(0, 0, 0, 0)
     outerButton.setTextColor(IExtraButton.NORMAL_TEXT_COLOR)
-    outerButton.setAllCaps(false)
+    outerButton.isAllCaps = false
 
     outerButton.setOnClickListener {
       if (NeoPreference.isVibrateEnabled()) {

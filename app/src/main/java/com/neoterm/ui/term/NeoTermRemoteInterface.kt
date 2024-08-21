@@ -116,7 +116,7 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
 
     val data = Intent()
     data.putExtra(EXTRA_SESSION_ID, session.mHandle)
-    setResult(AppCompatActivity.RESULT_OK, data)
+    setResult(RESULT_OK, data)
 
     if (foreground) {
       // Set current session to our new one

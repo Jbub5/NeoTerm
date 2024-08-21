@@ -28,7 +28,7 @@ object NeoPermission {
           Manifest.permission.READ_EXTERNAL_STORAGE
         )
       ) {
-        AlertDialog.Builder(context).setMessage("需要存储权限来访问存储设备上的文件")
+        AlertDialog.Builder(context).setMessage("Please enable Storage permission")
           .setPositiveButton(android.R.string.ok, { _: DialogInterface, _: Int ->
             doRequestPermission(context, requestCode)
           })

@@ -14,7 +14,7 @@ import com.neoterm.utils.formatSizeInKB
 class PackageAdapter(
   context: Context,
   comparator: Comparator<PackageModel>,
-  private val listener: PackageAdapter.Listener
+  private val listener: Listener
 ) : SortedListAdapter<PackageModel>(context, PackageModel::class.java, comparator),
   FastScrollRecyclerView.SectionedAdapter {
 

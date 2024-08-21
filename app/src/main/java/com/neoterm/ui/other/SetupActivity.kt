@@ -232,7 +232,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     it.onSuccess { executeAptUpgrade() }
   }
 
-  private fun executeAptUpgrade() = runApt("upgrade", "-y") {
+  private fun executeAptUpgrade() = runApt("upgrade", "") {
     it.onSuccess { finish() }
   }
 }
