@@ -12,7 +12,7 @@
     android:title="@string/pref_general_bell"/>
 
   <CheckBoxPreference
-    android:defaultValue="false"
+    android:defaultValue="true"
     android:key="@string/key_general_vibrate"
     android:summary="@string/pref_general_vibrate_desc"
     android:title="@string/pref_general_vibrate"/>

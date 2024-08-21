@@ -2,6 +2,8 @@ package com.termux.view.extrakey
 
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Vibrator
+import android.os.VibrationEffect
 import android.util.AttributeSet
 import android.view.*
 import android.widget.GridLayout
@@ -206,7 +208,11 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     outerButton.setAllCaps(false)
 
     outerButton.setOnClickListener {
-      outerButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+      if (NeoPreference.isVibrateEnabled()) {
+        val vibrator = context.getSystemService(Vibrator::class.java)
+        vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
+      }
+
       val root = rootView
       extraButton.onClick(root)
     }
