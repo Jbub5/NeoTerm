@@ -6,6 +6,7 @@ import android.content.Context
 import android.media.AudioManager
 import android.media.SoundPool
 import android.os.Vibrator
+import android.os.VibrationEffect
 import android.util.Log
 import android.view.InputDevice
 import android.view.KeyEvent
@@ -63,6 +64,11 @@ class TermViewClient(val context: Context) : TerminalViewClient {
   override fun onKeyDown(keyCode: Int, e: KeyEvent?, session: TerminalSession?): Boolean {
     if (handleVirtualKeys(keyCode, e, true)) {
       return true
+    }
+
+    if (NeoPreference.isVibrateEnabled()) {
+      val vibrator = context.getSystemService(Vibrator::class.java)
+      vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
     val termUI = termSessionData?.termUI
@@ -353,8 +359,10 @@ class BellController {
     }
 
     if (session.shellProfile.enableVibrate) {
-      val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-      vibrator.vibrate(100)
+      if (NeoPreference.isVibrateEnabled()) {
+        val vibrator = context.getSystemService(Vibrator::class.java)
+        vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
+      }
     }
   }
 }

@@ -7,7 +7,7 @@ object DefaultValues {
   const val fontSize = 30
 
   const val enableBell = false
-  const val enableVibrate = false
+  const val enableVibrate = true
   const val enableAutoCompletion = false
   const val enableFullScreen = false
   const val enableAutoHideToolbar = false
