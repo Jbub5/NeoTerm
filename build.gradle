@@ -1,6 +1,6 @@
 buildscript {
   ext.android = [
-    COMPILE_SDK_VERSION : 28,
+    COMPILE_SDK_VERSION : 29,
     MIN_SDK_VERSION     : 26,
     TARGET_SDK_VERSION  : 28
   ]
