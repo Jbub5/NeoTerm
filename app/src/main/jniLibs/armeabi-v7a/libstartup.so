@@ -1,9 +1,27 @@
 #!/system/bin/sh
-t=/data/data/com.termux/files
-[ -f $t/home/.termux/enable ]&&{
-export PREFIX=$t/usr TERMUX_IS_DEBUGGABLE_BUILD=1 TERMUX_VERSION=0.118.0 HOME=$t/home TERMUX_APK_RELEASE=GITHUB TMPDIR=$t/usr/tmp TERMUX_APP_PID=$PPID
-cd $HOME
-exec ../usr/bin/login
-}
+if [ -f ./.termux/enable ]; then
+   i=$(/system/bin/realpath ../../)
+   if [ $i != /data/data/com.termux ]; then
+      if [ ! -L /data/data/com.termux/files ]; then
+         if [ ! -d /data/data/com.termux/files ]; then
+            /system/bin/ln -s $i/files /data/data/com.termux/files
+            [ ! -L /data/data/com.termux/cache ]&&[ -d /data/data/com.termux/cache ]&&/system/bin/rm -rf /data/data/com.termux/cache
+            [ -L $i/cache ]&&rm -rf $i/cache
+            [ ! -d $i/cache ]&&/system/bin/mkdir $i/cache
+            [ ! -L /data/data/com.termux/cache ]&&/system/bin/ln -s $i/cache /data/data/com.termux/cache
+         elif [ -d /data/data/com.termux/files ]; then
+            [ ! -L $i/files/usr ]&&[ ! -d $i/files/usr ]&&/system/bin/ln -s /data/data/com.termux/files/usr $i/files/usr
+            [ ! -L $i/cache ]&&{
+               [ -d $i/cache ]&&/system/bin/rm -rf $i/cache
+               /system/bin/ln -s /data/data/com.termux/cache $i/cache
+            }
+         fi
+      fi
+   fi
+   export PREFIX=/data/data/com.termux/files/usr TERMUX_IS_DEBUGGABLE_BUILD=1 TERMUX_VERSION=0.118.1 HOME=/data/data/com.termux/files/home TERMUX_APK_RELEASE=GITHUB TMPDIR=/data/data/com.termux/files/usr/tmp TERMUX_APP_PID=$PPID
+   cd $HOME
+   [ -x ./.termux/.autostart.sh ]&&exec ./.termux/.autostart.sh
+   exec ../usr/bin/login
+fi
 [ -x ./.termux/.autostart.sh ]&&exec ./.termux/.autostart.sh
 exec /system/bin/sh
