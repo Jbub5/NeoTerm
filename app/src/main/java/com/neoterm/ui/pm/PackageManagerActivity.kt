@@ -80,8 +80,8 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    when (item?.itemId) {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item.itemId) {
       android.R.id.home -> finish()
       R.id.action_source -> changeSource()
       R.id.action_update_and_refresh -> executeAptUpdate()
