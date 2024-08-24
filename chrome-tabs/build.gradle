@@ -1,27 +1,28 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion rootProject.ext.android.COMPILE_SDK_VERSION
+  namespace 'de.mrapp.android.tabswitcher'
+  compileSdk rootProject.ext.android.COMPILE_SDK_VERSION
 
   defaultConfig {
-    minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
-    targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
+    minSdk rootProject.ext.android.MIN_SDK_VERSION
+    targetSdk rootProject.ext.android.TARGET_SDK_VERSION
   }
+
   buildTypes {
     release {
       minifyEnabled true
     }
   }
-  namespace 'de.mrapp.android.tabswitcher'
 }
 
 dependencies {
   api 'com.github.michael-rapp:android-util:1.15.4'
   implementation 'androidx.annotation:annotation:1.3.0'
-  testImplementation rootProject.ext.deps["junit"]
-
   implementation 'androidx.appcompat:appcompat:1.3.1'
   implementation 'androidx.appcompat:appcompat-resources:1.3.1'
+
+  testImplementation "junit:junit:${rootProject.ext.deps.JUNIT_VERSION}"
 }
 
 java {
