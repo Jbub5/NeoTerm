@@ -2176,6 +2176,8 @@ public final class TerminalEmulator {
           } else {
             value = thisDigit;
           }
+          if (value > 9999)
+              value = 9999;
           mArgs[mArgIndex] = value;
         }
         continueSequence(mEscapeState);
