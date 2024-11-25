@@ -145,8 +145,8 @@ open class ShellTermSession private constructor(
 
   var exitPrompt = TermuxApplication.get().getString(R.string.process_exit_prompt)
 
-  override fun initializeEmulator(columns: Int, rows: Int) {
-    super.initializeEmulator(columns, rows)
+  override fun initializeEmulator(columns: Int, rows: Int, cellWidthPixels: Int, cellHeightPixels: Int) {
+    super.initializeEmulator(columns, rows, cellWidthPixels, cellHeightPixels)
     sendInitialCommand(shellProfile.initialCommand)
     sendInitialCommand(initialCommand)
   }

@@ -248,4 +248,12 @@ final class TerminalRenderer {
   float getCursorY() {
     return savedLastDrawnLineY;
   }
+
+  public float getFontWidth() {
+    return mFontWidth;
+  }
+
+  public int getFontLineSpacing() {
+    return mFontLineSpacing;
+  }
 }
