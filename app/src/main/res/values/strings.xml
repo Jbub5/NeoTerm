@@ -9,9 +9,10 @@
   <string name="new_session_more">New Session…</string>
   <string name="new_rescue_session">Rescue Shell</string>
   <string name="service_status_text">%d session(s)</string>
-  <string name="service_lock_acquired">(Wake Locked)</string>
-  <string name="service_acquire_lock">Acquire Lock</string>
-  <string name="service_release_lock">Release Lock</string>
+  <string name="service_lock_acquired">\ (Wake Locked)</string>
+  <string name="service_acquire_lock">Disable Wakelock</string>
+  <string name="service_release_lock">Enable Wakelock</string>
+  <string name="wakelock_permission_request">(Need permission to wakelock)</string>
 
   <string name="setup_info">Welcome</string>
   <string name="setup_next">Next</string>

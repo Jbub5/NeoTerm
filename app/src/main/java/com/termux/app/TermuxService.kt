@@ -146,7 +146,11 @@ class TermuxService  : Service() {
       if (lockAcquired)
         R.string.service_release_lock
       else
-        R.string.service_acquire_lock
+        if (ignoreBatteryOptimizations() == true) {
+          R.string.service_acquire_lock
+        } else {
+          R.string.wakelock_permission_request
+        }
     )
     val actionIcon = if (lockAcquired) android.R.drawable.ic_lock_idle_lock else android.R.drawable.ic_lock_lock
     builder.addAction(actionIcon, actionTitle, PendingIntent.getService(this, 0, toggleWakeLockIntent, FLAG_IMMUTABLE))
@@ -163,32 +167,44 @@ class TermuxService  : Service() {
     manager.createNotificationChannel(channel)
   }
 
-  @SuppressLint("WakelockTimeout")
-  private fun requestIgnoreBatteryOptimizations() {
-    val packageName = getPackageName()
-    val intent = Intent()
+  private fun ignoreBatteryOptimizations(): Boolean {
     val pm = getSystemService(POWER_SERVICE) as PowerManager
-    if (!pm.isIgnoringBatteryOptimizations(packageName)) {
-      intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-      intent.data = Uri.parse("package:$packageName")
+    if (pm.isIgnoringBatteryOptimizations(packageName)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  private fun requestIgnoreBatteryOptimizations() {
+    if (ignoreBatteryOptimizations() == false) {
+      val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+      intent.data = Uri.fromParts("package", packageName, null)
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       startActivity(intent)
     }
   }
+
+  @SuppressLint("WakelockTimeout")
   private fun acquireLock() {
-    requestIgnoreBatteryOptimizations()
-    if (mWakeLock == null) {
-      val pm = getSystemService(POWER_SERVICE) as PowerManager
-      mWakeLock = pm.newWakeLock(
-        PowerManager.PARTIAL_WAKE_LOCK,
-        EmulatorDebug.LOG_TAG + ":"
-      )
-      mWakeLock!!.acquire()
+    if (ignoreBatteryOptimizations() == true) {
+      if (mWakeLock == null) {
+        val pm = getSystemService(POWER_SERVICE) as PowerManager
+        mWakeLock = pm.newWakeLock(
+          PowerManager.PARTIAL_WAKE_LOCK,
+          EmulatorDebug.LOG_TAG + ":"
+        )
+        mWakeLock!!.acquire()
 
-      val wm = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-      mWifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, EmulatorDebug.LOG_TAG)
-      mWifiLock!!.acquire()
+        val wm = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        mWifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, EmulatorDebug.LOG_TAG)
+        mWifiLock!!.acquire()
 
+        updateNotification()
+      }
+    } else {
       updateNotification()
+      requestIgnoreBatteryOptimizations()
     }
   }
 
