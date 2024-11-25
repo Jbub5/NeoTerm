@@ -18,6 +18,7 @@ import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import com.neoterm.R
 import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoPreference.isExtraKeysEnabled
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.ui.pm.PackageManagerActivity
@@ -31,6 +32,7 @@ import com.neoterm.utils.NeoPermission
 import com.neoterm.utils.RangedInt
 import com.termux.app.TermuxService
 import com.termux.terminal.TerminalSession
+import com.termux.view.extrakey.ExtraKeysView
 import de.mrapp.android.tabswitcher.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -83,6 +85,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     ViewCompat.setOnApplyWindowInsetsListener(tabSwitcher, createWindowInsetsListener())
     tabSwitcher.showToolbars(false)
 
+    updateExtraKeysVisibility()
+
     val serviceIntent = Intent(this, TermuxService::class.java)
     startService(serviceIntent)
     bindService(serviceIntent, this, 0)
@@ -111,6 +115,16 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
           }
           .start()
       }
+    }
+  }
+
+  private fun updateExtraKeysVisibility() {
+    val extraKeysView = findViewById<ExtraKeysView>(R.id.extra_keys)
+    extraKeysView?.visibility = if (isExtraKeysEnabled()) View.VISIBLE else View.GONE
+
+    for (i in 0 until tabSwitcher.count) {
+      val tab = tabSwitcher.getTab(i) as? TermTab
+      tab?.termData?.extraKeysView?.visibility = if (isExtraKeysEnabled()) View.VISIBLE else View.GONE
     }
   }
 
@@ -284,6 +298,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       if (tabSwitcher.count > 0) {
           (tabSwitcher.selectedTab as? TermTab)?.updateColorScheme()
       }
+    } else if (key == getString(R.string.key_ui_eks_enabled)) {
+      updateExtraKeysVisibility()
     }
   }
 
