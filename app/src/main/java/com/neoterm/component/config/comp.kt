@@ -215,13 +215,6 @@ object NeoPreference {
     )
   }
 
-  fun isHideToolbarEnabled(): Boolean {
-    return loadBoolean(
-      R.string.key_ui_hide_toolbar,
-      DefaultValues.enableAutoHideToolbar
-    )
-  }
-
   fun isNextTabEnabled(): Boolean {
     return loadBoolean(
       R.string.key_ui_next_tab_anim,

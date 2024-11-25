@@ -71,14 +71,6 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     setSupportActionBar(toolbar)
 
     fullScreenHelper = FullScreenHelper.injectActivity(this, fullscreen, peekRecreating())
-    fullScreenHelper.setKeyBoardListener(object : FullScreenHelper.KeyBoardListener {
-      override fun onKeyboardChange(isShow: Boolean, keyboardHeight: Int) {
-        if (tabSwitcher.selectedTab is TermTab) {
-          // isShow -> toolbarHide
-          toggleToolbar((tabSwitcher.selectedTab as? TermTab)?.toolbar, !isShow)
-        }
-      }
-    })
 
     tabSwitcher = findViewById(R.id.tab_switcher)
     tabSwitcher.decorator = NeoTabDecorator(this)
@@ -92,29 +84,10 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     bindService(serviceIntent, this, 0)
   }
 
-  private fun toggleToolbar(toolbar: Toolbar?, visible: Boolean) {
-    if (toolbar == null) {
-      return
-    }
-
-    if (NeoPreference.isFullScreenEnabled()
-      || NeoPreference.isHideToolbarEnabled()
-    ) {
-      val toolbarHeight = toolbar.height.toFloat()
-      val translationY = if (visible) 0.toFloat() else -toolbarHeight
-      if (visible) {
-        toolbar.visibility = View.VISIBLE
-        toolbar.animate()
-          .translationY(translationY)
-          .start()
-      } else {
-        toolbar.animate()
-          .translationY(translationY)
-          .withEndAction {
-            toolbar.visibility = View.GONE
-          }
-          .start()
-      }
+  fun updateToolbarVisibility() {
+    val toolbar = findViewById<Toolbar>(R.id.terminal_toolbar)
+    toolbar?.let {
+      it.visibility = if (it.visibility == View.VISIBLE) View.GONE else View.VISIBLE
     }
   }
 

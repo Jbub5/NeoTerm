@@ -12,12 +12,16 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.preference.PreferenceManager
 import com.neoterm.R
+import com.neoterm.app.TermuxActivity
 import com.termux.terminal.KeyHandler
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.completion.*
+import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
+import com.neoterm.component.config.NeoPreference.loadBoolean
 import com.neoterm.component.extrakey.ExtraKeyComponent
 import com.neoterm.component.session.ShellTermSession
 import com.neoterm.frontend.completion.CandidatePopupWindow
@@ -177,6 +181,26 @@ class TermViewClient(val context: Context) : TerminalViewClient {
           altDown = true
         }
 
+        'q' -> {
+          (context as? TermuxActivity)?.updateToolbarVisibility()
+        }
+
+        'k' -> {
+          fun toggleExtraKeysVisibility(context: Context) {
+            val currentValue = loadBoolean(
+              R.string.key_ui_eks_enabled,
+              DefaultValues.enableExtraKeys
+            )
+            val newValue = !currentValue
+
+            with(PreferenceManager.getDefaultSharedPreferences(context).edit()) {
+              putBoolean(context.getString(R.string.key_ui_eks_enabled), newValue)
+              apply()
+            }
+          }
+          toggleExtraKeysVisibility(context)
+        }
+
         // Volume control.
         'v' -> {
           resultingCodePoint = -1
@@ -224,15 +248,20 @@ class TermViewClient(val context: Context) : TerminalViewClient {
     // Volume keys as special keys
     val volumeAsSpecialKeys = shellSession.shellProfile.enableSpecialVolumeKeys
 
-    val inputDevice = event.device
-    if (inputDevice != null && inputDevice.keyboardType == InputDevice.KEYBOARD_TYPE_ALPHABETIC) {
-      return false
-    } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-      mVirtualControlKeyDown = down && volumeAsSpecialKeys
-      return true
-    } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-      mVirtualFnKeyDown = down && volumeAsSpecialKeys
-      return true
+    if (volumeAsSpecialKeys == true) {
+      if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+        mVirtualControlKeyDown = down && volumeAsSpecialKeys
+        return true
+      }
+      else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+        mVirtualFnKeyDown = down && volumeAsSpecialKeys
+        return true
+      }
+    } else {
+      val inputDevice = event.device
+      if (inputDevice != null && inputDevice.keyboardType == InputDevice.KEYBOARD_TYPE_ALPHABETIC) {
+        return false
+      }
     }
     return false
   }

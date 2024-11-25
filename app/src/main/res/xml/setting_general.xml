@@ -24,7 +24,7 @@
     android:title="@string/pref_general_backspace_map_to_esc"/>
 
   <CheckBoxPreference
-    android:defaultValue="false"
+    android:defaultValue="true"
     android:key="@string/key_general_volume_as_control"
     android:summary="@string/pref_general_volume_as_control_desc"
     android:title="@string/pref_general_volume_as_control"/>
