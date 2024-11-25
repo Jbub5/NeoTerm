@@ -158,12 +158,12 @@ public class TerminalSession extends TerminalOutput {
   /**
    * Inform the attached pty of the new size and reflow or initialize the emulator.
    */
-  public void updateSize(int columns, int rows, int fontWidth, int fontHeight) {
+  public void updateSize(int columns, int rows, int cellWidthPixels, int cellHeightPixels) {
     if (mEmulator == null) {
-      initializeEmulator(columns, rows, fontWidth, fontHeight);
+      initializeEmulator(columns, rows, cellWidthPixels, cellHeightPixels);
     } else {
-      JNI.setPtyWindowSize(mTerminalFileDescriptor, rows, columns, fontWidth, fontHeight);
-      mEmulator.resize(columns, rows);
+      JNI.setPtyWindowSize(mTerminalFileDescriptor, rows, columns, cellWidthPixels, cellHeightPixels);
+      mEmulator.resize(columns, rows, cellWidthPixels, cellHeightPixels);
     }
   }
 
@@ -180,11 +180,11 @@ public class TerminalSession extends TerminalOutput {
    * @param columns The number of columns in the terminal window.
    * @param rows    The number of rows in the terminal window.
    */
-  public void initializeEmulator(int columns, int rows, int cellWidth, int cellHeight) {
-    mEmulator = new TerminalEmulator(this, columns, rows, /* transcript= */2000);
+  public void initializeEmulator(int columns, int rows, int cellWidthPixels, int cellHeightPixels) {
+    mEmulator = new TerminalEmulator(this, columns, rows, cellWidthPixels, cellHeightPixels, /* transcript= */2000);
 
     int[] processId = new int[1];
-    mTerminalFileDescriptor = JNI.createSubprocess(mShellPath, mCwd, mArgs, mEnv, processId, rows, columns, cellWidth, cellHeight);
+    mTerminalFileDescriptor = JNI.createSubprocess(mShellPath, mCwd, mArgs, mEnv, processId, rows, columns, cellWidthPixels, cellHeightPixels);
     mShellPid = processId[0];
 
     final FileDescriptor terminalFileDescriptorWrapped = wrapFileDescriptor(mTerminalFileDescriptor);
