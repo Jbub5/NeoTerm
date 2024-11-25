@@ -51,7 +51,8 @@ class FontComponent : NeoComponent {
 
   fun reloadFonts(): Boolean {
     fonts.clear()
-    fonts["Monospace"] = NeoFont(Typeface.MONOSPACE)
+    val typeface: Typeface = Typeface.create("monospace", Typeface.NORMAL)
+    fonts["Monospace"] = NeoFont(typeface)
     fonts["Sans Serif"] = NeoFont(Typeface.SANS_SERIF)
     fonts["Serif"] = NeoFont(Typeface.SERIF)
     val fontDir = File(NeoTermPath.FONT_PATH)
