@@ -245,16 +245,13 @@ class TermViewClient(val context: Context) : TerminalViewClient {
 
     val shellSession = termSessionData?.termSession as ShellTermSession? ?: return false
 
-    // Volume keys as special keys
-    val volumeAsSpecialKeys = shellSession.shellProfile.enableSpecialVolumeKeys
-
-    if (volumeAsSpecialKeys == true) {
+    if (shellSession.shellProfile.enableSpecialVolumeKeys == true) {
       if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-        mVirtualControlKeyDown = down && volumeAsSpecialKeys
+        mVirtualControlKeyDown = down && true
         return true
       }
       else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-        mVirtualFnKeyDown = down && volumeAsSpecialKeys
+        mVirtualFnKeyDown = down && true
         return true
       }
     } else {
@@ -377,7 +374,7 @@ class BellController {
     }
     lastBellTime = currentTime
 
-    if (session.shellProfile.enableBell) {
+    if (NeoPreference.isBellEnabled()) {
       if (soundPool == null) {
         soundPool = SoundPool.Builder().setMaxStreams(1).build()
         bellId = soundPool!!.load(context, R.raw.bell, 1)
@@ -385,11 +382,9 @@ class BellController {
       soundPool?.play(bellId, 1f, 1f, 0, 0, 1f)
     }
 
-    if (session.shellProfile.enableVibrate) {
-      if (NeoPreference.isVibrateEnabled()) {
-        val vibrator = context.getSystemService(Vibrator::class.java)
-        vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
-      }
+    if (NeoPreference.isVibrateEnabled()) {
+      val vibrator = context.getSystemService(Vibrator::class.java)
+      vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
     }
   }
 }
