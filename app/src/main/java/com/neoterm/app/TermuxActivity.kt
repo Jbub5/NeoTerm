@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.IBinder
 import androidx.preference.PreferenceManager
 import android.view.*
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
@@ -62,6 +63,10 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       window.setFlags(
         WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN
+      )
+      window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
       )
     }
 
