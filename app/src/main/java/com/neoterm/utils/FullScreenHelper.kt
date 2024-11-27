@@ -34,10 +34,6 @@ class FullScreenHelper private constructor(
   private var mPreHeight: Int = 0
   private var mKeyBoardListener: KeyBoardListener? = null
 
-  fun setKeyBoardListener(mKeyBoardListener: KeyBoardListener) {
-    this.mKeyBoardListener = mKeyBoardListener
-  }
-
   init {
     val content = activity.findViewById<FrameLayout>(android.R.id.content)
     mChildOfContent = content.getChildAt(0)

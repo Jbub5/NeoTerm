@@ -33,7 +33,6 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
   private val hintMapping = arrayOf(
     R.id.setup_method_online, R.string.setup_hint_online,
     R.id.setup_method_local, R.string.setup_hint_local,
-    R.id.setup_method_backup, R.string.setup_hint_backup
   )
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +59,6 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
 
     findViewById<RadioButton>(R.id.setup_method_online).setOnCheckedChangeListener(onCheckedChangeListener)
     findViewById<RadioButton>(R.id.setup_method_local).setOnCheckedChangeListener(onCheckedChangeListener)
-    findViewById<RadioButton>(R.id.setup_method_backup).setOnCheckedChangeListener(onCheckedChangeListener)
 
     findViewById<Button>(R.id.setup_next).setOnClickListener(this)
     findViewById<Button>(R.id.setup_source_parameter_select).setOnClickListener(this)
@@ -91,7 +89,6 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     setupParameter = editor.text.toString()
     if (setupParameterUri == null) {
       when (id) {
-        R.id.setup_method_backup,
         R.id.setup_method_local -> {
           SetupHelper.makeErrorDialog(this, R.string.setup_error_parameter_null).show()
           return
@@ -122,7 +119,6 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
   private fun doSelectParameter() {
     val id = findViewById<RadioGroup>(R.id.setup_method_group).checkedRadioButtonId
     when (id) {
-      R.id.setup_method_backup,
       R.id.setup_method_local -> {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "*/*"
@@ -160,7 +156,6 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     return when (id) {
       R.id.setup_method_local -> LocalFileConnection(this, parameterUri!!)
       R.id.setup_method_online -> NetworkConnection(parameter)
-      R.id.setup_method_backup -> BackupFileConnection(this, parameterUri!!)
       else -> throw IllegalArgumentException("Unexpected setup method!")
     }
   }
@@ -173,8 +168,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
       } catch (e: IllegalArgumentException) {
         getString(R.string.setup_error_invalid_url)
       }
-      R.id.setup_method_local,
-      R.id.setup_method_backup -> if (File(parameter).exists()) null else getString(R.string.setup_error_file_not_found)
+      R.id.setup_method_local -> if (File(parameter).exists()) null else getString(R.string.setup_error_file_not_found)
       else -> null
     }
   }

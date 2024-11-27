@@ -11,12 +11,6 @@ import java.net.URL
  * @author kiva
  */
 
-class BackupFileConnection(context: Context, uri: Uri) : LocalFileConnection(context, uri)
-
-/**
- * @author kiva
- */
-
 open class LocalFileConnection(context: Context, uri: Uri) : OfflineUriConnection(context, uri)
 
 /**

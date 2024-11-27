@@ -22,20 +22,20 @@
 
     <TextView
       android:id="@+id/crash_model"
-      style="@style/TextAppearance.AppCompat.Medium"
+      style="@style/TextAppearance.AppCompat.Small"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textColor="@color/textColorSecondary"/>
 
     <TextView
       android:id="@+id/crash_app_version"
-      style="@style/TextAppearance.AppCompat.Medium"
+      style="@style/TextAppearance.AppCompat.Small"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textColor="@color/textColorSecondary"/>
 
     <TextView
-      style="@style/TextAppearance.AppCompat.Medium"
+      style="@style/TextAppearance.AppCompat.Small"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/text_margin"
@@ -49,7 +49,8 @@
 
       <TextView
         android:id="@+id/crash_details"
-        style="@style/TextAppearance.AppCompat.Medium"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:textIsSelectable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/text_margin"

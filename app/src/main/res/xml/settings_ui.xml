@@ -3,6 +3,7 @@
   <CheckBoxPreference
     android:defaultValue="false"
     android:key="@string/key_ui_fullscreen"
+    android:summary="@string/pref_ui_fullscreen_desc"
     android:title="@string/pref_ui_fullscreen"/>
 
   <CheckBoxPreference

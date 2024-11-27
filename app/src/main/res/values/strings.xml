@@ -19,13 +19,11 @@
   <string name="setup_setup_method">Select installation method</string>
   <string name="setup_online">Online Setup</string>
   <string name="setup_local">Local Zip File Setup</string>
-  <string name="setup_backup">Restore from NeoTerm Backup</string>
   <string name="setup_source_parameter">Source Parameter</string>
   <string name="setup_input_source_parameter">Input source parameter…</string>
   <string name="setup_dots" translatable="false">…</string>
   <string name="setup_hint_online">URL of mirror that contains setup zip files</string>
   <string name="setup_hint_local">File path to showConfirmDialog zip files</string>
-  <string name="setup_hint_backup">File path to backup file(*.neobackup)</string>
   <string name="setup_error_file_not_found">File not found</string>
   <string name="setup_error_invalid_url">Invalid URL</string>
   <string name="setup_error_parameter_null">Setup parameter is null</string>
@@ -33,14 +31,15 @@
   <string name="setup_confirm">Finish Setup</string>
   <string name="setup_confirm_text">Everything goes well till now, continue?</string>
   <string name="setup_reset_confirm">Reset Confirm</string>
-  <string name="setup_reset_confirm_text">This operation will clear all your data! Continue?</string>
+  <string name="setup_reset_confirm_text">This operation will erase all your data! Continue?</string>
 
   <string name="about">About</string>
+  <string name="about_desc">Info, Licenses, Source code</string>
   <string name="settings">Settings</string>
   <string name="general_settings">General Settings</string>
-  <string name="general_settings_desc">Bell, Vibrate, Initial Command</string>
+  <string name="general_settings_desc">Initial command, Vibrate, VolumeKeys</string>
   <string name="ui_settings">UI Settings</string>
-  <string name="ui_settings_desc">FullScreen, Title Bar, Animation</string>
+  <string name="ui_settings_desc">FullScreen, Animation, ExtraKeys</string>
   <string name="package_settings">Package Settings</string>
   <string name="package_settings_desc">Source, Updates, Upgrades</string>
   <string name="customization_settings_desc">Font, ColorScheme</string>
@@ -64,7 +63,7 @@
 
   <string name="crash_model">Model: %s</string>
   <string name="crash_app">App: %s</string>
-  <string name="crash_stack_trace">Stack Trace</string>
+  <string name="crash_stack_trace">Stack Trace:</string>
 
   <string name="installer_message">Installing</string>
 
@@ -77,14 +76,13 @@
   <string name="pref_general_initial_command">Initial Command</string>
   <string name="pref_general_initial_command_desc">Execute commands when a session is being created</string>
   <string name="pref_general_auto_completion">Auto Completion(Experimental)</string>
-  <string name="pref_general_auto_completion_desc">Enable complete things when typing commands or path. This is still
-    work in progress with lots of bugs to deal with
-  </string>
+  <string name="pref_general_auto_completion_desc">Enable complete things when typing commands or path. This is still work in progress with lots of bugs to deal with</string>
   <string name="pref_general_volume_as_control">Use volume up and down as special keys</string>
   <string name="pref_general_volume_as_control_desc">Requires restart to apply changes</string>
   <string name="pref_general_enable_word_based_ime">Enable word based IME</string>
   <string name="pref_general_enable_word_based_ime_desc">Word based or char based IME</string>
   <string name="pref_ui_fullscreen">Full Screen</string>
+  <string name="pref_ui_fullscreen_desc">Change this parameter only when TabSwitcher is not open</string>
   <string name="pref_ui_close_tab_anim_next_tab">Next tab animation</string>
   <string name="pref_ui_close_tab_anim_next_tab_desc">Switch to the next tab instead of the previous tab when closing
     tab
@@ -111,7 +109,7 @@
   <string name="about_libraries_label">Licenses</string>
   <string name="about_source_label">Source Code</string>
   <string name="about_reset_label">Reset App</string>
-  <string name="about_reset_label_desc">Clear all files except user home directory</string>
+  <string name="about_reset_label_desc">Erase all except the home directory and run setup</string>
   <string name="new_color_scheme">New Color Scheme</string>
   <string name="new_source">New</string>
   <string name="process_exit_info">Process completed</string>
@@ -132,8 +130,7 @@
   <string name="input_new_source_repo">Enter new Repo</string>
   <string name="error_new_source_url">URL cannot be empty</string>
   <string name="error_new_source_repo">Repo cannot be empty</string>
-  <string name="dangerous_zone">Dangerous Zone</string>
-  <string name="reset_app_warning">You will have to re-setup later, confirm?</string>
+  <string name="reset_app_warning">You will have to re-setup later, continue?</string>
 
   <string name="default_bootstrap_url" translatable="false">https://github.com/termux/termux-packages/releases/latest/download
   </string>
