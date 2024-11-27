@@ -65,7 +65,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     alpha = DEFAULT_ALPHA
     gravity = Gravity.TOP
     orientation = VERTICAL
-    typeface = Typeface.createFromAsset(context.assets, "eks_font.ttf")
+    typeface = Typeface.create("monospace", Typeface.NORMAL)
     extraKeyComponent = ComponentManager.getComponent<ExtraKeyComponent>()
 
     initBuiltinKeys()
