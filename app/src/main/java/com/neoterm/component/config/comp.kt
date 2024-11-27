@@ -2,7 +2,7 @@ package com.neoterm.component.config
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.util.TypedValue
 import com.neoterm.R
 import com.neoterm.app.TermuxApplication

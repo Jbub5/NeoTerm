@@ -6,7 +6,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
