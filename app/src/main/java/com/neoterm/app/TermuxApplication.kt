@@ -30,7 +30,7 @@ class TermuxApplication : Application() {
     AlertDialog.Builder(context)
       .setTitle(R.string.error)
       .setMessage(message)
-      .setNegativeButton(android.R.string.no, null)
+      .setNegativeButton(android.R.string.cancel, null)
       .setPositiveButton(R.string.show_help) { _, _ ->
         openHelpLink()
       }

@@ -1,7 +1,5 @@
 <resources>
   <string name="app_name">NeoTerm</string>
-  <string name="copy_text">Copy</string>
-  <string name="paste_text">Paste</string>
   <string name="text_selection_more">More</string>
 
   <string name="toggle_tab_switcher_menu_item">Toggle Tabs</string>

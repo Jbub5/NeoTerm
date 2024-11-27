@@ -65,7 +65,7 @@ object SetupHelper {
     return AlertDialog.Builder(context)
       .setTitle(R.string.error)
       .setMessage(message)
-      .setPositiveButton(android.R.string.yes, null)
+      .setPositiveButton(android.R.string.ok, null)
       .setNeutralButton(R.string.show_help) { _, _ -> TermuxApplication.get().openHelpLink() }
       .create()
   }

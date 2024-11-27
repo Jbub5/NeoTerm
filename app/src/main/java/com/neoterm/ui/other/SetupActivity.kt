@@ -141,12 +141,12 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
         AlertDialog.Builder(this)
           .setTitle(R.string.new_source)
           .setView(view)
-          .setPositiveButton(android.R.string.yes) { _, _ ->
+          .setPositiveButton(android.R.string.ok) { _, _ ->
             val newURL = edit.text.toString()
             val parameterEditor = findViewById<EditText>(R.id.setup_source_parameter)
             parameterEditor.setText(newURL)
           }
-          .setNegativeButton(android.R.string.no, null)
+          .setNegativeButton(android.R.string.cancel, null)
           .show()
       }
     }
@@ -189,10 +189,10 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     AlertDialog.Builder(this)
       .setTitle(titleId)
       .setMessage(messageId)
-      .setPositiveButton(android.R.string.yes) { _, _ ->
+      .setPositiveButton(android.R.string.ok) { _, _ ->
         doSetup(connection)
       }
-      .setNegativeButton(android.R.string.no, null)
+      .setNegativeButton(android.R.string.cancel, null)
       .show()
   }
 
@@ -217,7 +217,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
         .setNeutralButton(R.string.show_help) { _, _ ->
           TermuxApplication.get().openHelpLink()
         }
-        .setPositiveButton(android.R.string.yes, null)
+        .setPositiveButton(android.R.string.ok, null)
         .show()
     }
   }

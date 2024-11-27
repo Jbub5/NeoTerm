@@ -82,7 +82,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
         .setPositiveButton(R.string.save) { _, _ ->
           applyColorScheme(editingColorScheme, true)
         }
-        .setNegativeButton(android.R.string.no, null)
+        .setNegativeButton(android.R.string.cancel, null)
         .setNeutralButton(R.string.exit) { _, _ ->
           finish()
         }
@@ -132,8 +132,8 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
     AlertDialog.Builder(this)
       .setTitle(model.colorName)
       .setView(view)
-      .setNegativeButton(android.R.string.no, null)
-      .setPositiveButton(android.R.string.yes) { _, _ ->
+      .setNegativeButton(android.R.string.cancel, null)
+      .setPositiveButton(android.R.string.ok) { _, _ ->
         applyColor(edit.text.toString())
       }
       .setNeutralButton(R.string.select_new_value) { _, _ ->
@@ -162,11 +162,11 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
       AlertDialog.Builder(this)
         .setTitle(R.string.save_color)
         .setView(view)
-        .setPositiveButton(android.R.string.yes) { _, _ ->
+        .setPositiveButton(android.R.string.ok) { _, _ ->
           colorScheme.colorName = edit.text.toString()
           applyColorScheme(colorScheme, finishAfter)
         }
-        .setNegativeButton(android.R.string.no, null)
+        .setNegativeButton(android.R.string.cancel, null)
         .show()
     } else {
       try {

@@ -55,7 +55,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
           .setPositiveButton(R.string.install) { _, _ ->
             installPackage(model.packageInfo.packageName)
           }
-          .setNegativeButton(android.R.string.no, null)
+          .setNegativeButton(android.R.string.cancel, null)
           .show()
       }
     })
@@ -102,9 +102,9 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
       .setMultiChoiceItems(items, selection) { _, which, isChecked ->
         sourceList[which].enabled = isChecked
       }
-      .setPositiveButton(android.R.string.yes) { _, _ -> changeSourceInternal(sourceManager, sourceList) }
+      .setPositiveButton(android.R.string.ok) { _, _ -> changeSourceInternal(sourceManager, sourceList) }
       .setNeutralButton(R.string.new_source) { _, _ -> changeSourceToUserInput(sourceManager) }
-      .setNegativeButton(android.R.string.no, null)
+      .setNegativeButton(android.R.string.cancel, null)
       .show()
   }
 
@@ -121,8 +121,8 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
     AlertDialog.Builder(this)
       .setTitle(R.string.pref_package_source)
       .setView(view)
-      .setNegativeButton(android.R.string.no, null)
-      .setPositiveButton(android.R.string.yes) { _, _ ->
+      .setNegativeButton(android.R.string.cancel, null)
+      .setPositiveButton(android.R.string.ok) { _, _ ->
         val url = urlEditor.text.toString()
         val repo = repoEditor.text.toString()
         var errored = false
