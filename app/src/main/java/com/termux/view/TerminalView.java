@@ -1005,7 +1005,7 @@ public final class TerminalView extends View {
           ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
           menu.add(Menu.NONE, 1, Menu.NONE, android.R.string.copy).setShowAsAction(show);
           menu.add(Menu.NONE, 2, Menu.NONE, android.R.string.paste).setEnabled(clipboard.hasPrimaryClip()).setShowAsAction(show);
-          menu.add(Menu.NONE, 3, Menu.NONE, R.string.text_selection_more);
+          //menu.add(Menu.NONE, 3, Menu.NONE, R.string.text_selection_more);
 
           return true;
         }
