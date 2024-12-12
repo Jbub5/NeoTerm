@@ -120,7 +120,7 @@ class TermuxService  : Service() {
     var contentText = getString(R.string.service_status_text, sessionCount)
 
     val lockAcquired = mWakeLock != null
-    if (lockAcquired) contentText += getString(R.string.service_lock_acquired)
+    if (lockAcquired) contentText += getString(R.string.service_lock_acquired) else contentText += getString(R.string.service_lock_released)
 
     val builder = NotificationCompat.Builder(this, DEFAULT_CHANNEL_ID)
     builder.setContentTitle(getText(R.string.app_name))
@@ -143,14 +143,11 @@ class TermuxService  : Service() {
     val newWakeAction = if (lockAcquired) ACTION_RELEASE_LOCK else ACTION_ACQUIRE_LOCK
     val toggleWakeLockIntent = Intent(this, TermuxService ::class.java).setAction(newWakeAction)
     val actionTitle = getString(
-      if (lockAcquired)
-        R.string.service_release_lock
-      else
-        if (ignoreBatteryOptimizations() == true) {
-          R.string.service_acquire_lock
-        } else {
-          R.string.wakelock_permission_request
-        }
+      if ((lockAcquired)||(ignoreBatteryOptimizations())) {
+        R.string.service_wakelock
+      } else {
+        R.string.wakelock_permission_request
+      }
     )
     val actionIcon = if (lockAcquired) android.R.drawable.ic_lock_idle_lock else android.R.drawable.ic_lock_lock
     builder.addAction(actionIcon, actionTitle, PendingIntent.getService(this, 0, toggleWakeLockIntent, FLAG_IMMUTABLE))
@@ -188,10 +185,9 @@ class TermuxService  : Service() {
   @SuppressLint("WakelockTimeout")
   private fun acquireLock() {
     if (ignoreBatteryOptimizations() == true) {
-      if (mWakeLock == null) {
         val pm = getSystemService(POWER_SERVICE) as PowerManager
         mWakeLock = pm.newWakeLock(
-          PowerManager.PARTIAL_WAKE_LOCK,
+          PowerManager.SCREEN_BRIGHT_WAKE_LOCK,
           EmulatorDebug.LOG_TAG + ":"
         )
         mWakeLock!!.acquire()
@@ -201,7 +197,6 @@ class TermuxService  : Service() {
         mWifiLock!!.acquire()
 
         updateNotification()
-      }
     } else {
       updateNotification()
       requestIgnoreBatteryOptimizations()
