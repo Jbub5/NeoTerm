@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat
 import com.neoterm.R
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.config.NeoPreference.isExtraKeysEnabled
+import com.neoterm.component.config.NeoPreference.isToolbarEnabled
 import com.neoterm.component.session.ShellParameter
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.ui.pm.PackageManagerActivity
@@ -82,6 +83,7 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     ViewCompat.setOnApplyWindowInsetsListener(tabSwitcher, createWindowInsetsListener())
     tabSwitcher.showToolbars(false)
 
+    updateToolbarVisibility()
     updateExtraKeysVisibility()
 
     val serviceIntent = Intent(this, TermuxService::class.java)
@@ -89,11 +91,9 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
     bindService(serviceIntent, this, 0)
   }
 
-  fun updateToolbarVisibility() {
+  private fun updateToolbarVisibility() {
     val toolbar = findViewById<Toolbar>(R.id.terminal_toolbar)
-    toolbar?.let {
-      it.visibility = if (it.visibility == View.VISIBLE) View.GONE else View.VISIBLE
-    }
+    toolbar?.visibility = if (isToolbarEnabled()) View.VISIBLE else View.GONE
   }
 
   private fun updateExtraKeysVisibility() {
@@ -278,6 +278,8 @@ class TermuxActivity : AppCompatActivity(), ServiceConnection, SharedPreferences
       }
     } else if (key == getString(R.string.key_ui_eks_enabled)) {
       updateExtraKeysVisibility()
+    } else if (key == getString(R.string.key_ui_toolbar_enabled)) {
+      updateToolbarVisibility()
     }
   }
 

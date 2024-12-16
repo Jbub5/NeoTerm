@@ -16,6 +16,7 @@ import com.neoterm.component.completion.OnAutoCompleteListener
 import com.neoterm.component.config.DefaultValues
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.config.NeoPreference.isExtraKeysEnabled
+import com.neoterm.component.config.NeoPreference.isToolbarEnabled
 import com.neoterm.frontend.session.terminal.*
 import com.neoterm.utils.Terminals
 import com.termux.view.TerminalView
@@ -104,6 +105,10 @@ class NeoTabDecorator(val context: TermuxActivity) : TabSwitcherDecorator() {
     val termData = tab.termData
 
     extraKeysView?.visibility = if (isExtraKeysEnabled()) View.VISIBLE else View.GONE
+
+    val toolbar = findViewById<Toolbar>(R.id.terminal_toolbar)
+    toolbar?.visibility = if (isToolbarEnabled()) View.VISIBLE else View.GONE
+
     termData.initializeViewWith(tab, termView, extraKeysView)
     termView.setEnableWordBasedIme(termData.profile?.enableWordBasedIme ?: DefaultValues.enableWordBasedIme)
     termView.setTerminalViewClient(termData.viewClient)

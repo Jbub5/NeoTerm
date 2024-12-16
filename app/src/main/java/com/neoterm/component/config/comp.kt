@@ -194,6 +194,13 @@ object NeoPreference {
     )
   }
 
+  fun isToolbarEnabled(): Boolean {
+    return loadBoolean(
+      R.string.key_ui_toolbar_enabled,
+      DefaultValues.enableToolbar
+    )
+  }
+
   fun isExtraKeysEnabled(): Boolean {
     return loadBoolean(
       R.string.key_ui_eks_enabled,

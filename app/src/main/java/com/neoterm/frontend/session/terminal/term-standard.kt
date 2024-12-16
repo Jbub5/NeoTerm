@@ -14,12 +14,12 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.preference.PreferenceManager
 import com.neoterm.R
-import com.neoterm.app.TermuxActivity
 import com.termux.terminal.KeyHandler
 import com.termux.terminal.TerminalSession
 import com.neoterm.component.ComponentManager
 import com.neoterm.component.completion.*
 import com.neoterm.component.config.DefaultValues
+import com.neoterm.component.config.DefaultValues.enableToolbar
 import com.neoterm.component.config.NeoPreference
 import com.neoterm.component.config.NeoPreference.loadBoolean
 import com.neoterm.component.extrakey.ExtraKeyComponent
@@ -182,7 +182,19 @@ class TermViewClient(val context: Context) : TerminalViewClient {
         }
 
         'q' -> {
-          (context as? TermuxActivity)?.updateToolbarVisibility()
+          fun toggleToolbarVisibility(context: Context) {
+            val currentValue = loadBoolean(
+              R.string.key_ui_toolbar_enabled,
+              DefaultValues.enableToolbar
+            )
+            val newValue = !currentValue
+
+            with(PreferenceManager.getDefaultSharedPreferences(context).edit()) {
+              putBoolean(context.getString(R.string.key_ui_toolbar_enabled), newValue)
+              apply()
+            }
+          }
+          toggleToolbarVisibility(context)
         }
 
         'k' -> {

@@ -75,6 +75,7 @@ class ShellProfile : NeoProfile() {
     private const val SPECIAL_VOLUME_KEYS = "special-volume-keys"
     private const val AUTO_COMPLETION = "auto-completion"
     private const val BACK_KEY_TO_ESC = "back-key-esc"
+    private const val TOOLBAR = "toolbar"
     private const val EXTRA_KEYS = "extra-keys"
     private const val FONT = "font"
     private const val COLOR_SCHEME = "color-scheme"
@@ -94,6 +95,7 @@ class ShellProfile : NeoProfile() {
   var enableSpecialVolumeKeys = DefaultValues.enableSpecialVolumeKeys
   var enableAutoCompletion = DefaultValues.enableAutoCompletion
   var enableBackKeyToEscape = DefaultValues.enableBackButtonBeMappedToEscape
+  var enableToolbar = DefaultValues.enableToolbar
   var enableExtraKeys = DefaultValues.enableExtraKeys
   var enableWordBasedIme = DefaultValues.enableWordBasedIme
 
@@ -113,6 +115,7 @@ class ShellProfile : NeoProfile() {
     enableSpecialVolumeKeys = NeoPreference.isSpecialVolumeKeysEnabled()
     enableAutoCompletion = NeoPreference.isAutoCompletionEnabled()
     enableBackKeyToEscape = NeoPreference.isBackButtonBeMappedToEscapeEnabled()
+    enableToolbar = NeoPreference.isToolbarEnabled()
     enableExtraKeys = NeoPreference.isExtraKeysEnabled()
     enableWordBasedIme = NeoPreference.isWordBasedImeEnabled()
   }
@@ -125,6 +128,7 @@ class ShellProfile : NeoProfile() {
     enableSpecialVolumeKeys = configVisitor.getProfileBoolean(SPECIAL_VOLUME_KEYS, enableSpecialVolumeKeys)
     enableAutoCompletion = configVisitor.getProfileBoolean(AUTO_COMPLETION, enableAutoCompletion)
     enableBackKeyToEscape = configVisitor.getProfileBoolean(BACK_KEY_TO_ESC, enableBackKeyToEscape)
+    enableToolbar = configVisitor.getProfileBoolean(TOOLBAR, enableToolbar)
     enableExtraKeys = configVisitor.getProfileBoolean(EXTRA_KEYS, enableExtraKeys)
     enableWordBasedIme = configVisitor.getProfileBoolean(WORD_BASED_IME, enableWordBasedIme)
     profileFont = configVisitor.getProfileString(FONT, profileFont)

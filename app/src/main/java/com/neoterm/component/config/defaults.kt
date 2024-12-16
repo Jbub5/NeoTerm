@@ -11,6 +11,7 @@ object DefaultValues {
   const val enableAutoCompletion = false
   const val enableFullScreen = false
   const val enableSwitchNextTab = false
+  const val enableToolbar = true
   const val enableExtraKeys = true
   const val enableExplicitExtraKeysWeight = false
   const val enableBackButtonBeMappedToEscape = false
