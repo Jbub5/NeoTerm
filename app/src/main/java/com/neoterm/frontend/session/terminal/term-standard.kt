@@ -116,7 +116,7 @@ class TermViewClient(val context: Context) : TerminalViewClient {
       }
 
       // Use Alt + num to switch sessions
-      val sessionIndex = unicodeChar.toInt() - '0'.toInt()
+      val sessionIndex = unicodeChar.code - '0'.code
       termUI?.requireSwitchTo(sessionIndex)
 
       // 当要触发 NeoTerm 快捷键时，屏蔽所有终端处理key
@@ -159,14 +159,14 @@ class TermViewClient(val context: Context) : TerminalViewClient {
         // Some special keys:
         't' -> resultingKeyCode = KeyEvent.KEYCODE_TAB
         'i' -> resultingKeyCode = KeyEvent.KEYCODE_INSERT
-        'h' -> resultingCodePoint = '~'.toInt()
+        'h' -> resultingCodePoint = '~'.code
 
         // Special characters to input.
-        'u' -> resultingCodePoint = '_'.toInt()
-        'l' -> resultingCodePoint = '|'.toInt()
+        'u' -> resultingCodePoint = '_'.code
+        'l' -> resultingCodePoint = '|'.code
 
         // Function keys.
-        '1', '2', '3', '4', '5', '6', '7', '8', '9' -> resultingKeyCode = codePoint - '1'.toInt() + KeyEvent.KEYCODE_F1
+        '1', '2', '3', '4', '5', '6', '7', '8', '9' -> resultingKeyCode = codePoint - '1'.code + KeyEvent.KEYCODE_F1
         '0' -> resultingKeyCode = KeyEvent.KEYCODE_F10
 
         // Other special keys.
